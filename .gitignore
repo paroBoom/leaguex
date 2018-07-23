@@ -1,0 +1,8 @@
+/assets/img/users-avatars/*
+/assets/img/club-logo/*
+/assets/img/competitions-logo/*
+/assets/img/users-images/*
+!/assets/img/users-avatars/avatar_default.png
+!/assets/img/club-logo/logo_default.png
+!/assets/img/competitions-logo/logo_default.png
+!/assets/img/users-images/image.jpg

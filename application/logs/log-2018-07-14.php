@@ -1,0 +1,30 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2018-07-14 18:55:39 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 18:55:51 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 18:56:03 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 18:56:35 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 18:58:06 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 18:58:55 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:02:54 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:06:34 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:06:56 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:07:06 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:07:12 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:07:16 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:08:56 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:09:17 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:10:16 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:11:41 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:12:19 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:12:53 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:13:11 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:15:35 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:16:09 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:23:30 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:25:55 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:26:35 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:27:51 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:28:40 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:29:38 --> 404 Page Not Found: Assets/css
+ERROR - 2018-07-14 19:30:09 --> 404 Page Not Found: Assets/css
