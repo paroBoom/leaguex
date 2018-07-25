@@ -7,15 +7,7 @@ class MY_Controller extends CI_Controller {
 		parent::__construct();
     }
     
-    //Check session
-    public function is_logged_in() {
-
-        $user = $this->session->userdata('userID');
-        return isset($user);
-
-	}
-	
-	protected function _render($data)
+    protected function _render($data)
 	{
 		$this->load->view('template/skeleton', $data);
 	}

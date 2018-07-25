@@ -32,7 +32,7 @@ class User extends MY_Controller {
         $data = $this->user->signin($email);
 
         if(($data) && (password_verify($password, $data['user_password']))) {
-            $this->session->set_userdata('loggedin');
+            $this->session->set_userdata('loggedin', TRUE);
             $this->session->set_userdata('userID', $data['ID']);
             $this->session->set_userdata('permission', $data['user_permission']);
         } else {
@@ -73,9 +73,7 @@ class User extends MY_Controller {
             'user_birthday' => date('Y-m-d', strtotime(str_replace('/', '-', $this->input->post('birthDay'))))
         );
 
-        $data = $this->user->create_user($user_register);
-
-        if($data) {
+        if($this->user->create_user($user_register)) {
             $output['message'] = 'Benvenuto nel club! Accedi';
         } else {
             $output['error'] = true;

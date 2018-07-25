@@ -16,11 +16,20 @@ class User_model extends CI_Model {
         
     }
 
-    public function create_user($data) {
+    public function create_user($user_register) {
 
+        $this->db->trans_start();
         $this->db->set('user_registered', 'NOW()', FALSE);
-        return $this->db->insert('lex_users', $data);
+        $this->db->insert('lex_users', $user_register);
 
+        $user_id = $this->db->insert_id();
+                        
+        // Init last activity
+        $this->db->set('la_user_id', $user_id, FALSE);
+        $this->db->set('la_time','NOW()', FALSE);
+        $this->db->insert('lex_last_activity');
+        $this->db->trans_complete();  
+        return TRUE;
     }
 
 }

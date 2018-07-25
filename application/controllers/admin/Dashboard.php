@@ -14,6 +14,9 @@ class Dashboard extends MY_Controller {
         
         if (!is_logged_in() OR !is_admin()) { redirect('home','refresh'); }
 
+        //Check activity
+        user_activity();
+
         $data = array('page_title' => 'Admin', 'page_view' => 'admin/dashboard', 'folder' => 'admin');
         $this->_render($data);
     

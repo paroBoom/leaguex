@@ -16,6 +16,9 @@ class Users extends MY_Controller {
         
         if (!is_logged_in() OR !is_admin()) { redirect('home','refresh'); }
 
+        //Check activity
+        user_activity();
+
         $data = array('page_title' => 'Manage User', 'page_view' => 'admin/users-list', 'folder' => 'admin');
         $this->_render($data);
     
