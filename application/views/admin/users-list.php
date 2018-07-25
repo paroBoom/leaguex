@@ -43,6 +43,7 @@
                                         <th>Ruolo</th>
                                         <th>Email</th>
                                         <th>Registrato</th>
+                                        <th>Ultima attività</th>
                                     </tr>
                                 </thead>
                             </table>

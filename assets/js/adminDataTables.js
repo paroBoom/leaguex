@@ -156,8 +156,7 @@
                     },
                 },
                 {'data': 'user_name'},
-                {
-                    'data': null,
+                {'data': null,
                     'render': function(data){
                         if(data.user_permission === '1') {
                             return '<span class="badge badge-danger">Admin</span>';
@@ -171,12 +170,16 @@
                     }
                 },
                 {'data': 'user_email'},
-                {
-                    'data': 'user_registered',
+                {'data': 'user_registered',
                     'render': function(data){
                         return (moment(data).format('DD/MM/YYYY'));
                     }
                 },
+                {'data': 'la_time',
+                    'render': function(data){
+                        return (moment(data).format('DD/MM/YYYY HH:mm'));
+                    }
+                }
             ],
             'order': [[1, 'asc']]
             

@@ -27,8 +27,9 @@ class Users extends MY_Controller {
     // Display users table
     public function get_users() {
 
-        $this->datatables->select('ID, user_name, user_permission, user_email, user_registered')
-            ->from('lex_users');
+        $this->datatables->select('ID, user_name, user_permission, user_email, user_registered, la_time')
+             ->from('lex_users')
+             ->join('lex_last_activity', 'la_user_id = ID');
 
         echo $this->datatables->generate();
 
