@@ -2,18 +2,19 @@
     Index
 -------------------------------------------
 
-1. Global Styles 
-2. Navbar Section
-3. Sidebar
-4. Form, select, input, textarea, select, dropdown
-5. Tables 
-6. Buttons, badges
-7. Typography 
-8. Alert, tooltips, modal
-9. Loader
-10. Auth Section
-11. Elements with ripple effect disabled 
-12. Media Queries
+1. Global Styles
+2. Card 
+3. Navbar Section
+4. Sidebar
+5. Form, select, input, textarea, select, dropdown
+6. Tables 
+7. Buttons, badges
+8. Typography 
+9. Alert, tooltips, modal
+10. Loader
+11. Auth Section
+12. Elements with ripple effect disabled 
+13. Media Queries
 
 
 /*-----------------------------------------
@@ -55,6 +56,30 @@ i {
 .collapsing {
     transition: all .1s ease;
 }
+.main-wrapper {
+    position: relative;
+    min-height: 100vh;
+    top: 0;
+    height: 100vh;
+}
+.page-wrapper {
+    position: relative;
+    width: calc(100% - 240px);
+    height: 100vh;
+    min-height: 100%;
+    float: right;
+    transition: all .3s;
+}
+.page-wrapper>.page-content {
+    padding: 30px 15px;
+    min-height: calc(100% - 123px);
+    margin-top: 55px;
+    overflow: hidden;
+}
+
+/*-----------------------------------------
+    Card
+------------------------------------------*/
 .card {
     margin-bottom: 30px;
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
@@ -73,7 +98,7 @@ i {
 .card .card-header .heading-actions {
     position: absolute;
     top: 12px;
-    right: 21px;
+    right: 10px;
 }
 .card .card-header .heading-actions ul li {
     display: inline-block;
@@ -116,10 +141,23 @@ i {
 .card ul li {
     padding: 3px 0;
 }
-.card.material-table .card-header {
+.card.material-table,
+.card.form-options {
+    box-shadow: none;
+    background-color: transparent;
+}
+.card.material-table .card-body {
+    padding: 0;
+}
+.card.form-options .card-body {
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+.card.material-table .card-header,
+.card.form-options .card-header {
     position: relative;
     display: block;
-    padding: 15px 20px;
+    padding: 15px;
     height: 65px;
 }
 .card .card-search {
@@ -208,26 +246,6 @@ i {
 }
 .card .card-delete .delete-wrapper button i {
     vertical-align: middle;
-}
-.main-wrapper {
-    position: relative;
-    min-height: 100vh;
-    top: 0;
-    height: 100vh;
-}
-.page-wrapper {
-    position: relative;
-    width: calc(100% - 240px);
-    height: 100vh;
-    min-height: 100%;
-    float: right;
-    transition: all .3s;
-}
-.page-wrapper>.page-content {
-    padding: 30px 15px;
-    min-height: calc(100% - 123px);
-    margin-top: 55px;
-    overflow: hidden;
 }
 
 /*-----------------------------------------
@@ -549,6 +567,12 @@ form {
     margin-top: 8px;
     display: block;
 }
+.bmd-form-group .bmd-label-static {
+    left: 5px;
+}
+.bmd-form-group input::placeholder {
+    color: rgba(0,0,0,.26);
+}
 .input-group ~ small {
     margin-left: 50px;
 }
@@ -662,13 +686,6 @@ select[data-dropdownjs][disabled] + .dropdownjs > input[readonly] {
 /*-----------------------------------------
     Tables 
 ------------------------------------------*/
-.card.material-table {
-    box-shadow: none;
-    background-color: transparent;
-}
-.card.material-table .card-body {
-    padding: 0;
-}
 .card.material-table .dataTables_wrapper .mdl-grid:first-child {
     display: none;
 }

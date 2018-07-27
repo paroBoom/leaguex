@@ -7,8 +7,9 @@ class Users extends MY_Controller {
         
         parent::__construct();
 
-        echo addfooter_js(array('js/vendor/datatables/jquery.dataTables.min.js','js/vendor/datatables/dataTables.material.min.js','js/vendor/datatables/datatables.responsive.min.js','js/vendor/datatables/responsive.bootstrap4.min.js','js/vendor/moment.min.js','js/vendor/datatables/datetime-moment.js','js/adminDataTables.js','js/vendor/formvalidation/formValidation.min.js','js/vendor/formvalidation/bootstrap4.min.js','js/vendor/formvalidation/language/it_IT.js','js/vendor/jquery.mask.min.js')); 
-    
+        echo addfooter_js(array('js/vendor/datatables/jquery.dataTables.min.js','js/vendor/datatables/dataTables.material.min.js','js/vendor/datatables/datatables.responsive.min.js','js/vendor/datatables/responsive.bootstrap4.min.js','js/vendor/moment.min.js','js/vendor/datatables/datetime-moment.js','js/adminDataTables.js','js/vendor/jquery.mask.min.js')); 
+        $this->load->model('admin/users_model', 'users');
+
     }
 
     
@@ -35,15 +36,21 @@ class Users extends MY_Controller {
 
     }
 
-    function deleteuser(){
+    function delete_users(){
+
+        $output = array('error' => false);
+
         $delete_id = $this->input->post('id');
-        if(!empty($delete_id)) {
-            $this->db->where_in('ID', $delete_id);
-            $this->db->delete('lex_users'); 
-            echo json_encode('true');  
+
+        if(!empty($delete_id) && $this->users->delete_users($delete_id)) {
+            $output['message'] = 'Utenti rimossi';
         } else {
-            echo json_encode('failed');
-        }               
+            $output['error'] = true;
+            $output['message'] = 'Qualcosa non ha funzionato';
+        }
+        
+        echo json_encode($output);
+        
     }
 
 }

@@ -58,6 +58,7 @@ $route['signup'] = 'user/signup';
 $route['logout'] = 'user/logout';
 
 $route['admin/userslist'] = 'admin/users/index';
+$route['admin/configsite'] = 'admin/site-config/settings/index';
 
 
 

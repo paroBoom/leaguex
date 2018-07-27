@@ -232,13 +232,23 @@
         
         function success(){
             $.ajax({
-                url: 'users/deleteuser',
+                url: 'users/delete_users',
                 type: 'POST',
                 dataType: 'json',
                 data: $('.check-cell input[name="id[]"][type=checkbox]:checked').serialize(),
-                success: function(result) {
-                    if(result == 'true') {
-                       
+                success: function(response) {
+
+                    if(response.error){
+                        $.notify({message: response.message});
+                    } else {
+                        $.notify({
+                            message: response.message,
+                        },{
+                            type: 'custom',
+                            template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-md-6 alert alert-{0}" role="alert">' +
+                            '<span data-notify="message">{2}</span>' +   
+                            '</div>'
+                        });    
                     }
                 }
             });

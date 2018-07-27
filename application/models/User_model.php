@@ -29,7 +29,11 @@ class User_model extends CI_Model {
         $this->db->set('la_time','NOW()', FALSE);
         $this->db->insert('lex_last_activity');
         $this->db->trans_complete();  
-        return TRUE;
+        if ($this->db->trans_status() === FALSE){           
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
 
 }

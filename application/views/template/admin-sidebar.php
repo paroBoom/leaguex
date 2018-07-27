@@ -31,7 +31,7 @@
                 <a data-toggle="collapse" href="#settings" class="ripple"><i class="mdi mdi-settings-outline"></i> <p>Impostazioni</p></a>
                 <div class="collapse" id="settings">
                     <ul class="nav nav-collapse">
-                        <li><a href="#"><span class="submenu">Generale</span></a></li>
+                        <li><a href="<?= site_url().'admin/configsite'; ?>"><span class="submenu">Generale</span></a></li>
                         <li><a href="#"><span class="submenu">Media</span></a></li>
                         <li><a href="#"><span class="submenu">Email</span></a></li>
                     </ul>
