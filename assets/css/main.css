@@ -56,6 +56,10 @@ i {
 .collapsing {
     transition: all .1s ease;
 }
+ul {
+    margin: 0;
+    list-style: none;
+}
 .main-wrapper {
     position: relative;
     min-height: 100vh;
@@ -114,7 +118,8 @@ i {
     text-align: center;
     position: relative;
 }
-.card .card-header .heading-actions ul li a:before {
+.card .card-header .heading-actions ul li a:before,
+.card.form-options .heading-actions button:before {
     left: 0;
     top: 0;
     content: '';
@@ -133,7 +138,8 @@ i {
     opacity: 0;
 }
 .card .card-header .heading-actions ul li a:hover:before,
-.card .card-header .heading-actions ul li.show a:before {
+.card .card-header .heading-actions ul li.show a:before,
+.card.form-options .heading-actions button:hover:before {
     -webkit-transform: scale3d(1,1,1);
     transform: scale3d(1,1,1);
     opacity: 1;    
@@ -246,6 +252,10 @@ i {
 }
 .card .card-delete .delete-wrapper button i {
     vertical-align: middle;
+}
+.card.form-options .heading-actions button {
+    padding: 4px;
+    line-height: 20px;
 }
 
 /*-----------------------------------------
@@ -558,6 +568,9 @@ form {
     font-size: 14px;
     color: #67757c;
 }
+.form-control:read-only {
+    background-color: transparent;
+}
 .form-group label {
     font-size: .875rem;
     font-weight: 600;
@@ -584,6 +597,19 @@ form {
 }
 .dropdownjs  * {
     box-sizing: border-box;
+}
+.dropdownjs:after {
+    position: absolute;
+    font: normal normal normal 25px/1 "Material Design Icons";
+    content: "\F35D";  
+    right: 4px;
+    top: 5px;
+    font-weight: 400;
+    color: #67757c;
+    pointer-events: none;
+}
+.dropdown .dropdownjs:after {
+    content: '';
 }
 .dropdownjs > input {
     width: 100%;
@@ -625,8 +651,27 @@ select[data-dropdownjs][disabled] + .dropdownjs > input[readonly] {
 }
 .dropdownjs > ul {
     overflow: auto;
-    max-width: 500px;
+    padding: .25rem 0;
     min-width: 200px;
+}
+.dropdownjs > ul:not(.dropdown-menu) {
+    display: block;
+    background: #fff;
+    width: 100%;
+    position: absolute;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 2px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    transform: scale(0);
+    transform-origin: 0 0;
+    will-change: transform,opacity;
+    transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
+}
+.dropdownjs > input.focus~ul:not(.dropdown-menu) {
+    opacity: 1;
+    visibility: visible;
 }
 .dropdownjs > ul > li {
     cursor: pointer;

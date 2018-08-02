@@ -5,17 +5,15 @@
     /* Init BMD */ 
     $('body').bootstrapMaterialDesign({});
 
-    // Browser password autofill floating label fix
-
-    $('input[type="password"]').val('').change();
-    
- 
-
     /* Init tooltips */
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
     $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function() {
         $('.tooltip').addClass('scale').css('opacity', 1);
     }); 
+
+    /* Select dropdownjs */
+    
+    $('.select').dropdown({ autoinit: 'select', 'optionClass': 'ripple' });
     
     /* Animated page transition */ 
     setTimeout(function () {$('.page-loader').fadeOut();},150);

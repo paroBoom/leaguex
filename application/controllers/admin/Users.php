@@ -25,7 +25,7 @@ class Users extends MY_Controller {
     
     }
     
-    // Display users table
+    // Display users
     public function get_users() {
 
         $this->datatables->select('ID, user_name, user_permission, user_email, user_registered, la_time')
@@ -36,6 +36,7 @@ class Users extends MY_Controller {
 
     }
 
+    // Delete users
     function delete_users(){
 
         $output = array('error' => false);

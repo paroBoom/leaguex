@@ -4,7 +4,7 @@
                     
         <form action="<?php echo site_url("user/signin"); ?>" method="post" role="form" id="signIn" autocomplete="off" novalidate="novalidate" class="fv-form fv-form-bootstrap">
             <h2 class="text-center">LEAGUEX</h2>
-            <p class="text-center">Sign In to your account</p>
+            <p class="text-center"><?php echo lang('login_subtitle'); ?></p>
             <div class="form-group bmd-form-group">
                 <label class="bmd-label-floating">Email</label>                                    
                 <input name="email" id="email" type="email" class="form-control">

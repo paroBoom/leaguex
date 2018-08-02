@@ -15,7 +15,8 @@
 
 		if($folder == 'admin') {
 			$this->load->view('template/admin-sidebar');
-		} elseif($folder == 'site') {
+		}
+		elseif($folder == 'site') {
 
 			$this->load->view('template/sidebar-left');
 			

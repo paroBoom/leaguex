@@ -11,9 +11,7 @@ function signUp() {
             $(this).attr('placeholder', 'data')
         });
 
-        $('#signUp').formValidation({
-
-            
+        $('#signUp').formValidation({            
             framework: 'bootstrap4',
             live: 'submitted',
             fields: {
@@ -149,9 +147,7 @@ function signIn() {
                 success: function(response) {
 
                     if(response.error){
-                        $.notify({
-                            message: response.message,
-                        });   
+                        $.notify({message: response.message});   
                     } else { 
                         window.location.href= "home";      
                     }
