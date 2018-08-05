@@ -13,7 +13,7 @@
 
     /* Select dropdownjs */
     
-    $('.select').dropdown({ autoinit: 'select', 'optionClass': 'ripple' });
+    $('.select').dropdown({ 'optionClass': 'ripple' });
     
     /* Animated page transition */ 
     setTimeout(function () {$('.page-loader').fadeOut();},150);

@@ -40,7 +40,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li>
                             <?php if($this->session->userdata('permission') == 1) : ?>
-                                <a class="dropdown-item" href="<?= site_url('admin/dashboard'); ?>">Admin</a>
+                                <a class="dropdown-item" href="<?= site_url('admin/dashboard'); ?>"><?php echo lang('navbar_menu_admin'); ?></a>
                             <?php endif; ?>
                             <a class="dropdown-item" href="#">My Profile</a>
                             <div class="dropdown-divider"></div>

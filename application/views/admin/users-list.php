@@ -7,11 +7,11 @@
 
                     <div class="card material-table">
                         <div class="card-header">
-                            <h2 class="card-title">Utenti</h2>
+                            <h2 class="card-title"><?php echo lang('bkuserslist_header_title'); ?></h2>
                             <div class="card-search">
                                 <div id="usersList_wrapper" class="form-group">
                                     <i class="mdi mdi-magnify icon-left"></i>
-                                    <input type="text" class="form-control filter-input" placeholder="Filter Users..." autocomplete="off">
+                                    <input type="text" class="form-control filter-input" placeholder="<?php echo lang('datatables_filter_placeholder'); ?>" autocomplete="off">
                                     <a class="close-search" href="javascript:void(0)" data-card-search="close"><i class="mdi mdi-close"></i></a>
                                 </div>
                             </div>
@@ -39,11 +39,11 @@
                                 <thead>
                                     <tr>
                                         <th><span class="checkbox"><label><input type="checkbox" name="select_all" value="1" id="dt-select-all"></label></span></th>
-                                        <th>Nome</th>
-                                        <th>Ruolo</th>
-                                        <th>Email</th>
-                                        <th>Registrato</th>
-                                        <th>Ultima attività</th>
+                                        <th><?php echo lang('bkuserslist_dtcolumn_username'); ?></th>
+                                        <th><?php echo lang('bkuserslist_dtcolumn_role'); ?></th>
+                                        <th><?php echo lang('bkuserslist_dtcolumn_email'); ?></th>
+                                        <th><?php echo lang('bkuserslist_dtcolumn_registration_date'); ?></th>
+                                        <th><?php echo lang('bkuserslist_dtcolumn_last_visite'); ?></th>
                                     </tr>
                                 </thead>
                             </table>

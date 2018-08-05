@@ -1351,8 +1351,7 @@ button.btn-loader::before{
     border-radius: .125rem;
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
-.auth-wrapper .container-auth h2 {
-    font-size: 1.80rem;
+.auth-wrapper .container-auth h3 {
     font-weight: 500;
 }
 .auth-wrapper .container-auth .form-recovery {

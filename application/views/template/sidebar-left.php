@@ -14,7 +14,7 @@
         </div>
         <ul class="nav">
             <li class="nav-item <?php if($this->uri->segment(1)=="home"){echo "active";}?>">
-                <a href="<?= site_url().'home'; ?>" class="ripple"><i class="mdi mdi-home-outline"></i> <p>Home</p></a>
+                <a href="<?= site_url().'home'; ?>" class="ripple"><i class="mdi mdi-home-outline"></i> <p><?php echo lang('sbar_menu_home'); ?></p></a>
             </li>
             <li class="nav-item <?php if($this->uri->segment(1)=="club"){echo "active";}?>">
                 <a href="<?= site_url().'club'; ?>" class="ripple"><i class="mdi mdi-soccer"></i> <p>My club</p></a>

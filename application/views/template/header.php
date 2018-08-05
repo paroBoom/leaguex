@@ -30,7 +30,7 @@
 		<![endif]-->        
     </head>
 
-    <body <?php if (!is_logged_in()) { echo 'style="background-color: #03a9f4"'; } ?>>
+    <body>
 
         <!-- Page loader -->
         <div class="page-loader">

@@ -14,14 +14,15 @@ function signUp() {
         $('#signUp').formValidation({            
             framework: 'bootstrap4',
             live: 'submitted',
+            locale: fvlang,
             fields: {
                 username: {
                     validators: {
                         remote: {
-                            message: 'test',
+                            message: fvrusername,
                             url: 'user/check_username',
                             type: 'POST',
-                            delay: 1000
+                            delay: 800
                         },
                         notEmpty: {},
                         stringLength: {min:4, max:30},
@@ -31,10 +32,10 @@ function signUp() {
                 email: {
                     validators: {
                         remote: {
-                            message: 'test',
+                            message: fvremail,
                             url: 'user/check_email',
                             type: 'POST',
-                            delay: 1000
+                            delay: 800
                         },    
                         notEmpty: {},
                         emailAddress: {},
@@ -119,6 +120,7 @@ function signIn() {
 
             framework: 'bootstrap4',
             live: 'submitted',
+            locale: fvlang,
             fields: {
                 email: {
                     validators: {
@@ -168,4 +170,3 @@ $(document).ready(function () {
     
 });
     
-
