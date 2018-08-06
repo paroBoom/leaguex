@@ -16,7 +16,7 @@ class User extends MY_Controller {
 
         if (is_logged_in()) { redirect('home','refresh'); }
 
-        $data = array('page_title' => 'Sign In', 'page_view' => 'signin');
+        $data = array('page_title' => $this->lang->line('page_title_signin'), 'page_view' => 'signin');
         $this->_render($data);
 
     }
@@ -56,7 +56,7 @@ class User extends MY_Controller {
 
         if (is_logged_in()) { redirect('home','refresh'); }
 
-        $data = array('page_title' => 'Sign Up', 'page_view' => 'signup');
+        $data = array('page_title' => $this->lang->line('page_title_signup'), 'page_view' => 'signup');
         $this->_render($data);  
     
     }

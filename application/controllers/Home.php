@@ -19,7 +19,7 @@ class Home extends MY_Controller {
         //Check activity
         user_activity();
         
-        $data = array('page_title' => 'Home', 'page_view' => 'home', 'folder' => 'site');
+        $data = array('page_title' => $this->lang->line('page_title_home'), 'page_view' => 'home', 'folder' => 'site');
         $this->_render($data);
     
     }

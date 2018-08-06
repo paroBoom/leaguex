@@ -20,7 +20,7 @@ class Settings extends MY_Controller {
         // Check activity
         user_activity();
               
-        $data = array('page_title' => 'Configura sito', 'page_view' => 'admin/site-config/site-options', 'folder' => 'admin');
+        $data = array('page_title' => $this->lang->line('adminpage_title_settings_site_options'), 'page_view' => 'admin/site-config/site-options', 'folder' => 'admin');
         
         // Load site settings
         $data['siteconfig'] = load_options();

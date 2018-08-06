@@ -4,6 +4,14 @@
 // MISC GLOBAL
 //------------------------------------------------------------------------------
 
+// PAGE TITLE
+$lang['page_title_signin'] = "Sign in";
+$lang['page_title_signup'] = "Sign up";
+$lang['page_title_home'] = "Home page";
+$lang['adminpage_title_dashboard'] = "Dashboard";
+$lang['adminpage_title_settings_site_options'] = "Site title settings";
+$lang['adminpage_title_users'] = "Manage users";
+
 // DATATABLES
 $lang['datatables_filter_placeholder'] = "Search...";
 
@@ -67,6 +75,14 @@ $lang['register_input_signin'] = "Sign In";
 //------------------------------------------------------------------------------
 // BACKEND PAGES
 //------------------------------------------------------------------------------
+
+// SITE OPTIONS
+$lang['bksettings_siteoptions_header_title'] = "Site Options";
+$lang['bksettings_siteoptions_form_label_sitename'] = "Site name";
+$lang['bksettings_siteoptions_form_placeholder_sitename'] = "e.g. LEAGUEX";
+$lang['bksettings_siteoptions_form_label_sitetitle'] = "Site title";
+$lang['bksettings_siteoptions_form_placeholder_sitetitle'] = "e.g. LEAGUEX | Your Fantasy Master League";
+$lang['bksettings_siteoptions_form_label_language'] = "Language";
 
 // USERS LIST
 $lang['bkuserslist_header_title'] = "Users";

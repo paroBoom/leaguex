@@ -17,7 +17,7 @@ class Dashboard extends MY_Controller {
         //Check activity
         user_activity();
 
-        $data = array('page_title' => 'Admin', 'page_view' => 'admin/dashboard', 'folder' => 'admin');
+        $data = array('page_title' => $this->lang->line('adminpage_title_dashboard'), 'page_view' => 'admin/dashboard', 'folder' => 'admin');
         $this->_render($data);
     
     }

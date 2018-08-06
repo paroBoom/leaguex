@@ -20,7 +20,7 @@ class Users extends MY_Controller {
         //Check activity
         user_activity();
 
-        $data = array('page_title' => 'Manage User', 'page_view' => 'admin/users-list', 'folder' => 'admin');
+        $data = array('page_title' => $this->lang->line('adminpage_title_users'), 'page_view' => 'admin/users-list', 'folder' => 'admin');
         $this->_render($data);
     
     }
