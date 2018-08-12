@@ -41,10 +41,10 @@ class Settings extends MY_Controller {
         );
 
         if($this->settings->update_site_options($data)) {
-            $output['message'] = 'Utenti rimossi';
+            $output['message'] = $this->lang->line('alert_saved_changes');;
         } else {
             $output['error'] = true;
-            $output['message'] = 'Qualcosa non ha funzionato';
+            $output['message'] = $this->lang->line('alert_error');
         }
         
         echo json_encode($output);

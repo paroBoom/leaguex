@@ -74,10 +74,10 @@ class User extends MY_Controller {
         );
 
         if($this->user->create_user($user_register)) {
-            $output['message'] = 'Benvenuto nel club! Accedi';
+            $output['message'] = $this->lang->line('register_alert_message');
         } else {
             $output['error'] = true;
-            $output['message'] = 'Qualcosa non ha funzionato';
+            $output['message'] = $this->lang->line('alert_error');
         }
 
         echo json_encode($output);

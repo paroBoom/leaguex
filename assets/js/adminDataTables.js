@@ -36,11 +36,13 @@
             }
             var checkCount = $('.check-cell input[id*=checkboxID]:visible[type=checkbox]:checked').length;
             if (checkCount === 1) {
-                var count = 'item'
+                var count = dtitem
+                var selected = dtrow
             } else if (checkCount > 0) {
-                var count = 'items'
+                var count = dtitems
+                var selected = dtrows
             }
-            $('.card-delete .text-delete').text(`${checkCount} ${count} selected`);
+            $('.card-delete .text-delete').text(`${checkCount} ${count} ${selected}`);
         })
 
         $('#dt-select-all').change(function(){
@@ -61,11 +63,13 @@
             }
             var checkCount = $('.check-cell input[id*=checkboxID]:visible[type=checkbox]:checked').length;
             if (checkCount === 1) {
-                var count = 'item'
+                var count = dtitem
+                var selected = dtrow
             } else if (checkCount > 0) {
-                var count = 'items'
+                var count = dtitems
+                var selected = dtrows
             }
-            $('.card-delete .text-delete').text(`${checkCount} ${count} selected`);
+            $('.card-delete .text-delete').text(`${checkCount} ${count} ${selected}`);
         })
 
         var card = {

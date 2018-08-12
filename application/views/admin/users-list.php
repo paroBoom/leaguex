@@ -63,13 +63,13 @@
     <div class="modal-dialog modal-dialog-centered modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Avviso</h4>
+                <h4 class="modal-title"><?php echo lang('modal_title'); ?></h4>
             </div>
-            <div class="modal-body"><p>Vuoi eliminare questo utente?</p></div>
+            <div class="modal-body"><p><?php echo lang('bkuserslist_modal_delete_users'); ?></p></div>
         
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn-confirm">Ok</button>
-                <button type="button" class="btn btn-default btn-flat" id="btn-delete" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btn-confirm"><?php echo lang('modal_button_confirm'); ?></button>
+                <button type="button" class="btn btn-default btn-flat" id="btn-delete" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
             </div>
         </div>
     </div>

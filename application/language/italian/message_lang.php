@@ -15,6 +15,20 @@ $lang['adminpage_title_users'] = "Gestisci utenti";
 
 // DATATABLES
 $lang['datatables_filter_placeholder'] = "Cerca...";
+$lang['datatables_item_selected'] = "oggetto";
+$lang['datatables_items_selected'] = "oggetti";
+$lang['datatables_row_selected'] = "selezionato";
+$lang['datatables_rows_selected'] = "selezionati";
+
+// MODAL
+$lang['modal_button_confirm'] = "Conferma";
+$lang['modal_button_cancel'] = "Cancella";
+$lang['modal_title'] = "Avviso";
+
+// ALERT MESSAGES
+$lang['alert_saved_changes'] = "Modifiche salvate";
+$lang['alert_error'] = "Something not working.";
+
 
 //------------------------------------------------------------------------------
 // TEMPLATE
@@ -70,6 +84,7 @@ $lang['register_subtitle'] = "Crea un nuovo account";
 $lang['register_button_signup'] = "Registrati";
 $lang['register_textlink_signin'] = "Sei gi&#224; iscritto ?";
 $lang['register_link_signin'] = "Accedi";
+$lang['register_alert_message'] = "Benvenuto nel club ! Accedi";
 
 //------------------------------------------------------------------------------
 // BACKEND PAGES
@@ -90,3 +105,4 @@ $lang['bkuserslist_dtcolumn_role'] = "Ruolo";
 $lang['bkuserslist_dtcolumn_email'] = "Email";
 $lang['bkuserslist_dtcolumn_registration_date'] = "Data di Registrazione";
 $lang['bkuserslist_dtcolumn_last_visite'] = "Ultima Visita";
+$lang['bkuserslist_modal_delete_users'] = "Sei sicuro di voler rimuovere questo utente ?";

@@ -44,10 +44,10 @@ class Users extends MY_Controller {
         $delete_id = $this->input->post('id');
 
         if(!empty($delete_id) && $this->users->delete_users($delete_id)) {
-            $output['message'] = 'Utenti rimossi';
+            $output['message'] = $this->lang->line('alert_saved_changes');
         } else {
             $output['error'] = true;
-            $output['message'] = 'Qualcosa non ha funzionato';
+            $output['message'] = $this->lang->line('alert_error');
         }
         
         echo json_encode($output);
