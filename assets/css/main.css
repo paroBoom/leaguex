@@ -11,7 +11,7 @@
 7. Buttons, badges
 8. Typography 
 9. Alert, tooltips, modal
-10. Loader
+10. Loader, progress bar
 11. Auth Section
 12. Elements with ripple effect disabled 
 13. Media Queries
@@ -1040,7 +1040,7 @@ button.btn-loader::before{
 }
 
 /*-----------------------------------------
-    Loader, animations
+    Loader, animations, progress bar
 ------------------------------------------*/
 .page-loader {
     position: fixed;
@@ -1332,6 +1332,49 @@ button.btn-loader::before{
         transform: scale(1);
         opacity: 1;
     }
+}
+.load-bar {
+    position: relative;
+    top: 20px;
+    width: 100%;
+    height: 6px;
+    background-color: #fdba2c;
+}
+.bar {
+    content: "";
+    display: inline;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    text-align: center;
+}
+.bar:nth-child(1) {
+    background-color: #f33527;
+    -webkit-animation: loading 3s linear infinite;
+    animation: loading 3s linear infinite;
+}
+.bar:nth-child(2) {
+    background-color: #35a1fb;
+    -webkit-animation: loading 3s linear infinite;
+    animation: loading 3s linear 1s infinite;
+}
+.bar:nth-child(3) {
+    background-color: #fdba2c;
+    -webkit-animation: loading 3s linear infinite;
+    animation: loading 3s linear 2s infinite;
+}
+@keyframes loading {
+    from {left: 50%; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
+}
+.dataTables_wrapper .dataTables_processing {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 45px;
+    text-align: center;
 }
 
 /*-----------------------------------------

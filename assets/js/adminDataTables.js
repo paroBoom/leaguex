@@ -120,7 +120,8 @@
         paginate: {
             previous: "<i class='mdi mdi-chevron-left'></i>",
             next: "<i class='mdi mdi-chevron-right'></i>"
-        }
+        },
+        processing: '<div class="load-bar"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>',
         },
         responsive: {
             details: {display: $.fn.dataTable.Responsive.display.childRowImmediate, type: 'display'}
