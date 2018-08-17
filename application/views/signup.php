@@ -26,7 +26,7 @@
                 <input name="birthDay" type="text" class="form-control format">
             </div>
             <div class="form-action">
-                <button class="btn btn-raised btn-info" type="submit"><?php echo lang('register_button_signup'); ?></button>    
+                <button class="btn btn-raised btn-info load-btn" type="submit"><?php echo lang('register_button_signup'); ?></button>    
             </div>
             <div class="auth-form-link text-center">
                 <span><?php echo lang('register_textlink_signin'); ?> <a href="<?php site_url(); ?>signin"><?php echo lang('register_link_signin'); ?></a></span>    

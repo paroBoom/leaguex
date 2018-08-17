@@ -7,7 +7,7 @@ class Users extends MY_Controller {
         
         parent::__construct();
 
-        echo addfooter_js(array('js/vendor/datatables/jquery.dataTables.min.js','js/vendor/datatables/dataTables.material.min.js','js/vendor/datatables/datatables.responsive.min.js','js/vendor/datatables/responsive.bootstrap4.min.js','js/vendor/moment.min.js','js/vendor/datatables/datetime-moment.js','js/adminDataTables.js','js/vendor/jquery.mask.min.js')); 
+        echo addfooter_js(array('js/vendor/datatables/jquery.dataTables.min.js','js/vendor/datatables/dataTables.material.min.js','js/vendor/datatables/datatables.responsive.min.js','js/vendor/datatables/responsive.bootstrap4.min.js','js/vendor/moment.min.js','js/vendor/datatables/datetime-moment.js','js/vendor/jquery.mask.min.js','js/adminDataTables.js')); 
         $this->load->model('admin/users_model', 'users');
 
     }
@@ -34,6 +34,29 @@ class Users extends MY_Controller {
 
         echo $this->datatables->generate();
 
+    }
+
+    // Add new user
+    public function create_user() {
+
+        $output = array('error' => false);
+
+        $user_register = array(
+            'user_name' => $this->input->post('username'),
+            'user_email' => $this->input->post('email'),
+            'user_password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'user_birthday' => date('Y-m-d', strtotime(str_replace('/', '-', $this->input->post('birthDay'))))
+        );
+
+        if($this->users->create_user($user_register)) {
+            $output['message'] = $this->lang->line('bkuserslist_alert_new_user');
+        } else {
+            $output['error'] = true;
+            $output['message'] = $this->lang->line('alert_error');
+        }
+
+        echo json_encode($output);
+        
     }
 
     // Delete users

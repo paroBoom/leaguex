@@ -56,7 +56,7 @@
     })
 
     /* Button submit animation */
-    var $button = $('button[type="submit"]');
+    var $button = $('button.load-btn');
 	
 	$button.on('click', function() {
 

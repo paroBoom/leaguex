@@ -8,7 +8,7 @@ function signUp() {
         
         $('.format').focus(function() {
             $(this).attr('placeholder', '__/__/____')}).blur(function() {
-            $(this).attr('placeholder', 'data')
+            $(this).attr('placeholder', '')
         });
 
         $('#signUp').formValidation({            

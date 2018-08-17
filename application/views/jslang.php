@@ -7,5 +7,7 @@ var dtitem = '<?php echo lang('datatables_item_selected');?>';
 var dtitems = '<?php echo lang('datatables_items_selected');?>';
 var dtrow = '<?php echo lang('datatables_row_selected');?>';
 var dtrows = '<?php echo lang('datatables_rows_selected');?>';
+var dtdatetime = '<?php echo lang('tables_date_time');?>';
+var phbirthday = '<?php echo lang('form_label_birthday');?>';
 
 </script>

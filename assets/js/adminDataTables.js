@@ -160,6 +160,7 @@
                                 '</span>';
                     },
                 },
+                {'data': 'ID', 'visible': false, 'searchable':false},
                 {'data': 'user_name'},
                 {'data': null,
                     'render': function(data){
@@ -182,11 +183,11 @@
                 },
                 {'data': 'la_time',
                     'render': function(data){
-                        return (moment(data).format('DD/MM/YYYY HH:mm'));
+                        return (moment(data).format(dtdatetime));
                     }
                 }
             ],
-            'order': [[1, 'asc']]
+            'order': [[1, 'desc']]
             
         });
         
@@ -199,6 +200,105 @@
         // Check/uncheck checkboxes for all rows in the table
         $('input[type="checkbox"]', rows).prop('checked', this.checked);
         });
+
+        // Add user
+        $('#bkAddUser').on('shown.bs.modal', function(){
+            $('#addUserForm').formValidation('resetForm', true);
+            $(this).find("input:first").focus();
+        });
+
+        if($('#addUserForm').length && $.fn.formValidation) {
+
+            $('.format').focus(function() {
+                $(this).attr('placeholder', '__/__/____')}).blur(function() {
+                $(this).attr('placeholder', phbirthday)
+            });
+
+            $('#addUserForm').formValidation({            
+                framework: 'bootstrap4',
+                live: 'submitted',
+                locale: fvlang,
+                fields: {
+                    username: {
+                        validators: {
+                            remote: {
+                                message: fvrusername,
+                                url: site_url+ 'user/check_username',
+                                type: 'POST',
+                                delay: 800
+                            },
+                            notEmpty: {},
+                            stringLength: {min:4, max:30},
+                            regexp: {regexp: /^[a-zA-Z0-9\s]+$/}           
+                        }
+                    },
+                    email: {
+                        validators: {
+                            remote: {
+                                message: fvremail,
+                                url: site_url+ 'user/check_email',
+                                type: 'POST',
+                                delay: 800
+                            },    
+                            notEmpty: {},
+                            emailAddress: {},
+                            regexp: {regexp:'^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'}
+                        }
+                    },
+                    password: {
+                        validators: {
+                            notEmpty: {},
+                            stringLength: {min: 4, max:20}
+                        }
+                    },
+                    birthDay: {
+                        validators: {
+                            notEmpty: {},
+                            date: {format: 'DD/MM/YYYY'}               
+                        }
+                    }
+                }
+            })
+            .find('[name="birthDay"]').mask('00/00/0000').end() 
+            .on('err.validator.fv', function(e, data) {
+
+            if((data.field === 'username')||(data.field === 'email')||(data.field === 'password')||(data.field === 'birthDay')) {
+                data.element.data('fv.messages').find('.help-block[data-fv-for="' + data.field + '"]').hide().filter('[data-fv-validator="' + data.validator + '"]').show();
+            }
+
+            })
+            .off('success.form.fv')
+            .on('success.form.fv', function(e) {
+
+                e.preventDefault();
+
+                var $form = $(e.target),
+                fv = $form.data('formValidation');
+
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    data: $form.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+
+                        if(response.error){
+                            $.notify({message: response.message});
+                        } else {
+                            $form.formValidation('resetForm', true);
+                            userstable.ajax.reload(tableCallback);
+                            $('#bkAddUser').modal('hide');
+                            $.notify({message: response.message});
+                        }
+                    
+                    }
+                })
+
+            })
+        
+        }
+            
+        
    
         // Delete users
         var userDelete = function(callback){
@@ -242,7 +342,6 @@
                 dataType: 'json',
                 data: $('.check-cell input[name="id[]"][type=checkbox]:checked').serialize(),
                 success: function(response) {
-
                     if(response.error){
                         $.notify({message: response.message});
                     } else {

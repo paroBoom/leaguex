@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="form-action">
-                <button class="btn btn-raised btn-info" type="submit"><?php echo lang('login_button_signin'); ?></button>
+                <button class="btn btn-raised btn-info load-btn" type="submit"><?php echo lang('login_button_signin'); ?></button>
             </div>
             <div class="auth-form-link text-center">
                 <span><?php echo lang('login_textlink_signup'); ?> <a href="<?php site_url(); ?>signup"><?php echo lang('login_link_signup'); ?></a></span>
