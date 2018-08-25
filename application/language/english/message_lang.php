@@ -25,10 +25,23 @@ $lang['modal_button_cancel'] = "Cancel";
 $lang['modal_title'] = "Advise";
 
 // ALERT MESSAGES
-$lang['alert_saved_changes'] = "Saved changes";
-$lang['alert_error'] = "Qualcosa non ha funzionato.";
+$lang['alert_saved_changes'] = "Saved changes.";
+$lang['alert_error'] = "Something not working.";
 
+// TOOLTIP
+$lang['tt_save'] = "Save";
+$lang['tt_search'] = "Search";
+$lang['tt_filter'] = "Filter";
+$lang['tt_add'] = "Add";
 
+//DATE TIME FORMAT 
+$lang['tables_date_time'] = "DD/MM/YYYY hh:mm a";
+
+// SELECT
+$lang['sel_user_group_1'] = "Admin";
+$lang['sel_user_group_2'] = "Moderator";
+$lang['sel_user_group_3'] = "Member";
+$lang['sel_user_group_4'] = "Banned";
 
 //------------------------------------------------------------------------------
 // TEMPLATE
@@ -57,6 +70,7 @@ $lang['form_label_email'] = "Email";
 $lang['form_label_password'] = "Password";
 $lang['form_label_confirm_password'] = "Confirm Password";
 $lang['form_label_birthday'] = "Your date of birth";
+$lang['form_label_permission'] = "Role";
 
 
 // FORM VALIDATION REMOTE MESSAGES 
@@ -85,7 +99,7 @@ $lang['register_button_signup'] = "Sign UP";
 $lang['register_textlink_signin'] = "Have account already ? Please go to";
 $lang['register_link_signin'] = "Sign In";
 $lang['register_input_signin'] = "Sign In";
-$lang['register_alert_message'] = "Welcome to the club ! Sign In";
+$lang['register_alert_message'] = "Welcome to the club ! Sign In.";
 
 //------------------------------------------------------------------------------
 // BACKEND PAGES
@@ -108,3 +122,6 @@ $lang['bkuserslist_dtcolumn_registration_date'] = "Registration Date";
 $lang['bkuserslist_dtcolumn_last_visite'] = "Last Visite";
 $lang['bkuserslist_dtcolumn_last_visite'] = "Last Visite";
 $lang['bkuserslist_modal_delete_users'] = "Are you sure that you want to delete this user ?";
+$lang['bkuserslist_modal_title'] = "Add new user";
+$lang['bkuserslist_modal_edit_title'] = "Edit user";
+$lang['bkuserslist_alert_new_user'] = "New user added.";

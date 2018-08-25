@@ -37,7 +37,7 @@ class User extends MY_Controller {
             $this->session->set_userdata('permission', $data['user_permission']);
         } else {
             $output['error'] = true;
-            $output['message'] = 'Qualcosa non ha funzionato';
+            $output['message'] = $this->lang->line('alert_error');
         }
 
         echo json_encode($output);		

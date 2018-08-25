@@ -6,17 +6,20 @@
     ------------------------------*/
     var tableCallback = function(){
 
-        // Dropdown filter results
+        // Dropdown filter table
         var $lengthSelect = $('.card.material-table select.form-control.input-sm'); 
         var tableLength = $lengthSelect.detach();
         $('#dataTablesLength').append(tableLength);
-        $('.card.material-table select.form-control.input-sm').dropdown({
-            'optionClass': "ripple"
-        });
+        $('.card.material-table select.form-control.input-sm').dropdown({'optionClass': "ripple"});
         $('#dataTablesLength .dropdownjs .fakeinput').hide();
         $('#dataTablesLength .dropdownjs ul').addClass('dropdown-menu dropdown-menu-right');
         
         // Checkbox highlight
+        if ($('.check-cell input[id*=checkboxID][type=checkbox]:checked').length == 0) {
+            $('.card-delete').hide();
+        } else {
+            $('.card-delete').show();
+        }    
         $('.check-cell [id*=checkboxID]').on('change', function() {
             var $this = $(this);
             if($('.check-cell input[id*=checkboxID][type=checkbox]:checked').length == $('.check-cell input[id*=checkboxID][type=checkbox]').length){
@@ -107,6 +110,17 @@
         });
 
     }
+
+    // Re-init on pagination
+    $('.card.material-table').on('page.dt', function() {
+        $('.card.material-table table tbody .check-cell .checkbox input[type=checkbox]').each(function(i) {
+          $(this).prop('checked', false);
+          $(this).closest("tr").removeClass("highlight");
+        });
+        setTimeout(function() {
+          tableCallback();
+        }, 600);
+    });
     
     /*----------------------------
       Datatables General Options 
@@ -115,6 +129,7 @@
 
         processing: true,
         pageLength: 25,
+        pagingType: "simple",
         language: {
         info: "_START_ - _END_ of _TOTAL_",
         paginate: {
@@ -185,7 +200,8 @@
                     'render': function(data){
                         return (moment(data).format(dtdatetime));
                     }
-                }
+                },
+                {'data': 'action', 'searchable': false, 'orderable': false}
             ],
             'order': [[1, 'desc']]
             
@@ -286,7 +302,7 @@
                             $.notify({message: response.message});
                         } else {
                             $form.formValidation('resetForm', true);
-                            userstable.ajax.reload(tableCallback);
+                            userstable.ajax.reload();
                             $('#bkAddUser').modal('hide');
                             $.notify({message: response.message});
                         }
@@ -297,8 +313,153 @@
             })
         
         }
-            
         
+        // Edit user
+        $('#bkEditUser').on('shown.bs.modal', function(e){
+            $('#editUserForm').formValidation('resetForm', true);
+            $('#editUserForm').formValidation('resetField', 'newpassword');
+            var id = $(e.relatedTarget).data('id'); 
+            var selpermission = $(e.currentTarget).find('select[name=permission]');
+            selpermission.html('');
+            $.ajax({
+                url: 'users/get_user',
+                type: 'POST',
+                dataType: 'json',
+                data: 'userid=' + id,
+                success: function(response) {
+                    if(response.success) {
+                        var datauser = response.datauser;
+                        var selected = datauser.userpermission;
+                        var birthDay = moment(datauser.userbirthday).format('DD/MM/YYYY')
+                        var permission = '<option value="1">'+ selUG1 +'</option>\
+                        <option value="2">'+ selUG2 +'</option>\
+                        <option value="3">'+ selUG3 +'</option>\
+                        <option value="4">'+ selUG4 +'</option>';
+                        $(e.currentTarget).find('input[name=userid]').val(datauser.userid);
+                        $(e.currentTarget).find('input[name=username]').val(datauser.username);
+                        $(e.currentTarget).find('input[name=email]').val(datauser.useremail);
+                        $(e.currentTarget).find('input[name=password]').val(datauser.userpassword);
+                        $(e.currentTarget).find('input[name=birthDay]').val(birthDay);
+                        selpermission.append(permission);
+                    }
+                    
+                    $('.select option').each(function(){
+                        if($(this).val()=== selected){
+                            $(this).attr('selected', 'selected');
+                        }
+                    });
+
+                    $('.select').dropdown('destroy')
+                    $('.select').dropdown({ 'optionClass': 'ripple' });
+                  
+                }
+            })           
+        });
+
+        if($('#editUserForm').length && $.fn.formValidation) {
+
+            $('.format').focus(function() {
+                $(this).attr('placeholder', '__/__/____')}).blur(function() {
+                $(this).attr('placeholder', phbirthday)
+            });
+
+            $('#editUserForm').formValidation({            
+                framework: 'bootstrap4',
+                live: 'submitted',
+                locale: fvlang,
+                fields: {
+                    username: {
+                        validators: {
+                            remote: {
+                                message: fvrusername,
+                                url: site_url+ 'admin/users/echeck_username',
+                                type: 'POST',
+                                delay: 800,
+                                data: function(validator) {
+                                    return {userid: validator.getFieldElements('userid').val()};
+                                }
+                            },
+                            notEmpty: {},
+                            stringLength: {min:4, max:30},
+                            regexp: {regexp: /^[a-zA-Z0-9\s]+$/}           
+                        }
+                    },
+                    email: {
+                        validators: {
+                            remote: {
+                                message: fvremail,
+                                url: site_url+ 'admin/users/echeck_email',
+                                type: 'POST',
+                                delay: 800,
+                                data: function(validator) {
+                                    return {userid: validator.getFieldElements('userid').val()};
+                                }
+                            },    
+                            notEmpty: {},
+                            emailAddress: {},
+                            regexp: {regexp:'^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'}
+                        }
+                    },
+                    newpassword: {
+                        enabled: false,
+                        validators: {
+                            notEmpty: {},
+                            stringLength: {min: 4, max:20}
+                        }
+                    },
+                    birthDay: {
+                        validators: {
+                            notEmpty: {},
+                            date: {format: 'DD/MM/YYYY'}               
+                        }
+                    }
+                }
+            })
+            .find('input[name="birthDay"]').mask('00/00/0000').end() 
+            .on('keyup', '[name=newpassword]', function(){
+                var isEmpty = $(this).val() === '';
+                $('#editUserForm').formValidation('enableFieldValidators', 'newpassword', !isEmpty);
+                if($(this).val().length === 1) {
+                    $('#editUserForm').formValidation('validateField', 'newpassword');    
+                }
+            })
+            .on('err.validator.fv', function(e, data) {
+
+            if((data.field === 'username')||(data.field === 'email')||(data.field === 'birthDay')) {
+                data.element.data('fv.messages').find('.help-block[data-fv-for="' + data.field + '"]').hide().filter('[data-fv-validator="' + data.validator + '"]').show();
+            }
+
+            })
+            .off('success.form.fv')
+            .on('success.form.fv', function(e) {
+
+                e.preventDefault();
+
+                var $form = $(e.target),
+                fv = $form.data('formValidation');
+
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    data: $form.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+
+                        if(response.error){
+                            $.notify({message: response.message});
+                        } else {
+                            $form.formValidation('resetForm', true);
+                            userstable.ajax.reload();
+                            $('#bkEditUser').modal('hide');
+                            $.notify({message: response.message});
+                        }
+                    
+                    }
+                })
+
+            })
+        
+        }
    
         // Delete users
         var userDelete = function(callback){

@@ -11,7 +11,7 @@
                                 <div class="heading-actions">
                                     <ul class="list-inline mb-0">
                                         <li class="p-0">
-                                            <button class="btn btn-rounded" data-toggle="tooltip" data-placement="top" data-original-title="Salva">
+                                            <button class="btn btn-rounded" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo lang('tt_save'); ?>">
                                                 <i class="mdi mdi-check"></i>
                                             </button>
                                         </li>

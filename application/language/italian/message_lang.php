@@ -26,9 +26,23 @@ $lang['modal_button_cancel'] = "Cancella";
 $lang['modal_title'] = "Avviso";
 
 // ALERT MESSAGES
-$lang['alert_saved_changes'] = "Modifiche salvate";
-$lang['alert_error'] = "Something not working.";
+$lang['alert_saved_changes'] = "Modifiche salvate.";
+$lang['alert_error'] = "Qualcosa non ha funzionato.";
 
+// TOOLTIP
+$lang['tt_save'] = "Salva";
+$lang['tt_search'] = "Cerca";
+$lang['tt_filter'] = "Filtra";
+$lang['tt_add'] = "Aggiungi";
+
+//DATE TIME FORMAT 
+$lang['tables_date_time'] = "DD/MM/YYYY HH:mm";
+
+// SELECT
+$lang['sel_user_group_1'] = "Admin";
+$lang['sel_user_group_2'] = "Moderatore";
+$lang['sel_user_group_3'] = "Utente";
+$lang['sel_user_group_4'] = "Bannato";
 
 //------------------------------------------------------------------------------
 // TEMPLATE
@@ -57,6 +71,7 @@ $lang['form_label_email'] = "Email";
 $lang['form_label_password'] = "Password";
 $lang['form_label_confirm_password'] = "Conferma Password";
 $lang['form_label_birthday'] = "La Tua Data di Nascita";
+$lang['form_label_permission'] = "Permessi";
 
 // FORM VALIDATION REMOTE MESSAGES 
 $lang['formvalidation_check_username'] = "Questo username &#232; gi&#224; utilizzato";
@@ -84,7 +99,7 @@ $lang['register_subtitle'] = "Crea un nuovo account";
 $lang['register_button_signup'] = "Registrati";
 $lang['register_textlink_signin'] = "Sei gi&#224; iscritto ?";
 $lang['register_link_signin'] = "Accedi";
-$lang['register_alert_message'] = "Benvenuto nel club ! Accedi";
+$lang['register_alert_message'] = "Benvenuto nel club ! Accedi.";
 
 //------------------------------------------------------------------------------
 // BACKEND PAGES
@@ -106,3 +121,6 @@ $lang['bkuserslist_dtcolumn_email'] = "Email";
 $lang['bkuserslist_dtcolumn_registration_date'] = "Data di Registrazione";
 $lang['bkuserslist_dtcolumn_last_visite'] = "Ultima Visita";
 $lang['bkuserslist_modal_delete_users'] = "Sei sicuro di voler rimuovere questo utente ?";
+$lang['bkuserslist_modal_title'] = "Crea nuovo utente";
+$lang['bkuserslist_modal_edit_title'] = "Modifica utente";
+$lang['bkuserslist_alert_new_user'] = "Nuovo utente creato.";

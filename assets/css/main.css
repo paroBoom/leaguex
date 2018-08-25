@@ -112,7 +112,8 @@ ul {
     transition: all .5s ease;
 }
 .card .card-header .heading-actions ul li a,
-.modal .modal-header .heading-actions a {
+.modal .modal-header .heading-actions a,
+table.dataTable tbody td a.edit-icon {
     width: 30px;
     height: 30px;
     display: inline-block;
@@ -121,7 +122,8 @@ ul {
 }
 .card .card-header .heading-actions ul li a:before,
 .card.form-options .heading-actions button:before,
-.modal .modal-header .heading-actions a:before {
+.modal .modal-header .heading-actions a:before,
+table.dataTable tbody td a.edit-icon::before {
     left: 0;
     top: 0;
     content: '';
@@ -143,7 +145,8 @@ ul {
 .card .card-header .heading-actions ul li a:hover:before,
 .card .card-header .heading-actions ul li.show a:before,
 .card.form-options .heading-actions button:hover:before,
-.modal .modal-header .heading-actions a:hover:before {
+.modal .modal-header .heading-actions a:hover:before,
+table.dataTable tbody td a.edit-icon:hover:before {
     -webkit-transform: scale3d(1,1,1);
     transform: scale3d(1,1,1);
     opacity: 1;    
@@ -590,6 +593,9 @@ form {
 .bmd-form-group input::placeholder {
     color: rgba(0,0,0,.26);
 }
+.dropdownjs .form-control[readonly] {
+    background-color: transparent;
+}
 .input-group ~ small {
     margin-left: 50px;
 }
@@ -606,6 +612,7 @@ form {
 }
 .dropdownjs {
     position: relative;
+    flex: 1 1 auto;
 }
 .dropdownjs  * {
     box-sizing: border-box;

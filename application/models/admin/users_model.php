@@ -6,10 +6,12 @@ class Users_model extends CI_Model{
 
         $this->db->trans_start();
         $this->db->where_in('ID', $delete_id);
+        $this->db->where_not_in('ID', '1');
         $this->db->delete('lex_users'); 
                         
         // Delete activity
         $this->db->where_in('la_user_id', $delete_id);
+        $this->db->where_not_in('la_user_id', '1');
         $this->db->delete('lex_last_activity'); 
         $this->db->trans_complete();  
         if ($this->db->trans_status() === FALSE){           
@@ -37,6 +39,22 @@ class Users_model extends CI_Model{
             return FALSE;
         } else {
             return TRUE;
+        }
+    }
+
+    public function get_user($userid) {
+        $query = $this->db->get_where('lex_users', array('ID' => $userid));
+        $result = $query->result();
+        return $result;
+    }
+
+    public function edit_user($userid, $data) {
+        $this->db->where('ID', $userid);
+        $this->db->update('lex_users', $data);
+        if ($this->db->affected_rows() >= 0) {
+            return TRUE;
+            } else {
+            return FALSE;
         }
     }
 
