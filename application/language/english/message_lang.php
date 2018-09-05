@@ -9,7 +9,8 @@ $lang['page_title_signin'] = "Sign in";
 $lang['page_title_signup'] = "Sign up";
 $lang['page_title_home'] = "Home page";
 $lang['adminpage_title_dashboard'] = "Dashboard";
-$lang['adminpage_title_settings_site_options'] = "Site title settings";
+$lang['adminpage_title_settings_site_options'] = "Site settings";
+$lang['adminpage_title_settings_email_options'] = "Email settings";
 $lang['adminpage_title_users'] = "Manage users";
 
 // DATATABLES
@@ -27,6 +28,7 @@ $lang['modal_title'] = "Advise";
 // ALERT MESSAGES
 $lang['alert_saved_changes'] = "Saved changes.";
 $lang['alert_error'] = "Something not working.";
+$lang['alert_banned_user'] = "Your account has been blocked. Contact an administrator.";
 
 // TOOLTIP
 $lang['tt_save'] = "Save";
@@ -106,12 +108,40 @@ $lang['register_alert_message'] = "Welcome to the club ! Sign In.";
 //------------------------------------------------------------------------------
 
 // SITE OPTIONS
-$lang['bksettings_siteoptions_header_title'] = "Site Options";
+$lang['bksettings_siteoptions_header_title'] = "Site Settings";
 $lang['bksettings_siteoptions_form_label_sitename'] = "Site name";
 $lang['bksettings_siteoptions_form_placeholder_sitename'] = "e.g. LEAGUEX";
 $lang['bksettings_siteoptions_form_label_sitetitle'] = "Site title";
 $lang['bksettings_siteoptions_form_placeholder_sitetitle'] = "e.g. LEAGUEX | Your Fantasy Master League";
 $lang['bksettings_siteoptions_form_label_language'] = "Language";
+
+// EMAIL OPTIONS
+$lang['bksettings_emailoptions_header_title'] = "Email Settings";
+$lang['bksettings_emailoptions_smtp_description'] = "Configuring leaguex to send using SMTP authentication.";
+$lang['bksettings_emailoptions_smtp_description_2'] = "* Leave the parameters below empty if your server does not require authentication.";
+$lang['bksettings_emailoptions_form_label_email'] = "From email";
+$lang['bksettings_emailoptions_form_placeholder_email'] = "e.g. admin@yoursite.com";
+$lang['bksettings_emailoptions_form_help_email'] = "Specify the email address that emails should be sent from.";
+$lang['bksettings_emailoptions_form_label_name'] = "From name";
+$lang['bksettings_emailoptions_form_placeholder_name'] = "e.g. leaguex";
+$lang['bksettings_emailoptions_form_help_name'] = "Specify the name that emails should be sent from.";
+$lang['bksettings_emailoptions_form_label_host'] = "SMTP host";
+$lang['bksettings_emailoptions_form_placeholder_host'] = "e.g. ssl://smtp.googlemail.com";
+$lang['bksettings_emailoptions_form_help_host'] = "Specify the hostname of the SMTP service.";
+$lang['bksettings_emailoptions_form_label_port'] = "SMTP port";
+$lang['bksettings_emailoptions_form_placeholder_port'] = "e.g. 25";
+$lang['bksettings_emailoptions_form_help_port'] = "Specify the port SMTP service.";
+$lang['bksettings_emailoptions_form_label_username'] = "Username";
+$lang['bksettings_emailoptions_form_placeholder_username'] = "e.g. abc@gmail.com";
+$lang['bksettings_emailoptions_form_help_username'] = "The username which should be used for the authentication in front of the mail server.";
+$lang['bksettings_emailoptions_form_label_password'] = "Password";
+$lang['bksettings_emailoptions_form_help_password'] = "The password for the email account used as a username.";
+$lang['bksettings_emailoptions_test_description'] = "Send a test email.";
+$lang['bksettings_emailoptions_test_form_label_email'] = "To email";
+$lang['bksettings_emailoptions_test_form_help_email'] = "Send a trial mail to the chosen address.";
+$lang['bksettings_emailoptions_test_submit_btn_text'] = "Send email";
+$lang['bksettings_emailoptions_test_object_mail'] = "SMTP test";
+$lang['bksettings_emailoptions_test_text_mail'] = "Congratulations! <br/><br/> Now you can use the SMTP protocol to send emails.";
 
 // USERS LIST
 $lang['bkuserslist_header_title'] = "Users";

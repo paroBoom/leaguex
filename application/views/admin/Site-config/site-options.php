@@ -20,17 +20,15 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-row">
-                                    <div class="form-group col-xs-12 col-sm-6">
+                                    <div class="form-group col-xs-12 col-sm-4">
                                         <label><?php echo lang('bksettings_siteoptions_form_label_sitename'); ?></label>
                                         <input type="text" class="form-control" name="sitename" value="<?php echo $siteconfig->site_name; ?>" placeholder="<?php echo lang('bksettings_siteoptions_form_placeholder_sitename'); ?>">
                                     </div>
-                                    <div class="form-group col-xs-12 col-sm-6">
+                                    <div class="form-group col-xs-12 col-sm-4">
                                         <label><?php echo lang('bksettings_siteoptions_form_label_sitetitle'); ?></label>
                                         <input type="text" class="form-control" name="sitetitle" value="<?php echo $siteconfig->site_title; ?>" placeholder="<?php echo lang('bksettings_siteoptions_form_placeholder_sitetitle'); ?>">
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-xs-12 col-sm-6">
+                                    <div class="form-group col-xs-12 col-sm-4">
                                         <label><?php echo lang('bksettings_siteoptions_form_label_language'); ?></label>
                                         <select class="select form-control" name="language">
                                             <option value="0" <?php if($siteconfig->language == 0) {echo "SELECTED";} ?>>Italiano</option>

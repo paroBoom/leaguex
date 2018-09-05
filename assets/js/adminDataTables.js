@@ -176,17 +176,25 @@
                     },
                 },
                 {'data': 'ID', 'visible': false, 'searchable':false},
-                {'data': 'user_name'},
+                {'data': null,
+                    'render': function(data){
+                        if(data.user_permission === '4') {
+                            return '<span class="text-lt">' + data.user_name + '</span>';
+                        } else {
+                            return data.user_name;
+                        }
+                    } 
+                },
                 {'data': null,
                     'render': function(data){
                         if(data.user_permission === '1') {
-                            return '<span class="badge badge-danger">Admin</span>';
+                            return '<span class="badge badge-danger">'+ selUG1 +'</span>';
                         } else if(data.user_permission === '2') {
-                            return '<span class="badge badge-warning">Moderatore</span>'
+                            return '<span class="badge badge-warning">'+ selUG2 +'</span>'
                         } else if(data.user_permission === '3') {
-                            return '<span class="badge badge-success">Utente</span>'
+                            return '<span class="badge badge-success">'+ selUG3 +'</span>'
                         } else if(data.user_permission === '4') {
-                            return '<span class="badge badge-dark">Ban</span>'
+                            return '<span class="badge badge-dark">'+ selUG4 +'</span>'
                         }
                     }
                 },
@@ -257,7 +265,6 @@
                                 delay: 800
                             },    
                             notEmpty: {},
-                            emailAddress: {},
                             regexp: {regexp:'^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'}
                         }
                     },
@@ -315,9 +322,9 @@
         }
         
         // Edit user
-        $('#bkEditUser').on('shown.bs.modal', function(e){
+        $('#bkEditUser').on('show.bs.modal', function(e){
+            $('.modal-body .page-loader').show();
             $('#editUserForm').formValidation('resetForm', true);
-            $('#editUserForm').formValidation('resetField', 'newpassword');
             var id = $(e.relatedTarget).data('id'); 
             var selpermission = $(e.currentTarget).find('select[name=permission]');
             selpermission.html('');
@@ -328,6 +335,7 @@
                 data: 'userid=' + id,
                 success: function(response) {
                     if(response.success) {
+                        $('.modal-body .page-loader').fadeOut();
                         var datauser = response.datauser;
                         var selected = datauser.userpermission;
                         var birthDay = moment(datauser.userbirthday).format('DD/MM/YYYY')
@@ -396,7 +404,6 @@
                                 }
                             },    
                             notEmpty: {},
-                            emailAddress: {},
                             regexp: {regexp:'^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'}
                         }
                     },

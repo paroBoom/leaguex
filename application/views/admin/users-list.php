@@ -101,8 +101,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-flat"><?php echo lang('modal_button_confirm'); ?></button>
-                    <button type="button" class="btn btn-default btn-flat" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
+                    <button type="submit" class="btn btn-primary"><?php echo lang('modal_button_confirm'); ?></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
                 </div>
             </form>
         </div>
@@ -123,6 +123,21 @@
                     </ul> 
                 </div>
                 <div class="modal-body">
+                    <!-- Modal loader -->
+                    <div class="page-loader">
+                        <div class="loader">
+                            <div class="preloader">
+                                <div class="spinner-page">
+                                    <div class="circle-wrap left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-wrap right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group input-group mt-0">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="mdi mdi-account"></i></span>
@@ -156,8 +171,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-flat"><?php echo lang('modal_button_confirm'); ?></button>
-                    <button type="button" class="btn btn-default btn-flat" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
+                    <button type="submit" class="btn btn-primary"><?php echo lang('modal_button_confirm'); ?></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
                     <input type="hidden" value="" name="userid">
                 </div>
             </form>
@@ -176,8 +191,8 @@
             </div>
             <div class="modal-body"><p><?php echo lang('bkuserslist_modal_delete_users'); ?></p></div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-flat" id="btn-confirm"><?php echo lang('modal_button_confirm'); ?></button>
-                <button type="button" class="btn btn-default btn-flat" id="btn-delete" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
+                <button type="button" class="btn btn-primary" id="btn-confirm"><?php echo lang('modal_button_confirm'); ?></button>
+                <button type="button" class="btn btn-default" id="btn-delete" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@
             </div> 
             <div class="club-info">
                 <a data-toggle="collapse" href="#sbcollapse" class="collapsed">
-                    <span>Barcellona</span>
+                    <span class="team-title">Barcellona</span>
                 </a>
                 <div class="clearfix"></div>
                 <div class="collapse in" id="sbcollapse">
@@ -33,7 +33,7 @@
                     <ul class="nav nav-collapse">
                         <li><a href="<?= site_url().'admin/siteoptions'; ?>"><span class="submenu"><?php echo lang('adminsbar_submenu_site_options'); ?></span></a></li>
                         <li><a href="#"><span class="submenu">Media</span></a></li>
-                        <li><a href="#"><span class="submenu">Email</span></a></li>
+                        <li><a href="<?= site_url().'admin/emailoptions'; ?>"><span class="submenu">Email</span></a></li>
                     </ul>
                 </div>
             </li>

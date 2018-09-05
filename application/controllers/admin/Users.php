@@ -7,7 +7,13 @@ class Users extends MY_Controller {
         
         parent::__construct();
 
-        echo addfooter_js(array('js/vendor/datatables/jquery.dataTables.min.js','js/vendor/datatables/dataTables.material.min.js','js/vendor/datatables/datatables.responsive.min.js','js/vendor/datatables/responsive.bootstrap4.min.js','js/vendor/moment.min.js','js/vendor/datatables/datetime-moment.js','js/vendor/jquery.mask.min.js','js/adminDataTables.js')); 
+        // Check permission
+        if (!is_logged_in() OR !is_admin()) { redirect('home','refresh'); }
+
+        // Check activity
+        user_activity();
+
+        echo addfooter_js(array('js/vendor/datatables/jquery.dataTables.min.js','js/vendor/datatables/dataTables.material.min.js','js/vendor/datatables/dataTables.responsive.min.js','js/vendor/datatables/responsive.bootstrap4.min.js','js/vendor/moment.min.js','js/vendor/datatables/datetime-moment.js','js/vendor/jquery.mask.min.js','js/adminDataTables.js')); 
         $this->load->model('admin/users_model', 'users');
 
     }
@@ -15,11 +21,6 @@ class Users extends MY_Controller {
     
     public function index() {
         
-        if (!is_logged_in() OR !is_admin()) { redirect('home','refresh'); }
-
-        //Check activity
-        user_activity();
-
         $data = array('page_title' => $this->lang->line('adminpage_title_users'), 'page_view' => 'admin/users-list', 'folder' => 'admin');
         $this->_render($data);
     

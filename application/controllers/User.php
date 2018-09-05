@@ -30,16 +30,20 @@ class User extends MY_Controller {
         $password = $this->input->post('password');
 
         $data = $this->user->signin($email);
+        $checkban = $data['user_permission'];
 
-        if(($data) && (password_verify($password, $data['user_password']))) {
+        if(($data) && (password_verify($password, $data['user_password'])) && ($checkban != 4)) {
             $this->session->set_userdata('loggedin', TRUE);
             $this->session->set_userdata('userID', $data['ID']);
             $this->session->set_userdata('permission', $data['user_permission']);
+        } elseif($checkban == 4) {
+            $output['error'] = true;
+            $output['message'] = $this->lang->line('alert_banned_user');
         } else {
             $output['error'] = true;
             $output['message'] = $this->lang->line('alert_error');
         }
-
+     
         echo json_encode($output);		
 
     }

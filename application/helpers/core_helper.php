@@ -20,9 +20,6 @@ function is_admin() {
 
 }
 
-// Set Timezone
-date_default_timezone_set('Asia/Ho_Chi_Minh'); 
-
 // Load site configuration
     
 function load_options() {

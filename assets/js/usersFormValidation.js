@@ -38,7 +38,6 @@ function signUp() {
                             delay: 800
                         },    
                         notEmpty: {},
-                        emailAddress: {},
                         regexp: {regexp:'^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'}
                     }
                 },

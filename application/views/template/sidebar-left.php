@@ -8,7 +8,7 @@
             </div> 
             <div class="club-info">
                 <a data-toggle="collapse" href="#sbcollapse" class="collapsed">
-                    <span>Barcellona <span class="icon"><i class="mdi mdi-plus"></i></span></span>
+                    <span class="team-title">Barcellona <span class="icon"><i class="mdi mdi-plus"></i></span></span>
                 </a>
             </div>   
         </div>
