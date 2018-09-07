@@ -2,7 +2,7 @@
 
 class User_model extends CI_Model {
 
-    public function signin($email){
+    function signin($email){
 
         $this->db->select('*');
         $this->db->from('lex_users');
@@ -16,7 +16,7 @@ class User_model extends CI_Model {
         
     }
 
-    public function create_user($user_register) {
+    function create_user($user_register) {
 
         $this->db->trans_start();
         $this->db->set('user_registered', 'NOW()', FALSE);
@@ -33,6 +33,15 @@ class User_model extends CI_Model {
             return FALSE;
         } else {
             return TRUE;
+        }
+    }
+
+    function do_forget($email) {
+        $query = $this->db->get_where('lex_users', array('user_email' => $email));
+        if ($this->db->affected_rows() >= 0) {
+            return $query->result();
+        } else {
+            return FALSE;
         }
     }
 

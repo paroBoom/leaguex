@@ -309,7 +309,7 @@
                             $.notify({message: response.message});
                         } else {
                             $form.formValidation('resetForm', true);
-                            userstable.ajax.reload();
+                            userstable.ajax.reload(tableCallback);
                             $('#bkAddUser').modal('hide');
                             $.notify({message: response.message});
                         }
@@ -456,7 +456,7 @@
                             $.notify({message: response.message});
                         } else {
                             $form.formValidation('resetForm', true);
-                            userstable.ajax.reload();
+                            userstable.ajax.reload(tableCallback);
                             $('#bkEditUser').modal('hide');
                             $.notify({message: response.message});
                         }

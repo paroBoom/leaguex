@@ -12,7 +12,7 @@ class User extends MY_Controller {
 
     }
 
-    public function index() {
+    function index() {
 
         if (is_logged_in()) { redirect('home','refresh'); }
 
@@ -22,7 +22,7 @@ class User extends MY_Controller {
     }
 
     // login 
-    public function signin() {
+    function signin() {
 
         $output = array('error' => false);
                 
@@ -49,14 +49,14 @@ class User extends MY_Controller {
     }
 
     // logout    
-    public function logout() {
+    function logout() {
 
         $this->session->unset_userdata('loggedin');
         $this->session->sess_destroy();
         redirect('signin', 'refresh');
     }
 
-    public function signup() {
+    function signup() {
 
         if (is_logged_in()) { redirect('home','refresh'); }
 
@@ -66,7 +66,7 @@ class User extends MY_Controller {
     }
 
     // add new user
-    public function create_user() {
+    function create_user() {
 
         $output = array('error' => false);
 
@@ -89,7 +89,7 @@ class User extends MY_Controller {
     }
     
     // check duplicate username
-    public function check_username() {
+    function check_username() {
 
         $isAvailable = true;
         $username = $this->input->post('username');
@@ -103,7 +103,7 @@ class User extends MY_Controller {
     }
 
     // check duplicate email
-    public function check_email() {
+    function check_email() {
         
         $isAvailable = true;
         $email = $this->input->post('email');
@@ -114,6 +114,63 @@ class User extends MY_Controller {
         if($query->num_rows() > 0){$isAvailable = false;}
 
         echo json_encode(array('valid' => $isAvailable));
+    }
+
+    function recovery() {
+
+        if (is_logged_in()) { redirect('home','refresh'); }
+
+        $data = array('page_title' => $this->lang->line('page_title_recovery'), 'page_view' => 'recovery');
+        $this->_render($data);  
+    
+    }
+
+    // recovery password
+    function do_forget() {
+
+        $output = array('error' => false);
+
+        $email = $this->input->post('email');
+        $check = $this->user->do_forget($email);
+
+        foreach ($check as $val) {
+            $username = $val->user_name;            
+        }
+
+        if($check) {
+            $user = $check[0];
+            $this->reset_password($user, $username);
+            $output['message'] = $this->lang->line('recovery_alert_success');
+        } else {
+            $output['error'] = true;
+            $output['message'] = $this->lang->line('recovery_alert_error');    
+        }
+
+        echo json_encode($output);
+
+    }
+
+    private function reset_password($user, $username) {
+        
+        $query = $this->db->query('SELECT smtp_email, smtp_name FROM lex_config');
+        
+        foreach ($query->result() as $val) {
+            $email = $val->smtp_email;
+            $name = $val->smtp_name;
+        }
+
+        date_default_timezone_set('GMT');
+        $this->load->helper('string');
+        $password = random_string('alnum', 8);
+        $this->db->where('ID', $user->ID);
+        $this->db->update('lex_users', array('user_password' => password_hash($password, PASSWORD_DEFAULT)));
+        $this->load->library('email');
+        $this->email->from($email, $name);
+        $this->email->to($user->user_email);
+        $this->email->subject($this->lang->line('recovery_object_mailreset'));
+        $this->email->message(sprintf($this->lang->line('recovery_text_mailreset').':'. $password, $username));	
+        $this->email->send();
+
     }
 
 }

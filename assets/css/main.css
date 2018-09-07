@@ -128,6 +128,11 @@ table.dataTable tbody td a.edit-icon {
     text-align: center;
     position: relative;
 }
+.card.form-options .heading-actions button:hover:focus:before {
+    opacity: 0;
+    -webkit-transform: scale3d(0,0,0);
+    transform: scale3d(0,0,0);
+}
 .card .card-header .heading-actions ul li a:before,
 .card.form-options .heading-actions button:before,
 .modal .modal-header .heading-actions a:before,
@@ -1424,7 +1429,7 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
     top: 20px;
     width: 100%;
     height: 6px;
-    background-color: #fdba2c;
+    background-color: #4236dd;
 }
 .bar {
     content: "";
@@ -1436,17 +1441,17 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
     text-align: center;
 }
 .bar:nth-child(1) {
-    background-color: #f33527;
+    background-color: #9fa8da;
     -webkit-animation: loading 3s linear infinite;
     animation: loading 3s linear infinite;
 }
 .bar:nth-child(2) {
-    background-color: #35a1fb;
+    background-color: #5c6bc0;
     -webkit-animation: loading 3s linear infinite;
     animation: loading 3s linear 1s infinite;
 }
 .bar:nth-child(3) {
-    background-color: #fdba2c;
+    background-color: #3949ab;
     -webkit-animation: loading 3s linear infinite;
     animation: loading 3s linear 2s infinite;
 }

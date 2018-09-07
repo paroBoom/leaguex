@@ -56,6 +56,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['signin'] = 'user/index';
 $route['signup'] = 'user/signup';
 $route['logout'] = 'user/logout';
+$route['recovery'] = 'user/recovery';
 
 $route['admin/userslist'] = 'admin/users/index';
 $route['admin/siteoptions'] = 'admin/settings/index';

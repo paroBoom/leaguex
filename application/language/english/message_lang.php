@@ -7,6 +7,7 @@
 // PAGE TITLE
 $lang['page_title_signin'] = "Sign in";
 $lang['page_title_signup'] = "Sign up";
+$lang['page_title_recovery'] = "Account recovery";
 $lang['page_title_home'] = "Home page";
 $lang['adminpage_title_dashboard'] = "Dashboard";
 $lang['adminpage_title_settings_site_options'] = "Site settings";
@@ -102,6 +103,16 @@ $lang['register_textlink_signin'] = "Have account already ? Please go to";
 $lang['register_link_signin'] = "Sign In";
 $lang['register_input_signin'] = "Sign In";
 $lang['register_alert_message'] = "Welcome to the club ! Sign In.";
+
+// ACCOUNT RECOVERY
+$lang['recovery_subtitle'] = "Input your registered email to reset your password";
+$lang['recovery_textlink_signin'] = "Go To";
+$lang['recovery_link_signin'] = "Signin";
+$lang['recovery_button_send'] = "Send recovery email";
+$lang['recovery_alert_success'] = "We&#8217;ve sent a new password. Check your inbox or spam folder.";
+$lang['recovery_alert_error'] = "No account associated to this email.";
+$lang['recovery_object_mailreset'] = "Reset Password";
+$lang['recovery_text_mailreset'] = "Hi %s, your password has been modified. <br/><br/> This is your new password";
 
 //------------------------------------------------------------------------------
 // BACKEND PAGES

@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col col-md-6 pr-0">
-                    <a href="#" class="forgot-password float-right"><?php echo lang('login_forgotpassword'); ?></a>
+                    <a href="<?php site_url(); ?>recovery" class="forgot-password float-right"><?php echo lang('login_forgotpassword'); ?></a>
                 </div>
             </div>
             <div class="form-action">

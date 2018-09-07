@@ -7,6 +7,7 @@
 // PAGE TITLE
 $lang['page_title_signin'] = "Accedi";
 $lang['page_title_signup'] = "Registrati";
+$lang['page_title_recovery'] = "Recupera password";
 $lang['page_title_home'] = "Home page";
 $lang['page_title_home'] = "Home page";
 $lang['adminpage_title_dashboard'] = "Dashboard";
@@ -102,6 +103,16 @@ $lang['register_button_signup'] = "Registrati";
 $lang['register_textlink_signin'] = "Sei gi&#224; iscritto ?";
 $lang['register_link_signin'] = "Accedi";
 $lang['register_alert_message'] = "Benvenuto nel club ! Accedi.";
+
+// ACCOUNT RECOVERY
+$lang['recovery_subtitle'] = "Inserisci la mail di registrazione";
+$lang['recovery_textlink_signin'] = "Torna alla pagina di";
+$lang['recovery_link_signin'] = "Login";
+$lang['recovery_button_send'] = "Recupera password";
+$lang['recovery_alert_success'] = "Abbiamo inviato un&#8217;email all&#8217;indirizzo indicato. Verifica la tua posta e procedi al login.";
+$lang['recovery_alert_error'] = "L&#8217;email inserita non corrisponde a nessun account.";
+$lang['recovery_object_mailreset'] = "Modifica Password";
+$lang['recovery_text_mailreset'] = "Ciao %s, la tua password di accesso &#232; stata modificata. <br/><br/> Ecco la tua nuova password";
 
 //------------------------------------------------------------------------------
 // BACKEND PAGES

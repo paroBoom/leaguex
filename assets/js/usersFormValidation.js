@@ -74,9 +74,8 @@ function signUp() {
 
             e.preventDefault();
 
-            var $form = $(e.target),
-            fv = $form.data('formValidation');
-
+            var $form = $(e.target);
+            
             $.ajax({
                 url: $form.attr('action'),
                 type: 'POST',
@@ -137,9 +136,8 @@ function signIn() {
 
             e.preventDefault();
 
-            var $form = $(e.target),
-            fv = $form.data('formValidation');
-
+            var $form = $(e.target);
+            
             $.ajax({
                 url: $form.attr('action'),
                 type: 'POST',
@@ -161,11 +159,59 @@ function signIn() {
 
 }
 
+/*----------------------------
+	Account Recovery
+------------------------------ */
+function recovery() {
+
+    if ($('#accountRecovery').length && $.fn.formValidation) {
+              
+        $('#accountRecovery').formValidation({
+
+            framework: 'bootstrap4',
+            live: 'submitted',
+            locale: fvlang,
+            fields: {
+                email: {
+                    validators: {
+                        notEmpty: {}
+                    }
+                }
+            }
+        })
+        .on('success.form.fv', function(e) {
+
+            e.preventDefault();
+
+            var $form = $(e.target);
+            
+            $.ajax({
+                url: $form.attr('action'),
+                type: 'POST',
+                data: $form.serialize(),
+                dataType: 'json',
+                success: function(response) {
+
+                    if(response.error){
+                        $.notify({message: response.message});   
+                    } else { 
+                        $.notify({message: response.message});      
+                    }
+
+                }
+            })
+
+        })
+    }
+
+}
+
 /* Init functions */
 $(document).ready(function () { 
 
     signUp();
-    signIn();    
+    signIn();
+    recovery();    
     
 });
     
