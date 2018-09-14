@@ -165,10 +165,11 @@ class User extends MY_Controller {
         $this->db->where('ID', $user->ID);
         $this->db->update('lex_users', array('user_password' => password_hash($password, PASSWORD_DEFAULT)));
         $this->load->library('email');
+        $this->email->set_mailtype('html');
         $this->email->from($email, $name);
         $this->email->to($user->user_email);
         $this->email->subject($this->lang->line('recovery_object_mailreset'));
-        $this->email->message(sprintf($this->lang->line('recovery_text_mailreset').':'. $password, $username));	
+        $this->email->message(sprintf($this->lang->line('recovery_text_mailreset').':' . '<code>'.$password.'</code>', $username));	
         $this->email->send();
 
     }
