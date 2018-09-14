@@ -131,15 +131,17 @@
         pageLength: 25,
         pagingType: "simple",
         language: {
-        info: "_START_ - _END_ of _TOTAL_",
-        paginate: {
-            previous: "<i class='mdi mdi-chevron-left'></i>",
-            next: "<i class='mdi mdi-chevron-right'></i>"
-        },
-        processing: '<div class="load-bar"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>',
-        },
-        responsive: {
-            details: {display: $.fn.dataTable.Responsive.display.childRowImmediate, type: 'display'}
+            url: dtlang,
+            info: "_START_ - _END_ of _TOTAL_",
+            paginate: {
+                previous: "<i class='mdi mdi-chevron-left'></i>",
+                next: "<i class='mdi mdi-chevron-right'></i>"
+            },
+            processing: '<div class="load-bar"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>',
+            },
+            responsive: {
+                details: {display: $.fn.dataTable.Responsive.display.childRowImmediate, type: 'display'
+            }
         },
 
         /* Init Functions */ 
@@ -227,8 +229,9 @@
 
         // Add user
         $('#bkAddUser').on('shown.bs.modal', function(){
-            $('#addUserForm').formValidation('resetForm', true);
             $(this).find("input:first").focus();
+        }).on('hide.bs.modal', function(e){
+            $('#addUserForm').formValidation('resetForm', true);
         });
 
         if($('#addUserForm').length && $.fn.formValidation) {
@@ -292,12 +295,11 @@
             })
             .off('success.form.fv')
             .on('success.form.fv', function(e) {
-
+                $('.modal-body .page-loader').show();
                 e.preventDefault();
 
-                var $form = $(e.target),
-                fv = $form.data('formValidation');
-
+                var $form = $(e.target);
+               
                 $.ajax({
                     url: $form.attr('action'),
                     type: 'POST',
@@ -310,6 +312,7 @@
                         } else {
                             $form.formValidation('resetForm', true);
                             userstable.ajax.reload(tableCallback);
+                            $('.modal-body .page-loader').fadeOut();
                             $('#bkAddUser').modal('hide');
                             $.notify({message: response.message});
                         }
@@ -324,7 +327,6 @@
         // Edit user
         $('#bkEditUser').on('show.bs.modal', function(e){
             $('.modal-body .page-loader').show();
-            $('#editUserForm').formValidation('resetForm', true);
             var id = $(e.relatedTarget).data('id'); 
             var selpermission = $(e.currentTarget).find('select[name=permission]');
             selpermission.html('');
@@ -362,7 +364,9 @@
                   
                 }
             })           
-        });
+        }).on('hide.bs.modal', function(e){
+            $('#editUserForm').formValidation('resetForm', true);
+        })
 
         if($('#editUserForm').length && $.fn.formValidation) {
 
@@ -439,12 +443,11 @@
             })
             .off('success.form.fv')
             .on('success.form.fv', function(e) {
-
+                $('.modal-body .page-loader').show();
                 e.preventDefault();
 
-                var $form = $(e.target),
-                fv = $form.data('formValidation');
-
+                var $form = $(e.target);
+                
                 $.ajax({
                     url: $form.attr('action'),
                     type: 'POST',
@@ -457,6 +460,7 @@
                         } else {
                             $form.formValidation('resetForm', true);
                             userstable.ajax.reload(tableCallback);
+                            $('.modal-body .page-loader').fadeOut();
                             $('#bkEditUser').modal('hide');
                             $.notify({message: response.message});
                         }
@@ -524,6 +528,118 @@
                     }
                 }
             });
+        }
+
+    }
+
+    /*----------------------------
+        Clubs list table
+    ------------------------------*/
+
+    if($('#clubsList').length && $.fn.DataTable) {
+
+        $.fn.dataTable.moment('DD/MM/YYYY');
+
+        // Show clubs
+        var clubstable = $('#clubsList').DataTable({
+
+            'ajax': site_url + 'admin/clubs/get_clubs',
+            'responsive': true,
+            'columns': [
+                {   
+                    'targets': 0,
+                    'searchable':false,
+                    'className': 'check-cell',
+                    'data': 'club_id',
+                    'orderable':false,
+                    'render': function(data){
+                            return '<span class="checkbox">' +
+                                '<label>' + 
+                                '<input type="checkbox" id="checkboxID" name="id[]" value="' + $('<div/>').text(data).html() + '">' + 
+                                '</label>' +
+                                '</span>';
+                    },
+                },
+                {'data': 'club_id', 'visible': false, 'searchable':false},
+                {'data': 'club_name'},
+                {'data': 'club_registered',
+                    'render': function(data){
+                        return (moment(data).format('DD/MM/YYYY'));
+                    }
+                },
+                {'data': 'action', 'searchable': false, 'orderable': false}
+            ],
+            'order': [[1, 'desc']]
+            
+        });
+        
+        // Handle click on "Select all" control
+        $('#dt-select-all').on('click', function(){
+        
+        // Get all rows with search applied
+        var rows = clubstable.rows({ 'search': 'applied' }).nodes();
+        
+        // Check/uncheck checkboxes for all rows in the table
+        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+        });
+
+        // Add club
+        $('#bkAddClub').on('shown.bs.modal', function(){
+            $('#addClubForm').formValidation('resetForm', true);
+            $(this).find("input:first").focus();
+        });
+
+        if($('#addClubForm').length && $.fn.formValidation) {
+
+            $('#addClubForm').formValidation({            
+                framework: 'bootstrap4',
+                live: 'submitted',
+                locale: fvlang,
+                fields: {
+                    clubname: {
+                        validators: {
+                            notEmpty: {},
+                            stringLength: {min:2, max:30}
+                        }
+                    }
+                }
+            })
+            .on('err.validator.fv', function(e, data) {
+
+            if((data.field === 'clubname')) {
+                data.element.data('fv.messages').find('.help-block[data-fv-for="' + data.field + '"]').hide().filter('[data-fv-validator="' + data.validator + '"]').show();
+            }
+
+            })
+            .off('success.form.fv')
+            .on('success.form.fv', function(e) {
+                $('.modal-body .page-loader').show();
+                e.preventDefault();
+
+                var $form = $(e.target);
+               
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    data: $form.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+
+                        if(response.error){
+                            $.notify({message: response.message});
+                        } else {
+                            $form.formValidation('resetForm', true);
+                            clubstable.ajax.reload(tableCallback);
+                            $('.modal-body .page-loader').fadeOut();
+                            $('#bkAddClub').modal('hide');
+                            $.notify({message: response.message});
+                        }
+                    
+                    }
+                })
+
+            })
+        
         }
 
     }
