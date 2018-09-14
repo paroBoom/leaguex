@@ -3,7 +3,9 @@
     <div class="container container-auth">
                     
         <form action="<?php echo site_url("user/do_forget"); ?>" method="post" role="form" id="accountRecovery" autocomplete="off">
-            <h3 class="text-center">LEAGUEX</h3>
+            <div class="logo">
+                <img src="<?php echo site_url(); ?>assets/img/logo-big.png" alt="Logo">
+            </div>
             <p class="text-center"><?php echo lang('recovery_subtitle'); ?></p>
             <div class="form-group bmd-form-group">
                 <label class="bmd-label-floating"><?php echo lang('form_label_email'); ?></label>                                    

@@ -3,7 +3,9 @@
     <div class="container container-auth">
                     
         <form action="<?php echo site_url("user/signin"); ?>" method="post" role="form" id="signIn" autocomplete="off">
-            <h3 class="text-center">LEAGUEX</h3>
+            <div class="logo">
+                <img src="<?php echo site_url(); ?>assets/img/logo-big.png" alt="Logo">
+            </div>
             <p class="text-center"><?php echo lang('login_subtitle'); ?></p>
             <div class="form-group bmd-form-group">
                 <label class="bmd-label-floating"><?php echo lang('form_label_email'); ?></label>                                    
