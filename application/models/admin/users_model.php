@@ -2,7 +2,7 @@
 
 class Users_model extends CI_Model{
 
-    public function delete_users($delete_id) {
+    function delete_users($delete_id) {
 
         $this->db->trans_start();
         $this->db->where_in('ID', $delete_id);
@@ -21,7 +21,7 @@ class Users_model extends CI_Model{
         }
     }
 
-    public function create_user($user_register) {
+    function create_user($user_register) {
 
         $this->db->trans_start();
         $this->db->set('user_registered', 'NOW()', FALSE);
@@ -42,13 +42,13 @@ class Users_model extends CI_Model{
         }
     }
 
-    public function get_user($userid) {
+    function get_user($userid) {
         $query = $this->db->get_where('lex_users', array('ID' => $userid));
         $result = $query->result();
         return $result;
     }
 
-    public function edit_user($userid, $data) {
+    function edit_user($userid, $data) {
         $this->db->where('ID', $userid);
         $this->db->update('lex_users', $data);
         if ($this->db->affected_rows() >= 0) {
