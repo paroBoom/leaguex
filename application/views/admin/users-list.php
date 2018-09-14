@@ -48,7 +48,7 @@
                                         <th><?php echo lang('bkuserslist_dtcolumn_email'); ?></th>
                                         <th><?php echo lang('bkuserslist_dtcolumn_registration_date'); ?></th>
                                         <th><?php echo lang('bkuserslist_dtcolumn_last_visite'); ?></th>
-                                        <th>Action</th>
+                                        <th><?php echo lang('datatables_dtcolumn_actions'); ?></th>
                                     </tr>
                                 </thead>
                             </table>
@@ -74,7 +74,22 @@
                         <a href="javascript:void(0)" data-dismiss="modal" aria-label="Close"><i class="mdi mdi-close text-white"></i></a>
                     </ul> 
                 </div>
-                <div class="modal-body">
+                <div class="modal-body scrollbar">
+                    <!-- Modal loader -->
+                    <div class="page-loader">
+                        <div class="loader">
+                            <div class="preloader">
+                                <div class="spinner-page">
+                                    <div class="circle-wrap left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-wrap right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group input-group mt-0">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="mdi mdi-account"></i></span>
