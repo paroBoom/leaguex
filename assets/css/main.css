@@ -45,7 +45,7 @@ a:hover {
     text-decoration: none; 
 }
 i {
-    color: #333;
+    color: #6C7C83;
 }
 .highlight {
     background-color: #eceff1!important;
@@ -87,6 +87,33 @@ p.description {
     font-weight: 600;
     font-size: 13px;
     width: 100%;
+}
+body::-webkit-scrollbar-thumb,
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 1px 1px 1px 6px;
+    min-height: 28px;
+    padding: 100px 0 0;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.1), inset 0 -1px 0 rgba(0,0,0,0.07);
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,0.1), inset 0 -1px 0 rgba(0,0,0,0.07);
+}
+body::-webkit-scrollbar-track,
+.sidebar-wrapper::-webkit-scrollbar-track {
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 0 0 0 4px;
+}
+body::-webkit-scrollbar,
+.sidebar-wrapper::-webkit-scrollbar {
+    height: 16px;
+    overflow: visible;
+    width: 16px;
+}
+body::-webkit-scrollbar-corner,
+.sidebar-wrapper::-webkit-scrollbar-corner {
+    background: transparent;
 }
 
 /*-----------------------------------------
@@ -418,6 +445,17 @@ table.dataTable tbody td a.edit-icon:hover:before {
     left: 10px;
     z-index: 1005;
 }
+.sidebar-left .sidebar-wrapper {
+    position: relative;
+    width: 240px;
+    margin-top: 4px;
+    z-index: 4;
+    transition: all .3s;
+    max-height: calc(100vh - 75px);
+    min-height: 100%;
+    overflow-y: auto;
+
+}
 .sidebar-left .sidebar-inner {
     padding-top: 0;
     padding-bottom: 55px;
@@ -613,7 +651,9 @@ form {
 .bmd-form-group input::placeholder {
     color: rgba(0,0,0,.26);
 }
-.is-focused [class*=" bmd-label"], .is-focused [class^=bmd-label] {
+.is-focused [class*=" bmd-label"],
+.is-focused [class^=bmd-label],
+.has-success.is-focused [class^=bmd-label]  {
     color: #4236dd;
 }
 .custom-file-control, .form-control, .is-focused .custom-file-control, .is-focused .form-control {
@@ -626,12 +666,12 @@ form {
     margin-left: 50px;
 }
 .input-group-text {
-    padding: 0 15px;
+    padding: 0 15px 0 8px;
     border: none;
 }
 .input-group .form-control-feedback {
     width: 100%;
-    padding-left: 50px;
+    padding-left: 44px;
 }
 .dropdown-toggle::after {
     display:none
@@ -994,7 +1034,8 @@ button.btn-loader::before{
     -webkit-animation: btnloader 1s ease-in-out infinite;
     animation: btnloader 1s ease-in-out infinite;
 }
-.btn-primary.custom-file-control:before, .btn.btn-primary, .btn.btn-primary:hover {
+.btn-primary.custom-file-control:before, .btn.btn-primary, .btn.btn-primary:hover,
+.has-success [class*=" bmd-label"], .has-success [class^=bmd-label] {
     color: #4236dd;
 }
 .checkbox label input[type=checkbox]:checked+.checkbox-decorator .check,
@@ -1485,8 +1526,12 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
     border-radius: 2px;
     box-shadow: 0 1px 2px rgba(0,0,0,.07);
 }
-.auth-wrapper .container-auth h3 {
-    font-weight: 500;
+.auth-wrapper .container-auth .logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.auth-wrapper .container-auth .logo img {
+    width: 80px;
 }
 .auth-wrapper .container-auth .form-recovery {
     align-items: center;
@@ -1535,6 +1580,9 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
         left: 0;
         right: 0;
         overflow: hidden !important;
+    }
+    .modal-body {
+        overflow-y: auto;
     }
     .modal .modal-dialog:not(.modal-sm) {
         position: fixed;
@@ -1631,11 +1679,13 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
         margin-right: 8px;
     }
     /* Sidebar */
-    .sidebar_mini .sidebar-left {
+    .sidebar_mini .sidebar-left,
+    .sidebar_mini .sidebar-wrapper {
         width: 75px;
         transition: all .3s;
     }
-    .sidebar_mini.sidebar_mini_hover .sidebar-left {
+    .sidebar_mini.sidebar_mini_hover .sidebar-left,
+    .sidebar_mini.sidebar_mini_hover .sidebar-wrapper {
         width: 240px;
     }
     .sidebar_mini .sidebar-left .sb-club {
