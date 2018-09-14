@@ -9,10 +9,9 @@
     $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
     $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function() {
         $('.tooltip').addClass('scale').css('opacity', 1);
-    }); 
-
+    });
+        
     /* Select dropdownjs */
-    
     $('.select').dropdown({ 'optionClass': 'ripple' });
     
     /* Animated page transition */ 
