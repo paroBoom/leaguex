@@ -10,7 +10,7 @@ class Dashboard extends MY_Controller {
     }
 
     
-    public function index() {
+    function index() {
         
         if (!is_logged_in() OR !is_admin()) { redirect('home','refresh'); }
 

@@ -12,7 +12,7 @@ class Home extends MY_Controller {
     }
 
     
-    public function index() {
+    function index() {
         
         if (!is_logged_in()) { redirect('signin','refresh'); }
 

@@ -18,7 +18,7 @@ class Settings extends MY_Controller {
     
     }
     
-    public function index() {
+    function index() {
                   
         $data = array('page_title' => $this->lang->line('adminpage_title_settings_site_options'), 'page_view' => 'admin/site-config/site-options', 'folder' => 'admin');
         
@@ -103,6 +103,7 @@ class Settings extends MY_Controller {
         $emailTest = $this->input->post('testemail');
         date_default_timezone_set('GMT');        
         $this->load->library('email');
+        $this->email->set_mailtype('html');
         $this->email->from($email, $name);
         $this->email->to($emailTest); 	
         $this->email->subject($this->lang->line('bksettings_emailoptions_test_object_mail'));

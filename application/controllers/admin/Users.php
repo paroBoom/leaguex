@@ -19,7 +19,7 @@ class Users extends MY_Controller {
     }
 
     
-    public function index() {
+    function index() {
         
         $data = array('page_title' => $this->lang->line('adminpage_title_users'), 'page_view' => 'admin/users-list', 'folder' => 'admin');
         $this->_render($data);
@@ -27,7 +27,7 @@ class Users extends MY_Controller {
     }
     
     // Display users
-    public function get_users() {
+    function get_users() {
 
         $this->datatables->select('ID, user_name, user_permission, user_email, user_registered, la_time')
              ->from('lex_users')
@@ -38,7 +38,7 @@ class Users extends MY_Controller {
 
     }
 
-    public function get_user() {
+    function get_user() {
 
         $userid = $this->input->post('userid');
         $result = $this->users->get_user($userid);
@@ -64,7 +64,7 @@ class Users extends MY_Controller {
     }
 
     // Add new user
-    public function create_user() {
+    function create_user() {
 
         $output = array('error' => false);
 
@@ -87,7 +87,7 @@ class Users extends MY_Controller {
     }
 
     // Edit user
-    public function edit_user() {
+    function edit_user() {
 
         $userid = $this->input->post('userid');
         $output = array('error' => false);
@@ -139,7 +139,7 @@ class Users extends MY_Controller {
         
     }
 
-    public function echeck_username() {
+    function echeck_username() {
 
         $userid = $this->input->post('userid');
         $isAvailable = true;        
@@ -154,7 +154,7 @@ class Users extends MY_Controller {
     
     }
         
-    public function echeck_email() {
+    function echeck_email() {
 
         $userid = $this->input->post('userid');
         $isAvailable = true; 
