@@ -59,6 +59,7 @@ $route['logout'] = 'user/logout';
 $route['recovery'] = 'user/recovery';
 
 $route['admin/userslist'] = 'admin/users/index';
+$route['admin/clubslist'] = 'admin/clubs/index';
 $route['admin/siteoptions'] = 'admin/settings/index';
 $route['admin/emailoptions'] = 'admin/settings/email_options';
 
