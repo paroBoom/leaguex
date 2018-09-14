@@ -13,13 +13,17 @@ $lang['adminpage_title_dashboard'] = "Dashboard";
 $lang['adminpage_title_settings_site_options'] = "Site settings";
 $lang['adminpage_title_settings_email_options'] = "Email settings";
 $lang['adminpage_title_users'] = "Manage users";
+$lang['adminpage_title_clubs'] = "Manage clubs";
 
 // DATATABLES
+$lang['datatables_language'] = "";
 $lang['datatables_filter_placeholder'] = "Search...";
 $lang['datatables_item_selected'] = "item";
 $lang['datatables_items_selected'] = "items";
 $lang['datatables_row_selected'] = "selected";
 $lang['datatables_rows_selected'] = "selected";
+$lang['datatables_dtcolumn_created'] = "Created";
+$lang['datatables_dtcolumn_actions'] = "Actions";
 
 // MODAL
 $lang['modal_button_confirm'] = "Confirm";
@@ -62,6 +66,7 @@ $lang['adminsbar_menu_home'] = "Dashboard";
 $lang['adminsbar_menu_settings'] = "Settings";
 $lang['adminsbar_submenu_site_options'] = "Site options";
 $lang['adminsbar_menu_users'] = "Users";
+$lang['adminsbar_menu_clubs'] = "Clubs";
 
 //------------------------------------------------------------------------------
 // FORM
@@ -71,9 +76,10 @@ $lang['adminsbar_menu_users'] = "Users";
 $lang['form_label_username'] = "Username";
 $lang['form_label_email'] = "Email";
 $lang['form_label_password'] = "Password";
-$lang['form_label_confirm_password'] = "Confirm Password";
-$lang['form_label_birthday'] = "Your date of birth";
+$lang['form_label_confirm_password'] = "Confirm password";
+$lang['form_label_birthday'] = "Date of birth";
 $lang['form_label_permission'] = "Role";
+$lang['form_label_club_name'] = "Club name";
 
 
 // FORM VALIDATION REMOTE MESSAGES 
@@ -155,7 +161,7 @@ $lang['bksettings_emailoptions_test_object_mail'] = "SMTP test";
 $lang['bksettings_emailoptions_test_text_mail'] = "Congratulations! <br/><br/> Now you can use the SMTP protocol to send emails.";
 
 // USERS LIST
-$lang['bkuserslist_header_title'] = "Users";
+$lang['bkuserslist_header_title'] = "Manage Users";
 $lang['bkuserslist_dtcolumn_username'] = "Username";
 $lang['bkuserslist_dtcolumn_role'] = "Role";
 $lang['bkuserslist_dtcolumn_email'] = "Email";
@@ -166,3 +172,9 @@ $lang['bkuserslist_modal_delete_users'] = "Are you sure that you want to delete 
 $lang['bkuserslist_modal_title'] = "Add new user";
 $lang['bkuserslist_modal_edit_title'] = "Edit user";
 $lang['bkuserslist_alert_new_user'] = "New user added.";
+
+// CLUBS LIST
+$lang['bkclubslist_header_title'] = "Manage Clubs";
+$lang['bkclubslist_dtcolumn_clubname'] = "Club";
+$lang['bkclubslist_modal_title'] = "Add new club";
+$lang['bkuclubslist_alert_new_club'] = "New club added.";

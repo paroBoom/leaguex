@@ -14,13 +14,17 @@ $lang['adminpage_title_dashboard'] = "Dashboard";
 $lang['adminpage_title_settings_site_options'] = "Impostazioni generali";
 $lang['adminpage_title_settings_email_options'] = "Impostazioni email";
 $lang['adminpage_title_users'] = "Gestisci utenti";
+$lang['adminpage_title_clubs'] = "Gestisci club";
 
 // DATATABLES
+$lang['datatables_language'] = "../assets/js/vendor/datatables/languages/italian.json";
 $lang['datatables_filter_placeholder'] = "Cerca...";
 $lang['datatables_item_selected'] = "oggetto";
 $lang['datatables_items_selected'] = "oggetti";
 $lang['datatables_row_selected'] = "selezionato";
 $lang['datatables_rows_selected'] = "selezionati";
+$lang['datatables_dtcolumn_created'] = "Data Creazione";
+$lang['datatables_dtcolumn_action'] = "Azioni";
 
 // MODAL
 $lang['modal_button_confirm'] = "Conferma";
@@ -63,6 +67,7 @@ $lang['adminsbar_menu_home'] = "Dashboard";
 $lang['adminsbar_menu_settings'] = "Impostazioni";
 $lang['adminsbar_submenu_site_options'] = "Generali";
 $lang['adminsbar_menu_users'] = "Utenti";
+$lang['adminsbar_menu_clubs'] = "Club";
 
 //------------------------------------------------------------------------------
 // FORM
@@ -72,9 +77,10 @@ $lang['adminsbar_menu_users'] = "Utenti";
 $lang['form_label_username'] = "Username";
 $lang['form_label_email'] = "Email";
 $lang['form_label_password'] = "Password";
-$lang['form_label_confirm_password'] = "Conferma Password";
-$lang['form_label_birthday'] = "La Tua Data di Nascita";
+$lang['form_label_confirm_password'] = "Conferma password";
+$lang['form_label_birthday'] = "Data di nascita";
 $lang['form_label_permission'] = "Permessi";
+$lang['form_label_club_name'] = "Nome club";
 
 // FORM VALIDATION REMOTE MESSAGES 
 $lang['formvalidation_check_username'] = "Questo username &#232; gi&#224; utilizzato";
@@ -112,7 +118,7 @@ $lang['recovery_button_send'] = "Recupera password";
 $lang['recovery_alert_success'] = "Abbiamo inviato un&#8217;email all&#8217;indirizzo indicato. Verifica la tua posta e procedi al login.";
 $lang['recovery_alert_error'] = "L&#8217;email inserita non corrisponde a nessun account.";
 $lang['recovery_object_mailreset'] = "Modifica Password";
-$lang['recovery_text_mailreset'] = "Ciao %s, la tua password di accesso &#232; stata modificata. <br/><br/> Ecco la tua nuova password";
+$lang['recovery_text_mailreset'] = "Ciao %s, la tua password di accesso &#232; stata modificata. <br/><br/> Accedi con la tua nuova password";
 
 //------------------------------------------------------------------------------
 // BACKEND PAGES
@@ -155,7 +161,7 @@ $lang['bksettings_emailoptions_test_object_mail'] = "SMTP test";
 $lang['bksettings_emailoptions_test_text_mail'] = "Ottimo! <br/><br/> Ora puoi utilizzare il protocollo SMTP per l'invio di email.";
 
 // USERS LIST
-$lang['bkuserslist_header_title'] = "Utenti";
+$lang['bkuserslist_header_title'] = "Gestione Utenti";
 $lang['bkuserslist_dtcolumn_username'] = "Username";
 $lang['bkuserslist_dtcolumn_role'] = "Ruolo";
 $lang['bkuserslist_dtcolumn_email'] = "Email";
@@ -165,3 +171,9 @@ $lang['bkuserslist_modal_delete_users'] = "Sei sicuro di voler rimuovere questo 
 $lang['bkuserslist_modal_title'] = "Crea nuovo utente";
 $lang['bkuserslist_modal_edit_title'] = "Modifica utente";
 $lang['bkuserslist_alert_new_user'] = "Nuovo utente creato.";
+
+// CLUBS LIST
+$lang['bkclubslist_header_title'] = "Gestione Club";
+$lang['bkclubslist_dtcolumn_clubname'] = "Club";
+$lang['bkclubslist_modal_title'] = "Crea nuovo club";
+$lang['bkuclubslist_alert_new_club'] = "Nuovo club creato.";
