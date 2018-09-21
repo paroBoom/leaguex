@@ -91,7 +91,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="mdi mdi-shield"></i></span>
                         </div>
-                        <input type="text" class="form-control" name="clubname" placeholder="<?php echo lang('form_label_club_name'); ?>">
+                        <input type="text" class="form-control" name="clubname" placeholder="<?php echo lang('form_label_clubname'); ?>">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -104,14 +104,14 @@
 
 </div>
 
-<!-- Modal Edit User -->
-<div class="modal fade" id="bkEditUser" tabindex="-1" role="dialog">
+<!-- Modal Edit Club -->
+<div class="modal fade" id="bkEditClub" tabindex="-1" role="dialog">
 
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form action="<?php echo site_url("admin/users/edit_user"); ?>" method="post" id="editUserForm" autocomplete="off" novalidate="novalidate">
+            <form action="<?php echo site_url("admin/clubs/edit_club"); ?>" method="post" id="editClubForm" autocomplete="off" novalidate="novalidate">
                 <div class="modal-header">
-                    <h4 class="modal-title"><?php echo lang('bkuserslist_modal_edit_title'); ?></h4>
+                    <h4 class="modal-title"><?php echo lang('bkclubslist_modal_edit_title'); ?></h4>
                     <ul class="heading-actions">
                         <a href="javascript:void(0)" data-dismiss="modal" aria-label="Close"><i class="mdi mdi-close text-white"></i></a>
                     </ul> 
@@ -132,42 +132,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group input-group mt-0">
+                    <div class="form-group input-group pad-img mt-0">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="mdi mdi-account"></i></span>
+                            <div class="input-group-text">
+                                <div class="custom-upload rounded-img">
+                                    <div class="loader-preview" data-id="" data-img="<?php echo site_url("assets/img/club-logo");?>" data-url="<?php echo site_url("admin/clubs/do_upload");?>" id="img-preview"></div>
+                                    <div class="upload-preview">
+                                        <img id="thumbImg" src="" alt="logo">
+                                        <input type="hidden" id="img-ghost" name="img-ghost" value="">
+                                        <div class="upload-infos" id="upload">
+                                            <div class="upload-infos-inner"><i class="mdi mdi-camera text-white"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <input type="text" class="form-control" name="username" placeholder="<?php echo lang('form_label_username'); ?>">
-                    </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="mdi mdi-email"></i></span>
-                        </div>
-                        <input type="text" class="form-control" name="email" placeholder="<?php echo lang('form_label_email'); ?>">
-                    </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="mdi mdi-account-key"></i></span>
-                        </div>
-                        <select class="select form-control" name="permission"></select>
-                    </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="mdi mdi-lock"></i></span>
-                        </div>
-                        <input type="password" class="form-control" name="newpassword" autocomplete="new-password" placeholder="<?php echo lang('form_label_password'); ?>">
-                        <input type="hidden" class="form-control" name="password">
-                    </div>
-                    <div class="form-group input-group mb-0">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="mdi mdi-cake-variant"></i></span>
-                        </div>
-                        <input type="text" class="form-control format" name="birthDay" placeholder="<?php echo lang('form_label_birthday'); ?>">
+                        <input type="text" class="form-control" name="clubname" placeholder="<?php echo lang('form_label_clubname'); ?>">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary"><?php echo lang('modal_button_confirm'); ?></button>
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
-                    <input type="hidden" value="" name="userid">
+                    <input type="hidden" value="" name="clubid">
                 </div>
             </form>
         </div>
@@ -183,10 +169,27 @@
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo lang('modal_title'); ?></h4>
             </div>
-            <div class="modal-body"><p><?php echo lang('bkuserslist_modal_delete_users'); ?></p></div>
+            <div class="modal-body"><p><?php echo lang('bkclubslist_modal_delete_clubs'); ?></p></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="btn-confirm"><?php echo lang('modal_button_confirm'); ?></button>
                 <button type="button" class="btn btn-default" id="btn-delete" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal Image Alert -->
+<div class="modal fade" id="imageError" tabindex="-1" role="dialog">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><?php echo lang('modal_title'); ?></h4>
+            </div>
+            <div class="modal-body"><p></p></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn-delete" data-dismiss="modal"><?php echo lang('modal_button_ok'); ?></button>
             </div>
         </div>
     </div>

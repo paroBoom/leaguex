@@ -561,7 +561,7 @@
                     },
                 },
                 {'data': 'club_id', 'visible': false, 'searchable':false},
-                {'data': 'club_name'},
+                {'data': 'clubinfo', 'className': 'all'},
                 {'data': 'club_registered',
                     'render': function(data){
                         return (moment(data).format('DD/MM/YYYY'));
@@ -640,6 +640,142 @@
 
             })
         
+        }
+
+        // Edit club
+        $('#bkEditClub').on('show.bs.modal', function(e){
+            $('.modal-body .page-loader').show();
+            var id = $(e.relatedTarget).data('id'); 
+            $.ajax({
+                url: 'clubs/get_club',
+                type: 'POST',
+                dataType: 'json',
+                data: 'clubid=' + id,
+                success: function(response) {
+                    if(response.success) {
+                        $('.modal-body .page-loader').fadeOut();
+                        var dataclub = response.dataclub;
+                        $('#thumbImg').attr('src', site_url+'assets/img/club-logo/'+ dataclub.clublogo +'');
+                        $('#img-preview').attr('data-id', dataclub.clubid);
+                        $(e.currentTarget).find('input[name=img-ghost]').val(dataclub.clublogo);
+                        $(e.currentTarget).find('input[name=clubid]').val(dataclub.clubid);
+                        $(e.currentTarget).find('input[name=clubname]').val(dataclub.clubname);
+                    }
+                }
+            })           
+        }).on('hide.bs.modal', function(e){
+            $('#editClubForm').formValidation('resetForm', true);
+        })
+
+        if($('#editClubForm').length && $.fn.formValidation) {
+
+            $('#editClubForm').formValidation({            
+                framework: 'bootstrap4',
+                live: 'submitted',
+                locale: fvlang,
+                fields: {
+                   clubname: {
+                        validators: {
+                            notEmpty: {},
+                            stringLength: {min:4, max:30},
+                        }
+                    }
+                }
+            })
+            .on('err.validator.fv', function(e, data) {
+
+            if((data.field === 'clubname')) {
+                data.element.data('fv.messages').find('.help-block[data-fv-for="' + data.field + '"]').hide().filter('[data-fv-validator="' + data.validator + '"]').show();
+            }
+
+            })
+            .off('success.form.fv')
+            .on('success.form.fv', function(e) {
+                $('.modal-body .page-loader').show();
+                e.preventDefault();
+
+                var $form = $(e.target);
+                
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    data: $form.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+
+                        if(response.error){
+                            $.notify({message: response.message});
+                        } else {
+                            $form.formValidation('resetForm', true);
+                            clubstable.ajax.reload(tableCallback);
+                            $('.modal-body .page-loader').fadeOut();
+                            $('#bkEditClub').modal('hide');
+                            $.notify({message: response.message});
+                        }
+                    
+                    }
+                })
+
+            })
+        
+        }
+
+        // Delete clubs
+        var clubDelete = function(callback){
+            
+            $('#btnDelete').on('click', function(){
+                $('#confirmDelete').modal('show');
+            });
+            $("#btn-confirm").on("click", function(){
+                callback(true);
+                $("#confirmDelete").modal('hide');
+              });
+            $('#btn-delete').on('click', function(){
+                callback(false);
+                $('#confirmDelete').modal('hide');
+            })
+            
+        };
+
+        clubDelete(function(confirm){
+            if(confirm){
+                success();
+                setTimeout(function(){
+                    $('.check-cell input[id*=checkboxID][type=checkbox]:checked').each(function(){
+                        $(this).prop('checked', false);
+                        $(this).closest('tr').fadeOut();
+                        $('.card-delete').fadeOut();
+                        clubstable.ajax.reload(tableCallback);
+                    })
+                    if($('#dt-select-all').is(':checked')){
+                        $('#dt-select-all').prop('checked', false);
+                    };
+                    $('.card-delete .text-delete').text('');
+                }, 600)    
+            }
+        })
+        
+        function success(){
+            $.ajax({
+                url: 'clubs/delete_clubs',
+                type: 'POST',
+                dataType: 'json',
+                data: $('.check-cell input[name="id[]"][type=checkbox]:checked').serialize(),
+                success: function(response) {
+                    if(response.error){
+                        $.notify({message: response.message});
+                    } else {
+                        $.notify({
+                            message: response.message,
+                        },{
+                            type: 'custom',
+                            template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-md-6 alert alert-{0}" role="alert">' +
+                            '<span data-notify="message">{2}</span>' +   
+                            '</div>'
+                        });    
+                    }
+                }
+            });
         }
 
     }

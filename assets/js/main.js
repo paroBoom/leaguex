@@ -107,5 +107,55 @@
     $('.nav-item a, .club-info a').on('click', function() {
         $(this).parent().find('.collapse').hasClass('show') ? $(this).parent().removeClass('submenu_open') : $(this).parent().addClass('submenu_open') 
     })
+
+    // Images upload
+    if($('.upload-preview').length) {
+
+        var button = $('#upload');
+        var thumb = $('#thumbImg');
+        var preview = $('.loader-preview');
+        var id = $('#img-preview').attr('data-id');
+        var url = $('#img-preview').attr('data-url');
+        var tmp = $('#img-preview').attr('data-img');
+
+        new AjaxUpload(button, {
+            action: url,
+            responseType: 'json',
+            onSubmit: function(file, ext) {
+
+                if(ext && /^(jpg|png|jpeg|gif)$/.test(ext)) {
+                    this.setData({'key': id});
+                    thumb.hide();
+                    preview.show();
+                } else {
+                    $('#imageError').modal('show');
+                    $('.modal-body p').html(imgType);
+                    return false;
+                }
+               
+            },
+            onComplete: function(file, json) {
+                    
+                    if(json['error']) {
+                        $('#imageError').modal('show');
+                        $('.modal-body p').html(json['error']);
+                        preview.hide();
+                        thumb.show();
+                        return false;
+                    }
+
+                    if(json['success']) {
+                        var image = tmp + '/' + json['photo_file'];
+                        var img_ghost = $('#img-ghost');
+                        img_ghost.val(json['photo_file']);
+                        thumb.attr('src', image);
+                        preview.hide();
+                        thumb.fadeIn(400);
+                    }
+                
+            }
+        })
+
+    }
     
 })(jQuery);

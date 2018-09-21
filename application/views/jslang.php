@@ -14,5 +14,6 @@ var selUG1 = '<?php echo lang('sel_user_group_1');?>';
 var selUG2 = '<?php echo lang('sel_user_group_2');?>';
 var selUG3 = '<?php echo lang('sel_user_group_3');?>';
 var selUG4 = '<?php echo lang('sel_user_group_4');?>';
+var imgType = '<?php echo lang('alert_image_type');?>'; 
 
 </script>

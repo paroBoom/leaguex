@@ -12,9 +12,10 @@
 8. Typography 
 9. Alert, tooltips, modal
 10. Loader, progress bar
-11. Auth Section
-12. Elements with ripple effect disabled 
-13. Media Queries
+11. Images
+12. Auth Section
+13. Elements with ripple effect disabled 
+14. Media Queries
 
 
 /*-----------------------------------------
@@ -673,6 +674,9 @@ form {
     width: 100%;
     padding-left: 44px;
 }
+.input-group.pad-img .form-control-feedback {
+    padding-left: 73px;
+}
 .dropdown-toggle::after {
     display:none
 }
@@ -956,6 +960,14 @@ table.dataTable thead .sorting_desc_disabled {
 }
 .card.material-table table.dataTable>tbody>tr.child span.dtr-title {
     font-size: 12px;
+}
+.card.material-table table.dataTable>tbody>tr>td>img {
+    width: 40px;
+    float: left;
+}
+.card.material-table table.dataTable>tbody>tr>td>.img-cell {
+    display: block;
+    margin-left: 55px;
 }
 .mdl-button {
     background: 0 0;
@@ -1507,6 +1519,126 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
     width: 100%;
     padding-top: 45px;
     text-align: center;
+}
+
+/*-----------------------------------------
+    Images
+------------------------------------------*/
+.custom-upload {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 2px solid #E5E5E5;
+    -webkit-transition: border-color .15s linear;
+    transition: border-color .15s linear; 
+}
+.custom-upload .loader-preview {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: none;
+    z-index: 9;
+}
+.custom-upload .upload-preview {
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+.custom-upload .upload-preview img {
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: #FFF;
+    -webkit-transition: border-color .15s linear;
+    transition: border-color .15s linear;
+}
+.custom-upload .upload-preview .upload-infos {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    background: rgba(0,0,0,.6);
+    opacity: 0;
+    -webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+}
+.custom-upload .upload-preview .upload-infos .upload-infos-inner {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-40%);
+    transform: translate(0,-40%);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    width: 100%;
+    padding: 0 20px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.custom-upload.rounded-img .upload-preview .upload-infos .upload-infos-inner {
+    top: 45%;
+    padding: 0;
+}
+.custom-upload.rounded-img .loader-preview {
+    top: 13px;
+    right: 13px;
+} 
+.custom-upload .upload-preview .upload-infos.hover {
+    opacity: 1;
+}
+.custom-upload.rounded-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 0 2px grey;
+}
+.custom-upload .loader-preview:after {
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: rotate .6s linear infinite;
+    animation: rotate .6s linear infinite;
+    border-radius: 100%;
+    border-top: 1px solid #E5E5E5;
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #E5E5E5;
+    border-right: 1px solid #333;
+    content: '';
+}
+@-webkit-keyframes rotate {
+    0% {
+      -webkit-transform: rotateZ(-360deg);
+              transform: rotateZ(-360deg); }
+    100% {
+      -webkit-transform: rotateZ(0deg);
+              transform: rotateZ(0deg); } 
+}
+@keyframes rotate {
+    0% {
+      -webkit-transform: rotateZ(-360deg);
+              transform: rotateZ(-360deg); }
+    100% {
+      -webkit-transform: rotateZ(0deg);
+              transform: rotateZ(0deg); } 
 }
 
 /*-----------------------------------------

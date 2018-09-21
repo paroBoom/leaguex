@@ -122,7 +122,7 @@ class Users extends MY_Controller {
     }
 
     // Delete users
-    function delete_users(){
+    function delete_users() {
 
         $output = array('error' => false);
 
