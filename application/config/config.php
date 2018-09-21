@@ -529,4 +529,4 @@ $config['proxy_ips'] = '';
 */
 $config['header_css'] = array('css/fonts.css','css/vendor.min.css','css/main.css');
 $config['header_js']  = array('');
-$config['footer_js']  = array('js/vendor/jquery-3.3.1.min.js','js/vendor/popper.min.js','js/vendor/arrive.min.js','js/vendor/bootstrap-material-design.min.js','js/vendor/bootstrap-notify.min.js','js/vendor/jquery.dropdown.js','js/main.js','js/vendor/formvalidation/formValidation.min.js','js/vendor/formvalidation/bootstrap4.min.js','js/vendor/formvalidation/language/it_IT.js');
+$config['footer_js']  = array('js/vendor/jquery-3.3.1.min.js','js/vendor/popper.min.js','js/vendor/arrive.min.js','js/vendor/bootstrap-material-design.min.js','js/vendor/ajaxupload.js','js/vendor/bootstrap-notify.min.js','js/vendor/jquery.dropdown.js','js/main.js','js/vendor/formvalidation/formValidation.min.js','js/vendor/formvalidation/bootstrap4.min.js','js/vendor/formvalidation/language/it_IT.js');
