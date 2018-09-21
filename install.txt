@@ -1,0 +1,22 @@
+﻿LEAGUEX INSTALLAZIONE ALPHA V (IT)
+
+
+1. Creare un nuovo database e importare il file database.sql;
+2. Aprire il file database.php che si trova nel seguente percorso: leaguex > application > config;
+3. Modificare le seguenti voci con i dati del database: ‘hostname’, ‘username’, ‘password’, ‘database’ e salvare il file;
+4. Aprire il file config.php che si trova nel seguente percorso: leaguex > application > config;
+5.  Modificare la seguente voce con il percorso url: $config[‘base_url’] = ‘http://localhost/leaguex/’ e salvare il file;
+6.  Eseguire il login con i seguenti dati: email = admin@leaguex.com, password = password.
+
+
+
+
+LEAGUEX INSTALL ALPHA V (ENG)
+
+
+1. Create a new database and import the database.sql file;
+2. Open the database.php file located in the following path: leaguex > application > config;
+3. Change the following lines with the database data: 'hostname', 'username', 'password', 'database' and save the file;
+4. Open the config.php file located in the following path: leaguex > application > config;
+5. Change the following line with the url path: $ config ['base_url'] = 'http://localhost/leaguex/' and save the file;
+6. Log in with the following information: email = admin@leaguex.com, password = password.
