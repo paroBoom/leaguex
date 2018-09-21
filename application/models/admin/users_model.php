@@ -14,6 +14,7 @@ class Users_model extends CI_Model{
         $this->db->where_not_in('la_user_id', '1');
         $this->db->delete('lex_last_activity'); 
         $this->db->trans_complete();  
+
         if ($this->db->trans_status() === FALSE){           
             return FALSE;
         } else {
@@ -43,19 +44,24 @@ class Users_model extends CI_Model{
     }
 
     function get_user($userid) {
+
         $query = $this->db->get_where('lex_users', array('ID' => $userid));
         $result = $query->result();
         return $result;
+
     }
 
     function edit_user($userid, $data) {
+
         $this->db->where('ID', $userid);
         $this->db->update('lex_users', $data);
+
         if ($this->db->affected_rows() >= 0) {
             return TRUE;
             } else {
             return FALSE;
         }
+        
     }
 
 }
