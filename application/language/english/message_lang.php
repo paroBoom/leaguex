@@ -28,12 +28,20 @@ $lang['datatables_dtcolumn_actions'] = "Actions";
 // MODAL
 $lang['modal_button_confirm'] = "Confirm";
 $lang['modal_button_cancel'] = "Cancel";
+$lang['modal_button_ok'] = "Ok, I see";
 $lang['modal_title'] = "Advise";
 
 // ALERT MESSAGES
 $lang['alert_saved_changes'] = "Saved changes.";
 $lang['alert_error'] = "Something not working.";
 $lang['alert_banned_user'] = "Your account has been blocked. Contact an administrator.";
+$lang['alert_image_type'] = "This file is not allowed!";
+$lang['alert_image_max_width'] = "Image width is too big (max %s)";
+$lang['alert_image_max_height'] = "Image height is too big (max %s)";
+$lang['alert_image_max_width_height'] = "Image width and height too big (max %s x %s)";
+$lang['alert_image_min_width'] = "Image width is too small (min %s)";
+$lang['alert_image_min_height'] = "Image height is too small (min %s)";
+$lang['alert_image_min_width_height'] = "Image width and height too small (min %s x %s)";
 
 // TOOLTIP
 $lang['tt_save'] = "Save";
@@ -79,7 +87,7 @@ $lang['form_label_password'] = "Password";
 $lang['form_label_confirm_password'] = "Confirm password";
 $lang['form_label_birthday'] = "Date of birth";
 $lang['form_label_permission'] = "Role";
-$lang['form_label_club_name'] = "Club name";
+$lang['form_label_clubname'] = "Club name";
 
 
 // FORM VALIDATION REMOTE MESSAGES 
@@ -177,4 +185,6 @@ $lang['bkuserslist_alert_new_user'] = "New user added.";
 $lang['bkclubslist_header_title'] = "Manage Clubs";
 $lang['bkclubslist_dtcolumn_clubname'] = "Club";
 $lang['bkclubslist_modal_title'] = "Add new club";
-$lang['bkuclubslist_alert_new_club'] = "New club added.";
+$lang['bkclubslist_modal_edit_title'] = "Edit club";
+$lang['bkclubslist_modal_delete_clubs'] = "Are you sure that you want to delete this club ?";
+$lang['bkclubslist_alert_new_club'] = "New club added.";

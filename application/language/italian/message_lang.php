@@ -24,17 +24,25 @@ $lang['datatables_items_selected'] = "oggetti";
 $lang['datatables_row_selected'] = "selezionato";
 $lang['datatables_rows_selected'] = "selezionati";
 $lang['datatables_dtcolumn_created'] = "Data Creazione";
-$lang['datatables_dtcolumn_action'] = "Azioni";
+$lang['datatables_dtcolumn_actions'] = "Azioni";
 
 // MODAL
 $lang['modal_button_confirm'] = "Conferma";
 $lang['modal_button_cancel'] = "Cancella";
+$lang['modal_button_ok'] = "Ok, ho capito";
 $lang['modal_title'] = "Avviso";
 
 // ALERT MESSAGES
 $lang['alert_saved_changes'] = "Modifiche salvate.";
 $lang['alert_error'] = "Qualcosa non ha funzionato.";
 $lang['alert_banned_user'] = "Il tuo account &#232; stato bloccato. Contatta un amministratore.";
+$lang['alert_image_type'] = "Questo file non &#232; consentito!";
+$lang['alert_image_max_width'] = "La larghezza dell'immagine &#232; troppo grande (max %s)";
+$lang['alert_image_max_height'] = "L'altezza dell'immagine &#232; troppo grande (max %s)";
+$lang['alert_image_max_width_height'] = "L'immagine &#232; troppo grande (max %s x %s)";
+$lang['alert_image_min_width'] = "La larghezza dell'immagine &#232; troppo piccola (min %s)";
+$lang['alert_image_min_height'] = "L'altezza dell'immagine &#232; troppo piccola (min %s)";
+$lang['alert_image_min_width_height'] = "L'immagine &#232; troppo piccola (min %s x %s)";
 
 // TOOLTIP
 $lang['tt_save'] = "Salva";
@@ -80,7 +88,7 @@ $lang['form_label_password'] = "Password";
 $lang['form_label_confirm_password'] = "Conferma password";
 $lang['form_label_birthday'] = "Data di nascita";
 $lang['form_label_permission'] = "Permessi";
-$lang['form_label_club_name'] = "Nome club";
+$lang['form_label_clubname'] = "Nome club";
 
 // FORM VALIDATION REMOTE MESSAGES 
 $lang['formvalidation_check_username'] = "Questo username &#232; gi&#224; utilizzato";
@@ -176,4 +184,7 @@ $lang['bkuserslist_alert_new_user'] = "Nuovo utente creato.";
 $lang['bkclubslist_header_title'] = "Gestione Club";
 $lang['bkclubslist_dtcolumn_clubname'] = "Club";
 $lang['bkclubslist_modal_title'] = "Crea nuovo club";
-$lang['bkuclubslist_alert_new_club'] = "Nuovo club creato.";
+$lang['bkclubslist_modal_edit_title'] = "Modifica club";
+$lang['bkclubslist_alert_new_club'] = "Nuovo club creato.";
+$lang['bkclubslist_modal_delete_clubs'] = "Sei sicuro di voler rimuovere questo club ?";
+$lang['bkclubslist_alert_new_club'] = "Nuovo club creato.";
