@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `lex_clubs` (
 CREATE TABLE IF NOT EXISTS `lex_managers` (
   `manager_id` int(11) NOT NULL,
   `manager_user_id` int(11) NOT NULL DEFAULT '0',
-  `manager_team_id` int(11) NOT NULL DEFAULT '0',
+  `manager_club_id` int(11) NOT NULL DEFAULT '0',
   `manager_wallet` int(11) NOT NULL DEFAULT '0',
   `manager_registered` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
