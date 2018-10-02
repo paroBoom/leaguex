@@ -156,5 +156,17 @@ ALTER TABLE `lex_managers`
 --
 ALTER TABLE `lex_users`
   MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
+-- AUTO_INCREMENT per la tabella `lex_clubs`
+--
+ALTER TABLE `lex_clubs`
+  MODIFY `club_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `lex_managers`
+--
+ALTER TABLE `lex_managers`
+  MODIFY `manager_id` int(11) NOT NULL AUTO_INCREMENT;    
 COMMIT;
 
