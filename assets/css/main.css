@@ -90,7 +90,8 @@ p.description {
     width: 100%;
 }
 body::-webkit-scrollbar-thumb,
-.sidebar-wrapper::-webkit-scrollbar-thumb {
+.sidebar-wrapper::-webkit-scrollbar-thumb,
+.dropdown-menu .inner::-webkit-scrollbar-thumb {
     background-color: rgba(0,0,0,0.2);
     background-clip: padding-box;
     border: solid transparent;
@@ -101,19 +102,22 @@ body::-webkit-scrollbar-thumb,
     box-shadow: inset 1px 1px 0 rgba(0,0,0,0.1), inset 0 -1px 0 rgba(0,0,0,0.07);
 }
 body::-webkit-scrollbar-track,
-.sidebar-wrapper::-webkit-scrollbar-track {
+.sidebar-wrapper::-webkit-scrollbar-track,
+.dropdown-menu .inner::-webkit-scrollbar-track {
     background-clip: padding-box;
     border: solid transparent;
     border-width: 0 0 0 4px;
 }
 body::-webkit-scrollbar,
-.sidebar-wrapper::-webkit-scrollbar {
+.sidebar-wrapper::-webkit-scrollbar,
+.dropdown-menu .inner::-webkit-scrollbar {
     height: 16px;
     overflow: visible;
     width: 16px;
 }
 body::-webkit-scrollbar-corner,
-.sidebar-wrapper::-webkit-scrollbar-corner {
+.sidebar-wrapper::-webkit-scrollbar-corner,
+.dropdown-menu .inner::-webkit-scrollbar-corner {
     background: transparent;
 }
 
@@ -389,7 +393,8 @@ table.dataTable tbody td a.edit-icon:hover:before {
 }
 .dropdown-menu {
     border-radius: 2px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);  
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
     margin-top: 6px;
 }
 .dropdown-user {
@@ -816,6 +821,35 @@ select[data-dropdownjs][disabled] + .dropdownjs > input[readonly] {
     left: 15px;
     float: left;
 }
+.dropdown-menu .dropdown-item.active,
+.dropdown-menu .dropdown-item:active {
+    background-color: #eceff1; 
+}
+.bootstrap-select .dropdown-menu {
+    top: -10px !important;
+}
+.bootstrap-select .dropdown-menu .dropdown-item {
+    max-width: 100%;
+}
+.btn.select-custom {
+    font-size: 14px;
+    color: #2d2d2d;
+    text-transform: none;
+    font-weight: inherit;
+    padding-left: 0;
+}
+.btn.select-custom::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+} 
 
 /*-----------------------------------------
     Tables 
@@ -1114,6 +1148,7 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
     font-size: 14px;
     padding: 14px 15px;
     border-radius: 2px;
+    width: 250px;
 }
 .alert-custom a, .alert-custom a:hover{
     position: relative !important;

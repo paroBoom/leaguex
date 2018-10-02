@@ -43,6 +43,9 @@
                 </li>
                 <li class="nav-item <?php if($this->uri->segment(2)=="clubslist"){echo "active";}?>">
                         <a href="<?= site_url().'admin/clubslist'; ?>" class="ripple"><i class="mdi mdi-shield"></i> <p><?php echo lang('adminsbar_menu_clubs'); ?></p></a>
+                </li>
+                <li class="nav-item <?php if($this->uri->segment(2)=="managerslist"){echo "active";}?>">
+                        <a href="<?= site_url().'admin/managerslist'; ?>" class="ripple"><i class="mdi mdi-face"></i> <p><?php echo lang('adminsbar_menu_managers'); ?></p></a>
                 </li>                     
             </ul>
         </div>

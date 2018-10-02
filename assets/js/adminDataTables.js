@@ -2,24 +2,31 @@
     "use strict";
 
     /*----------------------------
-      Datatables Custom Function 
+      Datatables Custom Function
     ------------------------------*/
-    var tableCallback = function(){
+    var filterCallback = function(){
 
-        // Dropdown filter table
-        var $lengthSelect = $('.card.material-table select.form-control.input-sm'); 
-        var tableLength = $lengthSelect.detach();
-        $('#dataTablesLength').append(tableLength);
-        $('.card.material-table select.form-control.input-sm').dropdown({'optionClass': "ripple"});
-        $('#dataTablesLength .dropdownjs .fakeinput').hide();
-        $('#dataTablesLength .dropdownjs ul').addClass('dropdown-menu dropdown-menu-right');
-        
+         // Dropdown filter table
+         var $lengthSelect = $('.card.material-table select.form-control.input-sm');
+         var tableLength = $lengthSelect.detach();
+         $('#dataTablesLength').append(tableLength);
+         $('.card.material-table select.form-control.input-sm').dropdown({'optionClass': "ripple"});
+         $('#dataTablesLength .dropdownjs .fakeinput').hide();
+         $('#dataTablesLength .dropdownjs ul').addClass('dropdown-menu dropdown-menu-right');
+    
+    }
+
+    var tableCallback = function(){
+                
         // Checkbox highlight
         if ($('.check-cell input[id*=checkboxID][type=checkbox]:checked').length == 0) {
             $('.card-delete').hide();
         } else {
             $('.card-delete').show();
-        }    
+        }
+        $('#dt-select-all').on('click', function() {
+          $('.check-cell input:checkbox').not(this).prop('checked', this.checked);
+        })
         $('.check-cell [id*=checkboxID]').on('change', function() {
             var $this = $(this);
             if($('.check-cell input[id*=checkboxID][type=checkbox]:checked').length == $('.check-cell input[id*=checkboxID][type=checkbox]').length){
@@ -48,7 +55,7 @@
             $('.card-delete .text-delete').text(`${checkCount} ${count} ${selected}`);
         })
 
-        $('#dt-select-all').change(function(){
+        $('#dt-select-all').on('change', function(){
             var $this = $(this);
             if($this.is(':checked')){
                 $('.material-table table tbody .check-cell .checkbox input[type=checkbox]').each(function(){
@@ -80,13 +87,13 @@
             cardSearchOpen: 'a[data-card-search="open"]',
             cardSearchClose: 'a[data-card-search="close"]'
         };
-    
+
         // Init search
         var oTable = $('.dataTable').DataTable();
         $('.filter-input').keyup(function() {
             oTable.search($(this).val()).draw();
         });
-    
+
         // Card search
         $(document).on('click', card.cardSearchOpen, function(e) {
             e.preventDefault();
@@ -111,19 +118,17 @@
 
     }
 
-    // Re-init on pagination
+    
     $('.card.material-table').on('page.dt', function() {
-        $('.card.material-table table tbody .check-cell .checkbox input[type=checkbox]').each(function(i) {
+        $('.card.material-table table .check-cell .checkbox input[type=checkbox]').each(function(i) {
           $(this).prop('checked', false);
           $(this).closest("tr").removeClass("highlight");
         });
-        setTimeout(function() {
-          tableCallback();
-        }, 600);
+       
     });
-    
+
     /*----------------------------
-      Datatables General Options 
+      Datatables General Options
     ------------------------------*/
     $.extend(true, $.fn.dataTable.defaults, {
 
@@ -144,9 +149,9 @@
             }
         },
 
-        /* Init Functions */ 
-        initComplete: tableCallback
-         
+        /* Init Functions */
+        initComplete: function() { tableCallback(); filterCallback(); }
+       
     });
 
     /*----------------------------
@@ -163,7 +168,7 @@
             'ajax': site_url + 'admin/users/get_users',
             'responsive': true,
             'columns': [
-                {   
+                {
                     'targets': 0,
                     'searchable':false,
                     'className': 'check-cell',
@@ -171,8 +176,8 @@
                     'orderable':false,
                     'render': function(data){
                             return '<span class="checkbox">' +
-                                '<label>' + 
-                                '<input type="checkbox" id="checkboxID" name="id[]" value="' + $('<div/>').text(data).html() + '">' + 
+                                '<label>' +
+                                '<input type="checkbox" id="checkboxID" name="id[]" value="' + $('<div/>').text(data).html() + '">' +
                                 '</label>' +
                                 '</span>';
                     },
@@ -185,7 +190,7 @@
                         } else {
                             return data.user_name;
                         }
-                    } 
+                    }
                 },
                 {'data': null,
                     'render': function(data){
@@ -214,15 +219,15 @@
                 {'data': 'action', 'searchable': false, 'orderable': false}
             ],
             'order': [[1, 'desc']]
-            
+
         });
-        
+
         // Handle click on "Select all" control
         $('#dt-select-all').on('click', function(){
-        
+
         // Get all rows with search applied
         var rows = userstable.rows({ 'search': 'applied' }).nodes();
-        
+
         // Check/uncheck checkboxes for all rows in the table
         $('input[type="checkbox"]', rows).prop('checked', this.checked);
         });
@@ -241,7 +246,7 @@
                 $(this).attr('placeholder', phbirthday)
             });
 
-            $('#addUserForm').formValidation({            
+            $('#addUserForm').formValidation({
                 framework: 'bootstrap4',
                 live: 'submitted',
                 locale: fvlang,
@@ -256,7 +261,7 @@
                             },
                             notEmpty: {},
                             stringLength: {min:4, max:30},
-                            regexp: {regexp: /^[a-zA-Z0-9\s]+$/}           
+                            regexp: {regexp: /^[a-zA-Z0-9\s]+$/}
                         }
                     },
                     email: {
@@ -266,7 +271,7 @@
                                 url: site_url+ 'user/check_email',
                                 type: 'POST',
                                 delay: 800
-                            },    
+                            },
                             notEmpty: {},
                             regexp: {regexp:'^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'}
                         }
@@ -280,12 +285,12 @@
                     birthDay: {
                         validators: {
                             notEmpty: {},
-                            date: {format: 'DD/MM/YYYY'}               
+                            date: {format: 'DD/MM/YYYY'}
                         }
                     }
                 }
             })
-            .find('[name="birthDay"]').mask('00/00/0000').end() 
+            .find('[name="birthDay"]').mask('00/00/0000').end()
             .on('err.validator.fv', function(e, data) {
 
             if((data.field === 'username')||(data.field === 'email')||(data.field === 'password')||(data.field === 'birthDay')) {
@@ -293,13 +298,12 @@
             }
 
             })
-            .off('success.form.fv')
             .on('success.form.fv', function(e) {
                 $('.modal-body .page-loader').show();
                 e.preventDefault();
 
                 var $form = $(e.target);
-               
+
                 $.ajax({
                     url: $form.attr('action'),
                     type: 'POST',
@@ -316,18 +320,18 @@
                             $('#bkAddUser').modal('hide');
                             $.notify({message: response.message});
                         }
-                    
+
                     }
                 })
 
             })
-        
+
         }
-        
+
         // Edit user
         $('#bkEditUser').on('show.bs.modal', function(e){
             $('.modal-body .page-loader').show();
-            var id = $(e.relatedTarget).data('id'); 
+            var id = $(e.relatedTarget).data('id');
             var selpermission = $(e.currentTarget).find('select[name=permission]');
             selpermission.html('');
             $.ajax({
@@ -350,20 +354,19 @@
                         $(e.currentTarget).find('input[name=email]').val(datauser.useremail);
                         $(e.currentTarget).find('input[name=password]').val(datauser.userpassword);
                         $(e.currentTarget).find('input[name=birthDay]').val(birthDay);
-                        selpermission.append(permission);
+                        selpermission.append(permission).selectpicker('refresh');
                     }
-                    
-                    $('.select option').each(function(){
+
+                    $('.selectpicker option').each(function(){
                         if($(this).val()=== selected){
                             $(this).attr('selected', 'selected');
                         }
                     });
 
-                    $('.select').dropdown('destroy')
-                    $('.select').dropdown({ 'optionClass': 'ripple' });
-                  
+                    selpermission.selectpicker('refresh');
+
                 }
-            })           
+            })
         }).on('hide.bs.modal', function(e){
             $('#editUserForm').formValidation('resetForm', true);
         })
@@ -375,7 +378,7 @@
                 $(this).attr('placeholder', phbirthday)
             });
 
-            $('#editUserForm').formValidation({            
+            $('#editUserForm').formValidation({
                 framework: 'bootstrap4',
                 live: 'submitted',
                 locale: fvlang,
@@ -393,7 +396,7 @@
                             },
                             notEmpty: {},
                             stringLength: {min:4, max:30},
-                            regexp: {regexp: /^[a-zA-Z0-9\s]+$/}           
+                            regexp: {regexp: /^[a-zA-Z0-9\s]+$/}
                         }
                     },
                     email: {
@@ -406,7 +409,7 @@
                                 data: function(validator) {
                                     return {userid: validator.getFieldElements('userid').val()};
                                 }
-                            },    
+                            },
                             notEmpty: {},
                             regexp: {regexp:'^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$'}
                         }
@@ -421,17 +424,17 @@
                     birthDay: {
                         validators: {
                             notEmpty: {},
-                            date: {format: 'DD/MM/YYYY'}               
+                            date: {format: 'DD/MM/YYYY'}
                         }
                     }
                 }
             })
-            .find('input[name="birthDay"]').mask('00/00/0000').end() 
+            .find('input[name="birthDay"]').mask('00/00/0000').end()
             .on('keyup', '[name=newpassword]', function(){
                 var isEmpty = $(this).val() === '';
                 $('#editUserForm').formValidation('enableFieldValidators', 'newpassword', !isEmpty);
                 if($(this).val().length === 1) {
-                    $('#editUserForm').formValidation('validateField', 'newpassword');    
+                    $('#editUserForm').formValidation('validateField', 'newpassword');
                 }
             })
             .on('err.validator.fv', function(e, data) {
@@ -447,7 +450,7 @@
                 e.preventDefault();
 
                 var $form = $(e.target);
-                
+
                 $.ajax({
                     url: $form.attr('action'),
                     type: 'POST',
@@ -464,17 +467,17 @@
                             $('#bkEditUser').modal('hide');
                             $.notify({message: response.message});
                         }
-                    
+
                     }
                 })
 
             })
-        
+
         }
-   
+
         // Delete users
         var userDelete = function(callback){
-            
+
             $('#btnDelete').on('click', function(){
                 $('#confirmDelete').modal('show');
             });
@@ -486,7 +489,7 @@
                 callback(false);
                 $('#confirmDelete').modal('hide');
             })
-            
+
         };
 
         userDelete(function(confirm){
@@ -503,10 +506,10 @@
                         $('#dt-select-all').prop('checked', false);
                     };
                     $('.card-delete .text-delete').text('');
-                }, 600)    
+                }, 600)
             }
         })
-        
+
         function success(){
             $.ajax({
                 url: 'users/delete_users',
@@ -522,9 +525,9 @@
                         },{
                             type: 'custom',
                             template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-md-6 alert alert-{0}" role="alert">' +
-                            '<span data-notify="message">{2}</span>' +   
+                            '<span data-notify="message">{2}</span>' +
                             '</div>'
-                        });    
+                        });
                     }
                 }
             });
@@ -546,7 +549,7 @@
             'ajax': site_url + 'admin/clubs/get_clubs',
             'responsive': true,
             'columns': [
-                {   
+                {
                     'targets': 0,
                     'searchable':false,
                     'className': 'check-cell',
@@ -554,8 +557,8 @@
                     'orderable':false,
                     'render': function(data){
                             return '<span class="checkbox">' +
-                                '<label>' + 
-                                '<input type="checkbox" id="checkboxID" name="id[]" value="' + $('<div/>').text(data).html() + '">' + 
+                                '<label>' +
+                                '<input type="checkbox" id="checkboxID" name="id[]" value="' + $('<div/>').text(data).html() + '">' +
                                 '</label>' +
                                 '</span>';
                     },
@@ -570,15 +573,15 @@
                 {'data': 'action', 'searchable': false, 'orderable': false}
             ],
             'order': [[1, 'desc']]
-            
+
         });
-        
+
         // Handle click on "Select all" control
         $('#dt-select-all').on('click', function(){
-        
+
         // Get all rows with search applied
         var rows = clubstable.rows({ 'search': 'applied' }).nodes();
-        
+
         // Check/uncheck checkboxes for all rows in the table
         $('input[type="checkbox"]', rows).prop('checked', this.checked);
         });
@@ -591,7 +594,7 @@
 
         if($('#addClubForm').length && $.fn.formValidation) {
 
-            $('#addClubForm').formValidation({            
+            $('#addClubForm').formValidation({
                 framework: 'bootstrap4',
                 live: 'submitted',
                 locale: fvlang,
@@ -611,13 +614,12 @@
             }
 
             })
-            .off('success.form.fv')
             .on('success.form.fv', function(e) {
                 $('.modal-body .page-loader').show();
                 e.preventDefault();
 
                 var $form = $(e.target);
-               
+
                 $.ajax({
                     url: $form.attr('action'),
                     type: 'POST',
@@ -634,18 +636,18 @@
                             $('#bkAddClub').modal('hide');
                             $.notify({message: response.message});
                         }
-                    
+
                     }
                 })
 
             })
-        
+
         }
 
         // Edit club
         $('#bkEditClub').on('show.bs.modal', function(e){
             $('.modal-body .page-loader').show();
-            var id = $(e.relatedTarget).data('id'); 
+            var id = $(e.relatedTarget).data('id');
             $.ajax({
                 url: 'clubs/get_club',
                 type: 'POST',
@@ -662,14 +664,14 @@
                         $(e.currentTarget).find('input[name=clubname]').val(dataclub.clubname);
                     }
                 }
-            })           
+            })
         }).on('hide.bs.modal', function(e){
             $('#editClubForm').formValidation('resetForm', true);
         })
 
         if($('#editClubForm').length && $.fn.formValidation) {
 
-            $('#editClubForm').formValidation({            
+            $('#editClubForm').formValidation({
                 framework: 'bootstrap4',
                 live: 'submitted',
                 locale: fvlang,
@@ -689,13 +691,12 @@
             }
 
             })
-            .off('success.form.fv')
             .on('success.form.fv', function(e) {
                 $('.modal-body .page-loader').show();
                 e.preventDefault();
 
                 var $form = $(e.target);
-                
+
                 $.ajax({
                     url: $form.attr('action'),
                     type: 'POST',
@@ -712,17 +713,17 @@
                             $('#bkEditClub').modal('hide');
                             $.notify({message: response.message});
                         }
-                    
+
                     }
                 })
 
             })
-        
+
         }
 
         // Delete clubs
         var clubDelete = function(callback){
-            
+
             $('#btnDelete').on('click', function(){
                 $('#confirmDelete').modal('show');
             });
@@ -734,7 +735,7 @@
                 callback(false);
                 $('#confirmDelete').modal('hide');
             })
-            
+
         };
 
         clubDelete(function(confirm){
@@ -751,10 +752,10 @@
                         $('#dt-select-all').prop('checked', false);
                     };
                     $('.card-delete .text-delete').text('');
-                }, 600)    
+                }, 600)
             }
         })
-        
+
         function success(){
             $.ajax({
                 url: 'clubs/delete_clubs',
@@ -770,9 +771,305 @@
                         },{
                             type: 'custom',
                             template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-md-6 alert alert-{0}" role="alert">' +
-                            '<span data-notify="message">{2}</span>' +   
+                            '<span data-notify="message">{2}</span>' +
                             '</div>'
+                        });
+                    }
+                }
+            });
+        }
+
+    }
+
+    /*----------------------------
+        Managers list table
+    ------------------------------*/
+
+    if($('#managersList').length && $.fn.DataTable) {
+
+        $.fn.dataTable.moment('DD/MM/YYYY');
+
+        // Show managers
+        var managerstable = $('#managersList').DataTable({
+
+            'ajax': site_url + 'admin/managers/get_managers',
+            'responsive': true,
+            'columnDefs': [{ 'type': 'num-fmt', 'targets': 4 }],
+            'columns': [
+                {
+                    'targets': 0,
+                    'searchable':false,
+                    'className': 'check-cell',
+                    'data': 'manager_id',
+                    'orderable':false,
+                    'render': function(data){
+                            return '<span class="checkbox">' +
+                                '<label>' +
+                                '<input type="checkbox" id="checkboxID" name="id[]" value="' + $('<div/>').text(data).html() + '">' +
+                                '</label>' +
+                                '</span>';
+                    },
+                },
+                {'data': 'manager_id', 'visible': false, 'searchable':false},
+                {'data': 'user_name', 'className': 'all'},
+                {'data': null,
+                    'render': function(data){
+                        if(!data.club_name){
+                            return '<i class="mdi mdi-shield-half-full"></i>'
+                        } else {
+                            return data.club_name;
+                        }
+                    }
+                },
+                {'data': 'manager_wallet',
+                    'render': function(data) {
+                        return $.number(data, '0', '', mask)
+                    } 
+                },
+                {'data': 'manager_registered',
+                    'render': function(data){
+                        return (moment(data).format('DD/MM/YYYY'));
+                    }
+                },
+                {'data': 'action', 'searchable': false, 'orderable': false}
+            ],
+            'order': [[1, 'desc']]
+
+        });
+
+        // Handle click on "Select all" control
+        $('#dt-select-all').on('click', function(){
+
+        // Get all rows with search applied
+        var rows = managerstable.rows({ 'search': 'applied' }).nodes();
+
+        // Check/uncheck checkboxes for all rows in the table
+        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+        });
+
+        // Add manager
+        $('[data-target="#bkAddManager"]').on('click', function(e){
+            
+            $('#bkAddManager').modal('show');
+            $('.modal-body .page-loader').show();
+            
+            $('#addManagerForm').formValidation('resetForm', true);
+            var selectusers = $('select[name=username]');
+            selectusers.html('');
+            $.ajax({
+                url: 'managers/get_users',
+                dataType: 'json',
+                success: function(response) {
+                    $.each(response.datausers, function(key, val) {
+                        selectusers.append('<option value="' + val.userid + '">' + val.username + '</option>').selectpicker('refresh');
+                    });    
+                }
+            })
+            var selectclubs = $('select[name=clubname]');
+            selectclubs.html('');
+            $.ajax({
+                url: 'managers/get_clubs',
+                dataType: 'json',
+                success: function(response) {
+                    $('.modal-body .page-loader').fadeOut();      
+                    $.each(response.dataclubs, function(key, val) {
+                        selectclubs.append('<option value="' + val.clubid + '">' + val.clubname + '</option>').selectpicker('refresh');
+                    });    
+                }
+            })
+                              
+        });
+
+        if($('#addManagerForm').length && $.fn.formValidation) {
+
+            $('#addManagerForm').find('[name="username"]').selectpicker().change(function(e) {
+                $('#addManagerForm').formValidation('revalidateField', 'username');
+            }).end();
+            $('#addManagerForm').find('[name="clubname"]').selectpicker().change(function(e) {
+                $('#addManagerForm').formValidation('revalidateField', 'clubname');
+            }).end();
+
+            $('#addManagerForm').formValidation({
+                framework: 'bootstrap4',
+                live: 'submitted',
+                excluded: 'disabled',
+                locale: fvlang,
+                fields: {
+                    username: {
+                        validators: {
+                            notEmpty: {}
+                        }
+                    },
+                    clubname: {
+                        validators: {
+                            notEmpty: {}
+                        }
+                    }
+                }
+            })
+            .on('err.validator.fv', function(e, data) {
+
+            if((data.field === 'clubname') || (data.field === 'username')) {
+                data.element.data('fv.messages').find('.help-block[data-fv-for="' + data.field + '"]').hide().filter('[data-fv-validator="' + data.validator + '"]').show();
+            }
+
+            })
+            .on('success.form.fv', function(e) {
+                $('.modal-body .page-loader').show();
+                e.preventDefault();
+
+                var $form = $(e.target);
+
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    data: $form.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+
+                        if(response.error){
+                            $.notify({message: response.message});
+                        } else {
+                            $form.formValidation('resetForm', true);
+                            managerstable.ajax.reload(tableCallback);
+                            $('.modal-body .page-loader').fadeOut();
+                            $('#bkAddManager').modal('hide');
+                            $.notify({message: response.message});
+                        }
+
+                    }
+                })
+
+            })
+
+        }
+
+        // Edit manager
+        $('#bkEditManager').on('show.bs.modal', function(e){
+            $('.modal-body .page-loader').show();
+            var id = $(e.relatedTarget).data('id');
+            var selectclubs = $('select[name=clubname]');
+            $('select[name=clubname] option').next().html('');
+            $.ajax({
+                url: 'managers/get_manager',
+                type: 'POST',
+                dataType: 'json',
+                data: 'managerid=' + id,
+                success: function(response) {
+                    if(response.success) {
+                        $('.modal-body .page-loader').fadeOut();
+                        $.each(response.data, function(key, val) {
+                            selectclubs.append('<option value="' + val.clubid + '" '+ val.selected +'>' + val.clubname + '</option>').selectpicker('refresh');
+                        });                        
+                        $.each(response.datamanager, function(key, val) {
+                            $(e.currentTarget).find('input[name=wallet]').val($.number(val.wallet, '0', '', mask));                        
+                            $(e.currentTarget).find('input[name=managerid]').val(val.managerid);
                         });    
+                    }
+                }
+            })
+        }).on('hide.bs.modal', function(e){
+            $('#editManagerForm').formValidation('resetForm', true);
+        });
+
+        if($('#editManagerForm').length && $.fn.formValidation) {
+
+            $('#editManagerForm').formValidation({
+                framework: 'bootstrap4',
+                live: 'submitted',
+                excluded: ':disabled',
+                locale: fvlang,
+                fields: {
+                    wallet: {
+                        validators: {
+                            notEmpty: {}
+                        }
+                    }
+                }
+            })
+            .on('success.form.fv', function(e) {
+                $('.modal-body .page-loader').show();
+                e.preventDefault();
+
+                var $form = $(e.target);
+
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'POST',
+                    data: $form.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+
+                        if(response.error){
+                            $.notify({message: response.message});
+                        } else {
+                            $form.formValidation('resetForm', true);
+                            managerstable.ajax.reload(tableCallback);
+                            $('.modal-body .page-loader').fadeOut();
+                            $('#bkEditManager').modal('hide');
+                            $.notify({message: response.message});
+                        }
+
+                    }
+                })
+
+            })
+
+        }
+
+        // Delete managers
+        var managerDelete = function(callback){
+
+            $('#btnDelete').on('click', function(){
+                $('#confirmDelete').modal('show');
+            });
+            $("#btn-confirm").on("click", function(){
+                callback(true);
+                $("#confirmDelete").modal('hide');
+              });
+            $('#btn-delete').on('click', function(){
+                callback(false);
+                $('#confirmDelete').modal('hide');
+            })
+
+        };
+
+        managerDelete(function(confirm){
+            if(confirm){
+                success();
+                setTimeout(function(){
+                    $('.check-cell input[id*=checkboxID][type=checkbox]:checked').each(function(){
+                        $(this).prop('checked', false);
+                        $(this).closest('tr').fadeOut();
+                        $('.card-delete').fadeOut();
+                        managerstable.ajax.reload(tableCallback);
+                    })
+                    if($('#dt-select-all').is(':checked')){
+                        $('#dt-select-all').prop('checked', false);
+                    };
+                    $('.card-delete .text-delete').text('');
+                }, 600)
+            }
+        })
+
+        function success(){
+            $.ajax({
+                url: 'managers/delete_managers',
+                type: 'POST',
+                dataType: 'json',
+                data: $('.check-cell input[name="id[]"][type=checkbox]:checked').serialize(),
+                success: function(response) {
+                    if(response.error){
+                        $.notify({message: response.message});
+                    } else {
+                        $.notify({
+                            message: response.message,
+                        },{
+                            type: 'custom',
+                            template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-md-6 alert alert-{0}" role="alert">' +
+                            '<span data-notify="message">{2}</span>' +
+                            '</div>'
+                        });
                     }
                 }
             });

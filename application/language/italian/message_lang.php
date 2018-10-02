@@ -15,6 +15,7 @@ $lang['adminpage_title_settings_site_options'] = "Impostazioni generali";
 $lang['adminpage_title_settings_email_options'] = "Impostazioni email";
 $lang['adminpage_title_users'] = "Gestisci utenti";
 $lang['adminpage_title_clubs'] = "Gestisci club";
+$lang['adminpage_title_managers'] = "Gestisci manager";
 
 // DATATABLES
 $lang['datatables_language'] = "../assets/js/vendor/datatables/languages/italian.json";
@@ -58,6 +59,12 @@ $lang['sel_user_group_1'] = "Admin";
 $lang['sel_user_group_2'] = "Moderatore";
 $lang['sel_user_group_3'] = "Utente";
 $lang['sel_user_group_4'] = "Bannato";
+$lang['sel_username'] = "- Seleziona utente -";
+$lang['sel_clubname'] = "- Seleziona club -";
+
+// MASK
+$lang['mask_form'] = "0.000.000.000";
+$lang['mask_page'] = '.';
 
 //------------------------------------------------------------------------------
 // TEMPLATE
@@ -76,6 +83,7 @@ $lang['adminsbar_menu_settings'] = "Impostazioni";
 $lang['adminsbar_submenu_site_options'] = "Generali";
 $lang['adminsbar_menu_users'] = "Utenti";
 $lang['adminsbar_menu_clubs'] = "Club";
+$lang['adminsbar_menu_managers'] = "Managers";
 
 //------------------------------------------------------------------------------
 // FORM
@@ -89,6 +97,7 @@ $lang['form_label_confirm_password'] = "Conferma password";
 $lang['form_label_birthday'] = "Data di nascita";
 $lang['form_label_permission'] = "Permessi";
 $lang['form_label_clubname'] = "Nome club";
+$lang['form_label_wallet'] = "Finanze";
 
 // FORM VALIDATION REMOTE MESSAGES 
 $lang['formvalidation_check_username'] = "Questo username &#232; gi&#224; utilizzato";
@@ -188,3 +197,13 @@ $lang['bkclubslist_modal_edit_title'] = "Modifica club";
 $lang['bkclubslist_alert_new_club'] = "Nuovo club creato.";
 $lang['bkclubslist_modal_delete_clubs'] = "Sei sicuro di voler rimuovere questo club ?";
 $lang['bkclubslist_alert_new_club'] = "Nuovo club creato.";
+
+// MANAGERS LIST
+$lang['bkmanagerslist_header_title'] = "Gestione Manager";
+$lang['bkmanagerslist_dtcolumn_managername'] = "Manager";
+$lang['bkmanagerslist_dtcolumn_clubname'] = "Club";
+$lang['bkmanagerslist_dtcolumn_wallet'] = "Finanze";
+$lang['bkmanagerslist_modal_title'] = "Crea nuovo manager";
+$lang['bkmanagerslist_modal_edit_title'] = "Modifica manager";
+$lang['bkmanagerslist_alert_new_manager'] = "Nuovo manager creato.";
+$lang['bkmanagerslist_modal_delete_managers'] = "Sei sicuro di voler rimuovere questo manager ?";

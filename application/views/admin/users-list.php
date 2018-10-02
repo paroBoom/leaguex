@@ -153,7 +153,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group input-group mt-0">
+                    <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="mdi mdi-account"></i></span>
                         </div>
@@ -169,7 +169,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="mdi mdi-account-key"></i></span>
                         </div>
-                        <select class="select form-control" name="permission"></select>
+                        <select class="selectpicker form-control" name="permission"></select>
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">

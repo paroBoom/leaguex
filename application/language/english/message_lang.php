@@ -14,6 +14,7 @@ $lang['adminpage_title_settings_site_options'] = "Site settings";
 $lang['adminpage_title_settings_email_options'] = "Email settings";
 $lang['adminpage_title_users'] = "Manage users";
 $lang['adminpage_title_clubs'] = "Manage clubs";
+$lang['adminpage_title_managers'] = "Manage managers";
 
 // DATATABLES
 $lang['datatables_language'] = "";
@@ -57,6 +58,12 @@ $lang['sel_user_group_1'] = "Admin";
 $lang['sel_user_group_2'] = "Moderator";
 $lang['sel_user_group_3'] = "Member";
 $lang['sel_user_group_4'] = "Banned";
+$lang['sel_username'] = "- Select user -";
+$lang['sel_clubname'] = "- Select club -";
+
+// MASK
+$lang['mask_form'] = "0,000,000,000";
+$lang['mask_page'] = ',';
 
 //------------------------------------------------------------------------------
 // TEMPLATE
@@ -75,6 +82,7 @@ $lang['adminsbar_menu_settings'] = "Settings";
 $lang['adminsbar_submenu_site_options'] = "Site options";
 $lang['adminsbar_menu_users'] = "Users";
 $lang['adminsbar_menu_clubs'] = "Clubs";
+$lang['adminsbar_menu_managers'] = "Managers";
 
 //------------------------------------------------------------------------------
 // FORM
@@ -88,7 +96,7 @@ $lang['form_label_confirm_password'] = "Confirm password";
 $lang['form_label_birthday'] = "Date of birth";
 $lang['form_label_permission'] = "Role";
 $lang['form_label_clubname'] = "Club name";
-
+$lang['form_label_wallet'] = "Wallet";
 
 // FORM VALIDATION REMOTE MESSAGES 
 $lang['formvalidation_check_username'] = "The username is not available";
@@ -188,3 +196,13 @@ $lang['bkclubslist_modal_title'] = "Add new club";
 $lang['bkclubslist_modal_edit_title'] = "Edit club";
 $lang['bkclubslist_modal_delete_clubs'] = "Are you sure that you want to delete this club ?";
 $lang['bkclubslist_alert_new_club'] = "New club added.";
+
+// MANAGERS LIST
+$lang['bkmanagerslist_header_title'] = "Manage Manager";
+$lang['bkmanagerslist_dtcolumn_managername'] = "Manager";
+$lang['bkmanagerslist_dtcolumn_clubname'] = "Club";
+$lang['bkmanagerslist_dtcolumn_wallet'] = "Wallet";
+$lang['bkmanagerslist_modal_title'] = "Add new manager";
+$lang['bkmanagerslist_modal_edit_title'] = "Edit manager";
+$lang['bkmanagerslist_alert_new_manager'] = "New manager added.";
+$lang['bkmanagerslist_modal_delete_managers'] = "Are you sure that you want to delete this manager ?";

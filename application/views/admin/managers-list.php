@@ -7,7 +7,7 @@
 
                     <div class="card material-table">
                         <div class="card-header">
-                            <h2 class="card-title"><?php echo lang('bkclubslist_header_title'); ?></h2>
+                            <h2 class="card-title"><?php echo lang('bkmanagerslist_header_title'); ?></h2>
                             <div class="card-search">
                                 <div id="usersList_wrapper" class="form-group">
                                     <i class="mdi mdi-magnify icon-left"></i>
@@ -32,18 +32,20 @@
                                         <div id="dataTablesLength"></div>
                                     </li>
                                     <li class="p-0" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo lang('tt_add'); ?>">
-                                        <a href="javascript:void(0)" data-target="#bkAddClub" data-toggle="modal"><i class="mdi mdi-plus"></i></a>
+                                        <a href="javascript:void(0)" data-target="#bkAddManager" data-toggle="modal"><i class="mdi mdi-plus"></i></a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="card-body">
-                            <table id="clubsList" class="dataTable mdl-data-table" width="100%" style="width: 100%;">
+                            <table id="managersList" class="dataTable mdl-data-table" width="100%" style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <th><span class="checkbox"><label><input type="checkbox" name="select_all" value="1" id="dt-select-all"></label></span></th>
                                         <th class="d-none"></th>
-                                        <th><?php echo lang('bkclubslist_dtcolumn_clubname'); ?></th>
+                                        <th><?php echo lang('bkmanagerslist_dtcolumn_managername'); ?></th>
+                                        <th><?php echo lang('bkmanagerslist_dtcolumn_clubname'); ?></th>
+                                        <th><?php echo lang('bkmanagerslist_dtcolumn_wallet'); ?></th>
                                         <th><?php echo lang('datatables_dtcolumn_created'); ?></th>
                                         <th><?php echo lang('datatables_dtcolumn_actions'); ?></th>
                                     </tr>
@@ -60,13 +62,13 @@
 </div>
 
 <!-- Modal Add New -->
-<div class="modal fade" id="bkAddClub" tabindex="-1" role="dialog">
+<div class="modal fade" id="bkAddManager" tabindex="-1" role="dialog">
 
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form action="<?php echo site_url("admin/clubs/create_club"); ?>" method="post" id="addClubForm" autocomplete="off" novalidate="novalidate">
+            <form action="<?php echo site_url("admin/managers/create_manager"); ?>" method="post" id="addManagerForm" autocomplete="off" novalidate="novalidate">
                 <div class="modal-header">
-                    <h4 class="modal-title"><?php echo lang('bkclubslist_modal_title'); ?></h4>
+                    <h4 class="modal-title"><?php echo lang('bkmanagerslist_modal_title'); ?></h4>
                     <ul class="heading-actions">
                         <a href="javascript:void(0)" data-dismiss="modal" aria-label="Close"><i class="mdi mdi-close text-white"></i></a>
                     </ul> 
@@ -87,11 +89,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group input-group mb-0">
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="mdi mdi-account"></i></span>
+                        </div>
+                        <select class="selectpicker form-control" name="username" title="<?php echo lang('sel_username');?>"></select>
+                    </div>
+                    <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="mdi mdi-shield"></i></span>
                         </div>
-                        <input type="text" class="form-control" name="clubname" placeholder="<?php echo lang('form_label_clubname'); ?>">
+                        <select class="selectpicker form-control" name="clubname" title="<?php echo lang('sel_clubname');?>"></select>
+                    </div>
+                    <div class="form-group input-group mb-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="mdi mdi-bank"></i></span>
+                        </div>
+                        <input type="text" class="form-control format" data-mask="<?php echo lang('mask_form'); ?>" data-mask-reverse="true" name="wallet" placeholder="<?php echo lang('form_label_wallet'); ?>">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -105,13 +119,13 @@
 </div>
 
 <!-- Modal Edit Club -->
-<div class="modal fade" id="bkEditClub" tabindex="-1" role="dialog">
+<div class="modal fade" id="bkEditManager" tabindex="-1" role="dialog">
 
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form action="<?php echo site_url("admin/clubs/edit_club"); ?>" method="post" id="editClubForm" autocomplete="off" novalidate="novalidate">
+            <form action="<?php echo site_url("admin/managers/edit_manager"); ?>" method="post" id="editManagerForm" autocomplete="off" novalidate="novalidate">
                 <div class="modal-header">
-                    <h4 class="modal-title"><?php echo lang('bkclubslist_modal_edit_title'); ?></h4>
+                    <h4 class="modal-title"><?php echo lang('bkmanagerslist_modal_edit_title'); ?></h4>
                     <ul class="heading-actions">
                         <a href="javascript:void(0)" data-dismiss="modal" aria-label="Close"><i class="mdi mdi-close text-white"></i></a>
                     </ul> 
@@ -132,28 +146,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group input-group pad-img mt-0">
+                    <div class="form-group input-group">
                         <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <div class="custom-upload rounded-img">
-                                    <div class="loader-preview" data-id="" data-img="<?php echo site_url("assets/img/club-logo");?>" data-url="<?php echo site_url("admin/clubs/do_upload");?>" id="img-preview"></div>
-                                    <div class="upload-preview">
-                                        <img id="thumbImg" src="" alt="logo">
-                                        <input type="hidden" id="img-ghost" name="img-ghost" value="">
-                                        <div class="upload-infos" id="upload">
-                                            <div class="upload-infos-inner"><i class="mdi mdi-camera text-white"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <span class="input-group-text"><i class="mdi mdi-shield"></i></span>   
                         </div>
-                        <input type="text" class="form-control" name="clubname" placeholder="<?php echo lang('form_label_clubname'); ?>">
+                        <select class="selectpicker form-control" name="clubname"><option value=""><?php echo lang('sel_clubname');?></option></select>
+                    </div>
+                    <div class="form-group input-group mb-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="mdi mdi-bank"></i></span>
+                        </div>
+                        <input type="text" class="form-control format" data-mask="<?php echo lang('mask_form'); ?>" data-mask-reverse="true" name="wallet" placeholder="<?php echo lang('form_label_wallet'); ?>">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary"><?php echo lang('modal_button_confirm'); ?></button>
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
-                    <input type="hidden" value="" name="clubid">
+                    <input type="hidden" value="" name="managerid">
                 </div>
             </form>
         </div>
@@ -169,27 +178,10 @@
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo lang('modal_title'); ?></h4>
             </div>
-            <div class="modal-body"><p><?php echo lang('bkclubslist_modal_delete_clubs'); ?></p></div>
+            <div class="modal-body"><p><?php echo lang('bkmanagerslist_modal_delete_managers'); ?></p></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="btn-confirm"><?php echo lang('modal_button_confirm'); ?></button>
                 <button type="button" class="btn btn-default" id="btn-delete" data-dismiss="modal"><?php echo lang('modal_button_cancel'); ?></button>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<!-- Modal Image Alert -->
-<div class="modal fade" id="imageError" tabindex="-1" role="dialog">
-
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title"><?php echo lang('modal_title'); ?></h4>
-            </div>
-            <div class="modal-body"><p></p></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn-delete" data-dismiss="modal"><?php echo lang('modal_button_ok'); ?></button>
             </div>
         </div>
     </div>
