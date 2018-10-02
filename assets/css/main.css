@@ -1143,7 +1143,7 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
     Alert, tooltips, modal
 ------------------------------------------*/
 .alert-custom {
-    background-color: #414141;
+    background-color: #333;
     color: #fff;
     font-size: 14px;
     padding: 14px 15px;
@@ -1736,6 +1736,7 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
     .alert-custom {
         left: 0 !important;
         bottom: 0 !important;
+        width: 100%;
     }
     .tooltip {
         display: none !important;
