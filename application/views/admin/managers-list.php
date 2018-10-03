@@ -150,7 +150,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="mdi mdi-shield"></i></span>   
                         </div>
-                        <select class="selectpicker form-control" name="clubname"><option value=""><?php echo lang('sel_clubname');?></option></select>
+                        <select class="selectpicker form-control" name="clubname"></select>
                     </div>
                     <div class="form-group input-group mb-0">
                         <div class="input-group-prepend">
