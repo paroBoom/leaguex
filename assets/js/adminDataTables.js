@@ -298,6 +298,7 @@
             }
 
             })
+            .off('success.form.fv')
             .on('success.form.fv', function(e) {
                 $('.modal-body .page-loader').show();
                 e.preventDefault();
@@ -949,7 +950,8 @@
             $('.modal-body .page-loader').show();
             var id = $(e.relatedTarget).data('id');
             var selectclubs = $('select[name=clubname]');
-            $('select[name=clubname] option').next().html('');
+            selectclubs.html('');
+            selectclubs.prepend('<option value="">'+ selclub +'</option>');
             $.ajax({
                 url: 'managers/get_manager',
                 type: 'POST',
