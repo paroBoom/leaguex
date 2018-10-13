@@ -12,7 +12,12 @@ class Users_model extends CI_Model{
         // Delete activity
         $this->db->where_in('la_user_id', $delete_id);
         $this->db->where_not_in('la_user_id', '1');
-        $this->db->delete('lex_last_activity'); 
+        $this->db->delete('lex_last_activity');
+        
+        // Delete manager
+        $this->db->where_in('manager_user_id', $delete_id);
+        $this->db->where_not_in('manager_user_id', '1');
+        $this->db->delete('lex_managers');
         $this->db->trans_complete();  
 
         if ($this->db->trans_status() === FALSE){           
