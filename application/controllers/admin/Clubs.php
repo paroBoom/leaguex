@@ -29,8 +29,10 @@ class Clubs extends MY_Controller {
     // Display clubs
     function get_clubs() {
 
-        $this->datatables->select('club_id, club_name, club_logo, club_registered')
+        $this->datatables->select('club_id, club_name, club_logo, club_registered, manager_wallet, user_name')
             ->from('lex_clubs')
+            ->join('lex_managers', 'manager_club_id = club_id', 'left')
+            ->join('lex_users', 'ID = manager_user_id', 'left')
             ->add_column('clubinfo',
                 '<img src="../assets/img/club-logo/$1"><span class="img-cell">$2</span>',
                 'club_logo, club_name')
@@ -88,6 +90,7 @@ class Clubs extends MY_Controller {
     function edit_club() {
 
         $clubid = $this->input->post('clubid');
+        
         $output = array('error' => false);
 
         $data = array(
