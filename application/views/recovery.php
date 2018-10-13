@@ -2,7 +2,7 @@
 
     <div class="container container-auth">
                     
-        <form action="<?php echo site_url("user/do_forget"); ?>" method="post" role="form" id="accountRecovery" autocomplete="off">
+        <form action="<?php echo site_url("auth/do_forget"); ?>" method="post" role="form" id="accountRecovery" autocomplete="off">
             <div class="logo">
                 <img src="<?php echo site_url(); ?>assets/img/logo-big.png" alt="Logo">
             </div>
@@ -12,7 +12,7 @@
                 <input name="email" id="email" type="email" class="form-control">
             </div>
             <div class="form-action">
-                <button class="btn btn-raised btn-info load-btn" type="submit"><?php echo lang('recovery_button_send'); ?></button>
+                <button class="btn btn-raised btn-info btn-rounded load-btn" type="submit"><?php echo lang('recovery_button_send'); ?></button>
             </div>
             <div class="auth-form-link text-center">
                 <span><?php echo lang('recovery_textlink_signin'); ?> <a href="<?php site_url(); ?>signin"><?php echo lang('recovery_link_signin'); ?></a></span>
