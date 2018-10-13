@@ -53,10 +53,11 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['signin'] = 'user/index';
-$route['signup'] = 'user/signup';
-$route['logout'] = 'user/logout';
-$route['recovery'] = 'user/recovery';
+$route['signin'] = 'auth/index';
+$route['signup'] = 'auth/signup';
+$route['logout'] = 'auth/logout';
+$route['recovery'] = 'auth/recovery';
+$route['profile'] = 'user/index';
 
 $route['admin/userslist'] = 'admin/users/index';
 $route['admin/clubslist'] = 'admin/clubs/index';
