@@ -7,8 +7,15 @@ class MY_Controller extends CI_Controller {
 		parent::__construct();
     }
     
-    protected function _render($data)
-	{
+	protected function _render($data)
+	
+	{	
+		// Load site settings
+		$data['siteconfig'] = options_data();
+		
+		// Load manager data
+		$data['user'] =  user_data(); 
+
 		$this->load->view('template/skeleton', $data);
 	}
 }
