@@ -5,7 +5,6 @@
 	* This loads the header, navigation (if needed), page and footer
 	*
 	*/
-
 		
 	$this->load->view('template/header');
 

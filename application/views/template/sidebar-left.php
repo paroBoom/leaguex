@@ -4,12 +4,24 @@
     <div class="sidebar-inner">
         <div class="sb-club">
             <div class="club-pic">
-                <img src="<?php echo site_url().'assets/img/club-logo/barcelona.png'; ?>" alt="logo">
+                <?php if($user->club_logo){ $clubLogo = $user->club_logo; } else { $clubLogo = 'logo_default.png'; } ?>
+                <img src="<?= site_url().'assets/img/club-logo/'.$clubLogo ?>" alt="logo">
             </div> 
             <div class="club-info">
                 <a data-toggle="collapse" href="#sbcollapse" class="collapsed">
-                    <span class="team-title">Barcellona <span class="icon"><i class="mdi mdi-plus"></i></span></span>
+                    <span class="team-title">
+                        <?php if($user->club_name){ $clubName = $user->club_name; } else { $clubName = lang('unemployed'); } ?>
+                        <?php echo $clubName ?>
+                    </span>
                 </a>
+                <div class="clearfix"></div>
+                <div class="collapse in" id="sbcollapse">
+                    <ul class="nav">
+                        <li><a href="#"><span class="sb-club-menu">My Club</span></a></li>
+                        <li><a href="#"><span class="sb-club-menu">Stats</span></a></li>
+                        <li><a href="#"><span class="sb-club-menu">Stats</span></a></li>
+                    </ul>
+                </div>
             </div>   
         </div>
         <ul class="nav">
