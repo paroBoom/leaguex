@@ -4,7 +4,6 @@
 function is_logged_in() {
 
     $CI =& get_instance();
-    
     $user = $CI->session->userdata('userID');
     if (!isset($user)) { return false; } else { return true; }
 
@@ -14,15 +13,33 @@ function is_logged_in() {
 function is_admin() {
 
     $CI =& get_instance();
-    
     $admin = $CI->session->userdata('permission');
     if ($admin != 1) { return false; } else { return true; }
 
 }
 
+// Load user data
+function user_data() {
+
+    $CI =& get_instance();
+    $user = $CI->session->userdata('userID');
+    $CI->load->database();
+    $CI->db->select('*');
+    $CI->db->from('lex_users');
+    $CI->db->where('ID', $user);
+    $CI->db->join('lex_managers', 'manager_user_id = ID', 'left');
+    $CI->db->join('lex_clubs', 'club_id = manager_club_id', 'left');
+
+    $query = $CI->db->get();
+    $result = $query->row(); 
+    return $result;
+    
+}
+
+
 // Load site configuration
     
-function load_options() {
+function options_data() {
 
     $ci=& get_instance();
     $ci->load->database(); 
