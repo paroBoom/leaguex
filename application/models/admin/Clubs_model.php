@@ -6,8 +6,13 @@ class Clubs_model extends CI_Model{
 
         $this->db->trans_start();
         $this->db->where_in('club_id', $delete_id);
-        $this->db->delete('lex_clubs'); 
-                
+        $this->db->delete('lex_clubs');
+
+         // Update manager
+        $this->db->set('manager_club_id', '0');
+        $this->db->where_in('manager_club_id', $delete_id); 
+        $this->db->update('lex_managers');
+        
         $this->db->trans_complete();  
         if ($this->db->trans_status() === FALSE){           
             return FALSE;
