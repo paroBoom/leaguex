@@ -21,10 +21,7 @@ class Settings extends MY_Controller {
     function index() {
                   
         $data = array('page_title' => $this->lang->line('adminpage_title_settings_site_options'), 'page_view' => 'admin/site-config/site-options', 'folder' => 'admin');
-        
-        // Load site settings
-        $data['siteconfig'] = load_options();
-    
+            
         $this->_render($data);
     
     }
@@ -55,10 +52,7 @@ class Settings extends MY_Controller {
     function email_options() {
 
         $data = array('page_title' => $this->lang->line('adminpage_title_settings_email_options'), 'page_view' => 'admin/site-config/email-options', 'folder' => 'admin');
-        
-        // Load site settings
-        $data['siteconfig'] = load_options();
-    
+          
         $this->_render($data);
 
     }
