@@ -44,6 +44,8 @@
                                         <th><span class="checkbox"><label><input type="checkbox" name="select_all" value="1" id="dt-select-all"></label></span></th>
                                         <th class="d-none"></th>
                                         <th><?php echo lang('bkclubslist_dtcolumn_clubname'); ?></th>
+                                        <th><?php echo lang('bkclubslist_dtcolumn_manager'); ?></th>
+                                        <th><?php echo lang('bkclubslist_dtcolumn_value'); ?></th>
                                         <th><?php echo lang('datatables_dtcolumn_created'); ?></th>
                                         <th><?php echo lang('datatables_dtcolumn_actions'); ?></th>
                                     </tr>
