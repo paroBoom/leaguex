@@ -4,10 +4,6 @@
 
     /* Init BMD */
     $('body').bootstrapMaterialDesign({});
-
-    $('[data-mask]').each(function() {
-        $(this).mask($(this).attr("data-mask"));
-    });
     
     /* Prevent label text overlapping */
     setTimeout(function () {
