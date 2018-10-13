@@ -30,7 +30,7 @@
 		<![endif]-->        
     </head>
 
-    <body>
+    <body <?php if(($page_view == 'signin') || ($page_view == 'signup') || ($page_view == 'recovery')) {echo 'style="background-color:#1d2133"';} ?>>
 
         <!-- Page loader -->
         <div class="page-loader">
