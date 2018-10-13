@@ -9,6 +9,7 @@ $lang['page_title_signin'] = "Sign in";
 $lang['page_title_signup'] = "Sign up";
 $lang['page_title_recovery'] = "Account recovery";
 $lang['page_title_home'] = "Home page";
+$lang['page_title_profile'] = "Profile";
 $lang['adminpage_title_dashboard'] = "Dashboard";
 $lang['adminpage_title_settings_site_options'] = "Site settings";
 $lang['adminpage_title_settings_email_options'] = "Email settings";
@@ -27,7 +28,7 @@ $lang['datatables_dtcolumn_created'] = "Created";
 $lang['datatables_dtcolumn_actions'] = "Actions";
 
 // MODAL
-$lang['modal_button_confirm'] = "Confirm";
+$lang['modal_button_confirm'] = "Save";
 $lang['modal_button_cancel'] = "Cancel";
 $lang['modal_button_ok'] = "Ok, I see";
 $lang['modal_title'] = "Advise";
@@ -65,12 +66,17 @@ $lang['sel_clubname'] = "- Select club -";
 $lang['mask_form'] = "0,000,000,000";
 $lang['mask_page'] = ',';
 
+// GLOBAL
+$lang['unemployed'] = "Unemployed";
+
+
 //------------------------------------------------------------------------------
 // TEMPLATE
 //------------------------------------------------------------------------------
 
 // NAVBAR 
 $lang['navbar_menu_admin'] = "Dashboard";
+$lang['navbar_menu_profile'] = "Your profile";
 
 // SIDEBAR MENU (SITE)
 $lang['sbar_menu_home'] = "Home";
@@ -92,6 +98,7 @@ $lang['adminsbar_menu_managers'] = "Managers";
 $lang['form_label_username'] = "Username";
 $lang['form_label_email'] = "Email";
 $lang['form_label_password'] = "Password";
+$lang['form_label_newpassword'] = "New password";
 $lang['form_label_confirm_password'] = "Confirm password";
 $lang['form_label_birthday'] = "Date of birth";
 $lang['form_label_permission'] = "Role";
@@ -135,6 +142,10 @@ $lang['recovery_alert_success'] = "We&#8217;ve sent a new password. Check your i
 $lang['recovery_alert_error'] = "No account associated to this email.";
 $lang['recovery_object_mailreset'] = "Reset Password";
 $lang['recovery_text_mailreset'] = "Hi %s, your password has been modified. <br/><br/> This is your new password";
+
+// USER SETTINGS
+$lang['user_settings_tabs_title'] = "Settings";
+$lang['user_settings_tabs_account'] = "Account";
 
 //------------------------------------------------------------------------------
 // BACKEND PAGES
@@ -192,6 +203,8 @@ $lang['bkuserslist_alert_new_user'] = "New user added.";
 // CLUBS LIST
 $lang['bkclubslist_header_title'] = "Manage Clubs";
 $lang['bkclubslist_dtcolumn_clubname'] = "Club";
+$lang['bkclubslist_dtcolumn_manager'] = "Manager";
+$lang['bkclubslist_dtcolumn_value'] = "Value";
 $lang['bkclubslist_modal_title'] = "Add new club";
 $lang['bkclubslist_modal_edit_title'] = "Edit club";
 $lang['bkclubslist_modal_delete_clubs'] = "Are you sure that you want to delete this club ?";

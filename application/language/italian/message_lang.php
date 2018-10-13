@@ -8,8 +8,8 @@
 $lang['page_title_signin'] = "Accedi";
 $lang['page_title_signup'] = "Registrati";
 $lang['page_title_recovery'] = "Recupera password";
-$lang['page_title_home'] = "Home page";
-$lang['page_title_home'] = "Home page";
+$lang['page_title_home'] = "Home";
+$lang['page_title_profile'] = "Profilo";
 $lang['adminpage_title_dashboard'] = "Dashboard";
 $lang['adminpage_title_settings_site_options'] = "Impostazioni generali";
 $lang['adminpage_title_settings_email_options'] = "Impostazioni email";
@@ -28,7 +28,7 @@ $lang['datatables_dtcolumn_created'] = "Data Creazione";
 $lang['datatables_dtcolumn_actions'] = "Azioni";
 
 // MODAL
-$lang['modal_button_confirm'] = "Conferma";
+$lang['modal_button_confirm'] = "Salva";
 $lang['modal_button_cancel'] = "Cancella";
 $lang['modal_button_ok'] = "Ok, ho capito";
 $lang['modal_title'] = "Avviso";
@@ -66,12 +66,16 @@ $lang['sel_clubname'] = "- Seleziona club -";
 $lang['mask_form'] = "0.000.000.000";
 $lang['mask_page'] = '.';
 
+// GLOBAL
+$lang['unemployed'] = "Senza contratto";
+
 //------------------------------------------------------------------------------
 // TEMPLATE
 //------------------------------------------------------------------------------
 
 // NAVBAR
 $lang['navbar_menu_admin'] = "Dashboard";
+$lang['navbar_menu_profile'] = "Il tuo profilo";
 
 // SIDEBAR MENU (SITE)
 $lang['sbar_menu_home'] = "Home";
@@ -93,6 +97,7 @@ $lang['adminsbar_menu_managers'] = "Managers";
 $lang['form_label_username'] = "Username";
 $lang['form_label_email'] = "Email";
 $lang['form_label_password'] = "Password";
+$lang['form_label_newpassword'] = "Nuova password";
 $lang['form_label_confirm_password'] = "Conferma password";
 $lang['form_label_birthday'] = "Data di nascita";
 $lang['form_label_permission'] = "Permessi";
@@ -136,6 +141,10 @@ $lang['recovery_alert_success'] = "Abbiamo inviato un&#8217;email all&#8217;indi
 $lang['recovery_alert_error'] = "L&#8217;email inserita non corrisponde a nessun account.";
 $lang['recovery_object_mailreset'] = "Modifica Password";
 $lang['recovery_text_mailreset'] = "Ciao %s, la tua password di accesso &#232; stata modificata. <br/><br/> Accedi con la tua nuova password";
+
+// USER SETTINGS
+$lang['user_settings_tabs_title'] = "Impostazioni";
+$lang['user_settings_tabs_account'] = "Account";
 
 //------------------------------------------------------------------------------
 // BACKEND PAGES
@@ -192,6 +201,8 @@ $lang['bkuserslist_alert_new_user'] = "Nuovo utente creato.";
 // CLUBS LIST
 $lang['bkclubslist_header_title'] = "Gestione Club";
 $lang['bkclubslist_dtcolumn_clubname'] = "Club";
+$lang['bkclubslist_dtcolumn_manager'] = "Manager";
+$lang['bkclubslist_dtcolumn_value'] = "Valore";
 $lang['bkclubslist_modal_title'] = "Crea nuovo club";
 $lang['bkclubslist_modal_edit_title'] = "Modifica club";
 $lang['bkclubslist_alert_new_club'] = "Nuovo club creato.";
