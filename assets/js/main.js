@@ -4,10 +4,14 @@
 
     /* Init BMD */
     $('body').bootstrapMaterialDesign({});
+
+    $('[data-mask]').each(function() {
+        $(this).mask($(this).attr("data-mask"));
+    });
     
     /* Prevent label text overlapping */
     setTimeout(function () {
-        var $input = $('input');
+        var $input = $('#signIn input');
         if($input.val() != '') {
             $input.closest("div").addClass('is-filled');
         }
@@ -123,7 +127,7 @@
     })
 
     // Submenu
-    $('.nav-item a, .club-info a').on('click', function() {
+    $('.sidebar-left .nav-item a, .club-info a').on('click', function() {
         $(this).parent().find('.collapse').hasClass('show') ? $(this).parent().removeClass('submenu_open') : $(this).parent().addClass('submenu_open')
     })
 

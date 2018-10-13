@@ -463,6 +463,7 @@
                             $.notify({message: response.message});
                         } else {
                             $form.formValidation('resetForm', true);
+                            $form.formValidation('enableFieldValidators', 'newpassword', false);
                             userstable.ajax.reload(tableCallback);
                             $('.modal-body .page-loader').fadeOut();
                             $('#bkEditUser').modal('hide');
@@ -566,6 +567,18 @@
                 },
                 {'data': 'club_id', 'visible': false, 'searchable':false},
                 {'data': 'clubinfo', 'className': 'all'},
+                {'data': 'user_name',
+                    'render': function(data){
+                        if(data === null){
+                            return '<a href="' + site_url + 'admin/managerslist" class="link-icon">' +
+                                   '<i class="mdi mdi-plus"></i>' +
+                                   '</a>';
+                        } else {
+                            return data;
+                        }
+                    }
+                },
+                {'data': 'manager_wallet'},
                 {'data': 'club_registered',
                     'render': function(data){
                         return (moment(data).format('DD/MM/YYYY'));
