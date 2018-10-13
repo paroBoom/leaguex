@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="form-group col-xs-12 col-sm-4">
                                         <label><?php echo lang('bksettings_siteoptions_form_label_language'); ?></label>
-                                        <select class="select form-control" name="language">
+                                        <select class="selectpicker form-control" name="language">
                                             <option value="0" <?php if($siteconfig->language == 0) {echo "SELECTED";} ?>>Italiano</option>
                                             <option value="1" <?php if($siteconfig->language == 1) {echo "SELECTED";} ?>>Inglese</option>
                                         </select>

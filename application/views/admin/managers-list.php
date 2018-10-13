@@ -4,7 +4,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-
                     <div class="card material-table">
                         <div class="card-header">
                             <h2 class="card-title"><?php echo lang('bkmanagerslist_header_title'); ?></h2>

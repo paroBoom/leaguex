@@ -64,7 +64,7 @@
                                             <input type="text" class="form-control" name="testemail" value="">
                                             <small class="form-text text-muted"><?php echo lang('bksettings_emailoptions_test_form_help_email'); ?></small>
                                         </div>
-                                        <span class="form-group bmd-form-group">
+                                        <span class="form-group bmd-form-group col-sm-6 pt-0">
                                             <button class="btn btn-primary"><?php echo lang('bksettings_emailoptions_test_submit_btn_text'); ?></button>
                                         </span>    
                                     </div>
