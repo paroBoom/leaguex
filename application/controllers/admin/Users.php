@@ -139,6 +139,7 @@ class Users extends MY_Controller {
         
     }
 
+    // check duplicate username
     function echeck_username() {
 
         $userid = $this->input->post('userid');
@@ -153,7 +154,8 @@ class Users extends MY_Controller {
         echo json_encode(array('valid' => $isAvailable));
     
     }
-        
+    
+    // check duplicate email
     function echeck_email() {
 
         $userid = $this->input->post('userid');
