@@ -6,7 +6,7 @@
             <div class="logo">
                 <img src="<?php echo site_url(); ?>assets/img/logo-big.png" alt="Logo">
             </div>
-            <p class="text-center"><?php echo lang('register_subtitle'); ?></p>
+            <h5 class="text-center"><?php echo lang('register_subtitle'); ?></h5>
             <div class="form-group bmd-form-group">
                 <label class="bmd-label-floating"><?php echo lang('form_label_username'); ?></label>       
                 <input name="username" type="text" class="form-control">
@@ -28,7 +28,7 @@
                 <input name="birthDay" type="text" class="form-control format">
             </div>
             <div class="form-action">
-                <button class="btn btn-raised btn-info btn-rounded load-btn" type="submit"><?php echo lang('register_button_signup'); ?></button>    
+                <button class="btn btn-raised btn-info btn-block load-btn" type="submit"><?php echo lang('register_button_signup'); ?></button>    
             </div>
             <div class="auth-form-link text-center">
                 <span><?php echo lang('register_textlink_signin'); ?> <a href="<?php site_url(); ?>signin"><?php echo lang('register_link_signin'); ?></a></span>    

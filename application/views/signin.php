@@ -6,7 +6,7 @@
             <div class="logo">
                 <img src="<?php echo site_url(); ?>assets/img/logo-big.png" alt="Logo">
             </div>
-            <p class="text-center"><?php echo lang('login_subtitle'); ?></p>
+            <h5 class="text-center"><?php echo lang('login_subtitle'); ?></h5>
             <div class="form-group bmd-form-group">
                 <label class="bmd-label-floating"><?php echo lang('form_label_email'); ?></label>                                    
                 <input name="email" id="email" type="email" class="form-control">
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="form-action">
-                <button class="btn btn-raised btn-info btn-rounded load-btn" type="submit"><?php echo lang('login_button_signin'); ?></button>
+                <button class="btn btn-info btn-raised btn-block load-btn" type="submit"><?php echo lang('login_button_signin'); ?></button>
             </div>
             <div class="auth-form-link text-center">
                 <span><?php echo lang('login_textlink_signup'); ?> <a href="<?php site_url(); ?>signup"><?php echo lang('login_link_signup'); ?></a></span>
