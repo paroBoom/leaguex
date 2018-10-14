@@ -17,9 +17,25 @@ class User extends MY_Controller {
 
     function index() {
 
-        $data = array('page_title' => $this->lang->line('page_title_profile'), 'page_view' => 'profile', 'folder' => 'site');
+        $data = array('page_title' => $this->lang->line('page_title_profile'), 'page_view' => 'settings', 'folder' => 'site');
         $this->_render($data);  
 
+    }
+
+    // check duplicate email
+    function check_email() {
+
+        $userid = $this->input->post('userid');
+        $isAvailable = true; 
+        $email = $this->input->post('email');
+        $this->db->where('user_email', $email);
+        $this->db->where('ID !=', $userid);
+        $query = $this->db->get('lex_users');
+
+        if($query->num_rows() > 0){$isAvailable = false;}
+
+        echo json_encode(array('valid' => $isAvailable));
+        
     }
 
      // Edit user account
