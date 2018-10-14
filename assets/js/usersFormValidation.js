@@ -20,7 +20,7 @@ function signUp() {
                     validators: {
                         remote: {
                             message: fvrusername,
-                            url: 'user/check_username',
+                            url: 'auth/check_username',
                             type: 'POST',
                             delay: 800
                         },
@@ -33,7 +33,7 @@ function signUp() {
                     validators: {
                         remote: {
                             message: fvremail,
-                            url: 'user/check_email',
+                            url: 'auth/check_email',
                             type: 'POST',
                             delay: 800
                         },    
@@ -61,6 +61,7 @@ function signUp() {
                 }
             }
         })
+        .find('[name="birthDay"]').mask('00/00/0000').end()
         .on('err.validator.fv', function(e, data) {
 
             if((data.field === 'username')||(data.field === 'email')||(data.field === 'password')||(data.field === 'confirmPassword')||(data.field === 'birthDay')) {
@@ -224,7 +225,7 @@ function editAccount() {
                     validators: {
                         remote: {
                             message: fvremail,
-                            url: 'admin/users/echeck_email',
+                            url: 'user/check_email',
                             type: 'POST',
                             delay: 800,
                             data: function(validator) {
@@ -257,6 +258,7 @@ function editAccount() {
                 }
             }
         })
+        .find('[name="birthDay"]').mask('00/00/0000').end()
         .on('keyup', '[name="newpassword"]', function(){
 
             var isEmpty = $(this).val() === '';
