@@ -42,7 +42,7 @@
                             <?php if($this->session->userdata('permission') == 1) : ?>
                                 <a class="dropdown-item" href="<?= site_url('admin/dashboard'); ?>"><?php echo lang('navbar_menu_admin'); ?></a>
                             <?php endif; ?>
-                            <a class="dropdown-item" href="<?= site_url().'profile'; ?>"><?php echo lang('navbar_menu_profile'); ?></a>
+                            <a class="dropdown-item" href="<?= site_url().'settings'; ?>"><?php echo lang('navbar_menu_profile'); ?></a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?= site_url('logout'); ?>">Logout</a>
                         </li>

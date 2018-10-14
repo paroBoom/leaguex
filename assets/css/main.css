@@ -1079,14 +1079,17 @@ table.dataTable thead .sorting_desc_disabled {
 .btn-rounded {
     border-radius: 60px!important;
 }
+.btn-block {
+    padding: 10px 20px;
+}
 .btn.btn-raised.btn-info,
 .btn.btn-raised.btn-info:hover,
 .btn.btn-raised.btn-info:active,
 .btn.btn-raised.btn-info:focus,
 .btn.btn-raised.btn-info:active:focus,
 .btn.btn-raised.btn-info.disabled:hover {
-    background-color: #ef4437;
-    border-color: #ef4437;
+    background-color: #2196f3;
+    border-color: #2196f3;
 }
 button.btn-loader{
     position: relative;
@@ -1754,6 +1757,9 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
 .auth-wrapper .container-auth .logo img {
     width: 80px;
 }
+.auth-wrapper .container-auth .bmd-form-group label {
+    margin-left: 0;
+} 
 .auth-wrapper .container-auth .form-recovery {
     align-items: center;
     padding: 8px 0;
@@ -1769,7 +1775,7 @@ label.checkbox-inline input[type=checkbox]:checked+.checkbox-decorator .check:be
 }
 .auth-wrapper .container-auth .auth-form-link {
     padding-top: 10px;
-    font-size: 13px;
+    font-size: 14px;
 }
 .auth-wrapper .container-auth .forgot-password {
     font-size: 13px;
