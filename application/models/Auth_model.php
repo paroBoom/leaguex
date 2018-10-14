@@ -23,6 +23,10 @@ class Auth_model extends CI_Model {
         $this->db->insert('lex_users', $user_register);
 
         $user_id = $this->db->insert_id();
+
+        // Set user info
+        $this->db->set('ui_id', $user_id, FALSE);
+        $this->db->insert('lex_users_info');
                         
         // Init last activity
         $this->db->set('la_user_id', $user_id, FALSE);
