@@ -57,7 +57,7 @@ $route['signin'] = 'auth/index';
 $route['signup'] = 'auth/signup';
 $route['logout'] = 'auth/logout';
 $route['recovery'] = 'auth/recovery';
-$route['profile'] = 'user/index';
+$route['settings'] = 'user/index';
 
 $route['admin/userslist'] = 'admin/users/index';
 $route['admin/clubslist'] = 'admin/clubs/index';
