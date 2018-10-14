@@ -9,7 +9,7 @@ $lang['page_title_signin'] = "Accedi";
 $lang['page_title_signup'] = "Registrati";
 $lang['page_title_recovery'] = "Recupera password";
 $lang['page_title_home'] = "Home";
-$lang['page_title_profile'] = "Profilo";
+$lang['page_title_profile'] = "Impostazioni";
 $lang['adminpage_title_dashboard'] = "Dashboard";
 $lang['adminpage_title_settings_site_options'] = "Impostazioni generali";
 $lang['adminpage_title_settings_email_options'] = "Impostazioni email";
@@ -75,7 +75,7 @@ $lang['unemployed'] = "Senza contratto";
 
 // NAVBAR
 $lang['navbar_menu_admin'] = "Dashboard";
-$lang['navbar_menu_profile'] = "Il tuo profilo";
+$lang['navbar_menu_profile'] = "Impostazioni";
 
 // SIDEBAR MENU (SITE)
 $lang['sbar_menu_home'] = "Home";
